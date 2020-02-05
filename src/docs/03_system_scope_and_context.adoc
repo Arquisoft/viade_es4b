@@ -20,20 +20,23 @@ image:images/DiagramaContexto.PNG[]
 
 [role="arc42help"]
 ****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
 
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
+Nuestra aplicación es una aplicación web descentralizada, donde los datos se almacenarán en los Pods de los usuarios. Por lo tanto la aplicación deberá estar conectada a internet.
 
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
+Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros que quieran compartirla a través de una URL, a través de Internet, sin la necesidad de un lugar central para almacenar los datos.
 
 ****
 
-**<Diagram or Table>**
 
-**<optionally: Explanation of technical interfaces>**
+image:images/TechnicalContext.PNG[]
 
-**<Mapping Input/Output to Channels>**
+Legenda del diagrama
+[cols="1,2" options="header"]
+|===
+| **Objeto** | **Descripción**
+| _Aplicación_ | _Es la aplicación web._
+| _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
+| _Cliente A y cliente B_ | _Son representaciones de los usuarios que esta usando la aplicación._
+| _Solid_ | Es el servidor en el cual los pods de solid están almacenados
+|_Internet_| Representa la comunicación que se realizará mediante internet con el protocolo HTTPS
+|===
