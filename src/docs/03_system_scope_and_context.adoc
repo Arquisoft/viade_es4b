@@ -1,11 +1,15 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
-=== Business Context
+=== Contexto de negocio
 
 [role="arc42help"]
 ****
 La aplicación permite a los clientes compartir sus rutas, fotos de ellas y muchas más cosas, de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
 
+
+image:images/DiagramaContexto.PNG[]
+
+Leyenda del diagrama
 [cols="1,2" options="header"]
 |===
 | **Participante** | **Contexto**
@@ -13,10 +17,9 @@ La aplicación permite a los clientes compartir sus rutas, fotos de ellas y much
 | _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
 | _Aplicación_ | _Cuando un usuario quiera realizar una acción en dicha aplicación, esta accederá a su POD para realizar la operación deseada, como por ejemplo, subir una ruta._
 |===
-image:images/DiagramaContexto.PNG[]
 ****
 
-=== Technical Context
+=== Contexto técnico
 
 [role="arc42help"]
 ****
@@ -28,9 +31,9 @@ Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros que quier
 ****
 
 
-image:images/TechnicalContext.PNG[]
+image:images/TechnicalContext.png[]
 
-Legenda del diagrama
+Leyenda del diagrama
 [cols="1,2" options="header"]
 |===
 | **Objeto** | **Descripción**
