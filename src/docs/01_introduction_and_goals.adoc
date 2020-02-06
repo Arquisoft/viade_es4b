@@ -3,31 +3,31 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+Vamos a crear Viade, un sistema de gestión de rutas descentralizado basado en las especificaciones Solid.
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
+Los usuarios de la aplicación podrán crear rutas y decidir con quien comparten esas rutas.
+
+Para realizar el sistema se utilizará el framework React.
 ****
 
 === Requirements Overview
 
 [role="arc42help"]
 ****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+.Funcionales
+* El sistema se basará en una arquitectura descentralizada para que los datos estén separados de la aplicación.
+* Los usuarios podrán visualizar las rutas en una mapa.
+* Los usuarios podrán almacenar las rutas en sus propios pods.
+* Se permitirá al usuario compartir fotos, vídeos o otro tipo de ficheros con amigos, y podrá crear grupos con estos.
+* Un usuario podrá obtener notificaciones cuando otro usuario quiera compartir una ruta con él.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
 
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
+.No Funcionales
+* Seguridad de la información de los usuarios usando datos descentralizados.
+* Sistema usable para todo tipo de usuarios.
+* El sistema debe ser capaz de operar adecuadamente con varias sesiones simultáneas.
+* El sistema debe ser compatible con otros sistemas de gestión de rutas.
 
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
 
 === Quality Goals
