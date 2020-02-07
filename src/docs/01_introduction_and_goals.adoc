@@ -30,19 +30,32 @@ Para realizar el sistema se utilizará el framework React.
 
 ****
 
-=== Quality Goals
+=== Atributos de calidad
 
 [role="arc42help"]
 ****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
+.Contenido
+Los atributos de calidad en los que nos centraremos durante el desarrolo serán los siguintes:
 
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
+* Disponibilidad, la intención de la aplicación es la de funcionar como una red social, por tanto, debemos tener la aplicación siempre disponible porque se espera tráfico constante de datos entre usuarios. 
 
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
+* Seguridad, una de las principales características de nuestra aplicacion es la de ofrecer a los usuarios un entorno seguro para compartir sus datos, así que la seguridad debe ser un punto importante a tener en cuenta.
+
+* Modificabilidad, al empezar un proyecto desde cero durante los primeros meses de desarrollo es muy problable que la aplicacion sufra muchos cambios por lo que la falicidad a la hora de realizar esos cambios es importante. 
+
+* Usabilidad, como la aplicación que queremos desarrollar es relativamente novedosa, nos interesa que sea fácil de usar y no genere rechazo por parte de los usuarios. 
+
+.Prioridad de los atributos
+A continuacción se muestra una tabla con los atributos de calidad ordenados por prioridad y hacia quien van dirigidos.
+[options="header",cols="1,2,2"]
+|===
+|Prioridad|Atributo|Personas interesadas
+| 1 | Seguridad | Todos
+| 2 | Usabilidad | Usuarios finales
+| 3 | Modificabilidad | Equipo de desarrolo
+| 4 | Disponibilidad | Usuarios finales
+|===
+
 ****
 
 === Stakeholders
