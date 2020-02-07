@@ -82,7 +82,8 @@ Table with role names, person names, and their expectations with respect to the 
 
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Role/Name|Descripcion|Expectativas
+| _Equipo de Desarrollo_ | _Encargados de desarrollar el producto._ | _Realizar un sistema que cumpla con los requisitos descritos en la documentación_
+| _Usuarios Finales_ | _Personas que acabarán utilizando el producto_ | _Deben poder utilizar almacenar y compartir sus rutas de una manera sencilla e intuititiva_
+| _Equipo de Profesores_ | _Profesorado de la asignatura_ | _Supervisar un desarrollo constante del proyecto para cumplir con los requisitos del mismo_
 |===

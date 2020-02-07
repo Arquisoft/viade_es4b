@@ -501,22 +501,69 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quality_goals">Quality Goals</h3>
+<h3 id="_atributos_de_calidad">Atributos de calidad</h3>
 <div class="sidebarblock arc42help">
 <div class="content">
 <div class="paragraph">
-<div class="title">Contents</div>
-<p>The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don&#8217;t confuse them with project goals. They are not necessarily identical.</p>
+<div class="title">Contenido</div>
+<p>Los atributos de calidad en los que nos centraremos durante el desarrolo serán los siguintes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Disponibilidad, la intención de la aplicación es la de funcionar como una red social, por tanto, debemos tener la aplicación siempre disponible porque se espera tráfico constante de datos entre usuarios.</p>
+</li>
+<li>
+<p>Seguridad, una de las principales características de nuestra aplicacion es la de ofrecer a los usuarios un entorno seguro para compartir sus datos, así que la seguridad debe ser un punto importante a tener en cuenta.</p>
+</li>
+<li>
+<p>Modificabilidad, al empezar un proyecto desde cero durante los primeros meses de desarrollo es muy problable que la aplicacion sufra muchos cambios por lo que la falicidad a la hora de realizar esos cambios es importante.</p>
+</li>
+<li>
+<p>Usabilidad, como la aplicación que queremos desarrollar es relativamente novedosa, nos interesa que sea fácil de usar y no genere rechazo por parte de los usuarios.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …</p>
+<div class="title">Prioridad de los atributos</div>
+<p>A continuacción se muestra una tabla con los atributos de calidad ordenados por prioridad y hacia quien van dirigidos.</p>
 </div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>A table with quality goals and concrete scenarios, ordered by priorities</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Prioridad</th>
+<th class="tableblock halign-left valign-top">Atributo</th>
+<th class="tableblock halign-left valign-top">Personas interesadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Todos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios finales</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modificabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de desarrolo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disponibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios finales</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -568,20 +615,25 @@ These stakeholders determine the extent and the level of detail of your work and
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Role/Name</th>
-<th class="tableblock halign-left valign-top">Contact</th>
-<th class="tableblock halign-left valign-top">Expectations</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+<th class="tableblock halign-left valign-top">Expectativas</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Role-1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Contact-1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Expectation-1&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Equipo de Desarrollo</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Encargados de desarrollar el producto.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Realizar un sistema que cumpla con los requisitos descritos en la documentación</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Role-2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Contact-2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Expectation-2&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usuarios Finales</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Personas que acabarán utilizando el producto</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deben poder utilizar almacenar y compartir sus rutas de una manera sencilla e intuititiva</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Equipo de Profesores</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Profesorado de la asignatura</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Supervisar un desarrollo constante del proyecto para cumplir con los requisitos del mismo</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -591,7 +643,7 @@ These stakeholders determine the extent and the level of detail of your work and
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-06 18:17:29 +0100
+Last updated 2020-02-07 10:40:16 +0100
 </div>
 </div>
 </body>
