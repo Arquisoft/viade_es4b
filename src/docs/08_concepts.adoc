@@ -50,13 +50,13 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== _<Concept 1>_
+=== _Domain concepts_
 
 _<explanation>_
 
 
 
-=== _<Concept 2>_
+=== _User Experience concepts (UX)_
 
 _<explanation>_
 
