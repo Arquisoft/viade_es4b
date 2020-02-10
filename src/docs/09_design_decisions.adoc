@@ -10,20 +10,10 @@ Las decisiones de diseño que hemos tomado han sido las siguientes:
 [cols="2,2,2"options="header"]
 |===
 | **Propiedad** | **Decisión** | **Explicación**
-| _Arquitectura_ | __
-| | _Entorno de desarrollo_
-|_ | __
+| _Arquitectura_ | Punto a punto
+|
+Es obligatorio en una aplicación sólida descentralizada | _Entorno de desarrollo_
+|Visual Studio Code| Porque es muy ligero, Buena integridad con GitHub, Desarrollado en el ecosistema JS, estabilidad
 | _Base de datos_ | Ninguna
 |_No es necesaria una base de datos ya que la información de cada usuario se almacena en PODS_|_Programa de desarrollo_ | React| Es un requisito que la aplicación sea hecha en React
 |===
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
