@@ -23,4 +23,8 @@ un POD) que serán validados por SOLID, despues de esta validación SOLID acepta
 
 === Compartir una ruta
 
+  *TBD
+
 === Ver una ruta de un amigo
+
+  *TBD
