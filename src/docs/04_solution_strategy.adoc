@@ -4,11 +4,11 @@
 
 [role="arc42help"]
 ****
-.Decisiones tecnológicas
+.*Decisiones tecnológicas*
 Para desarrollar la aplicación se utilizará React, nos ayudaremos de distintas librerías aún por determinar y sobre el entorno con el que vamos a trabajar, no hemos decidido uno por defecto, así que unos miembros del equipo utilizan Eclipse y otros Visual Studio Code.
 
 .TO-DO
-.¿Cómo vamos a cumplir los atributos de calidad?
+.*¿Cómo vamos a cumplir los atributos de calidad?*
 Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los atributos.
 
 * Para la seguridad, es fundamental seguir una buena metodología, ya que esta nos permitirá evitar errores de programación que puedan ser aprovechables por otras personas para perjudicar la aplicación.
@@ -17,7 +17,7 @@ Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los
 
 
 
-.Organización
+.*Organización*
 A través de las reuniones en los laboratorios o mediante Skype, Whatsapp, etc, nos repartiremos las tareas que vayan surgiendo de forma equitativa.
 
 
