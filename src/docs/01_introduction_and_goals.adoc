@@ -3,7 +3,9 @@
 
 [role="arc42help"]
 ****
+
 Vamos a crear Viade, un sistema de gestión de rutas descentralizado basado en las especificaciones Solid.
+
 
 Los usuarios de la aplicación podrán crear rutas y decidir con quien comparten esas rutas.
 
