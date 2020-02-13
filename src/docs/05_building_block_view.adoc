@@ -10,7 +10,7 @@ Para hacer esto posible, como primera parte del proyecto, SOLID ha creado SOLID 
 
 === Nivel 1
 
-image:images/Esquema1.PNG["General View"]
+image:images/Esquema1.png["General View"]
 
 .Descripciones del nivel
 |===
