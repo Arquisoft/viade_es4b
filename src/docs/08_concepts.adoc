@@ -50,18 +50,39 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== _Domain concepts_
+[options="header"]
+|===
+| Entidad         | Descripción
+| Usuario     | Stakeholder que comparte rutas
+| Ruta        | Es compartida por el usuario con otros usuarios
+| Archivo     | Archivos como fotos o vídeos que puede compartir el usuario                    con otros usuarios
+| POD         | Dónde el usuario puede almacenar las rutas
+|===
 
-_<explanation>_
 
 
+=== _Arquitectura y diseño_
 
-=== _User Experience concepts (UX)_
+_Usamos el diseño de arquitectura en React. Se compone de módulos y componentes que siguen el MVC (Modelo Vista Controlador)._
 
-_<explanation>_
 
-...
+=== _Experiencia de Usuario_
 
-=== _<Concept n>_
+_Diseño de la interfaz de usuario. La interfaz de usuario será desarrollada con React._
 
-_<explanation>_
+_Internacionalización. La aplicación estará disponible en castellano_
+
+=== _Under-the-hood_
+
+_En cuanto a persistencia, la aplicación usará el propio POD del usuario como base de datos del servidor SOLID donde esté alojada la cuenta. El usuario podrá almacenar en el POD todas las rutas que comparta. El sistema se basará en una arquitectura descentralizada en la que los datos estarán separados de la aplicación._
+
+_En cuanto a manejo de expcepciones y errores se decidirá más adelante._
+
+
+=== _Seguridad_
+
+_Todas las rutas y demás archivos que el usuario comparta, así como sus datos, estarán almacenados en el POD por lo que dicho usuario es el único que tiene acceso. El sistema se basará en una arquitectura descentralizada, por tanto, al estar los datos separados de la aplicación, esta será más segura._
+
+=== _Conceptos de desarrollo_
+
+_Se completará más adelante_
