@@ -2,7 +2,7 @@
 == System Scope and Context
 === Contexto de negocio
 
-[role="arc42help"]
+
 ****
 La aplicación permite a los clientes compartir sus rutas, fotos de ellas y muchas más cosas, de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
 
@@ -21,7 +21,7 @@ Leyenda del diagrama
 
 === Contexto técnico
 
-[role="arc42help"]
+
 ****
 
 Nuestra aplicación es una aplicación web descentralizada, donde los datos se almacenarán en los Pods de los usuarios. Por lo tanto la aplicación deberá estar conectada a internet.
