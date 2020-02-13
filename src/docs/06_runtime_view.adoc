@@ -2,7 +2,7 @@
 == Runtime View
 
 
-[role="arc42help"]
+
 ****
 A continuación, se mostrarán diagramas para poder ver la interacción que espera tener la aplicación en distintos escenarios.
 

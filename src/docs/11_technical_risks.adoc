@@ -2,7 +2,7 @@
 == Risks and Technical Debts
 
 
-[role="arc42help"]
+
 ****
 .*Riesgos*
 * React: Nunca hemos utilizado React, es decir, no sabemos como funciona ni que facilidades o desventajas nos puede dar.

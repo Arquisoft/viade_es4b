@@ -2,7 +2,7 @@
 == Solution Strategy
 
 
-[role="arc42help"]
+
 ****
 .*Decisiones tecnológicas*
 Para desarrollar la aplicación se utilizará React, nos ayudaremos de distintas librerías aún por determinar y sobre el entorno con el que vamos a trabajar, no hemos decidido uno por defecto, así que unos miembros del equipo utilizan Eclipse y otros Visual Studio Code.
