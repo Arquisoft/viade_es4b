@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Introduction and Goals</title>
+<title>Building Block View</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,199 +441,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="section-introduction-and-goals">Introduction and Goals</h2>
+<h2 id="section-building-block-view">Building Block View</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whitebox_overall_system">Whitebox Overall System</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Vamos a crear Viade, un sistema de gestión de rutas descentralizado basado en las especificaciones Solid.</p>
-</div>
-<div class="paragraph">
-<p>Los usuarios de la aplicación podrán crear rutas y decidir con quien comparten esas rutas.</p>
-</div>
-<div class="paragraph">
-<p>Para realizar el sistema se utilizará el framework React.</p>
-</div>
-</div>
+<p>Viade es una aplicación de gestión de rutas descentralizada creada con SOLID. SOLID es un proyecto liderado por Tim Berners-Lee cuyo objetivo es cambiar la forma en que funcionan las aplicaciones web hoy en día.
+Para hacer esto posible, como primera parte del proyecto, SOLID ha creado SOLID Pods, una especie de llaveros usb online.</p>
 </div>
 <div class="sect2">
-<h3 id="_requirements_overview">Requirements Overview</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="ulist">
-<div class="title">Funcionales</div>
-<ul>
-<li>
-<p>El sistema se basará en una arquitectura descentralizada para que los datos estén separados de la aplicación.</p>
-</li>
-<li>
-<p>Los usuarios podrán visualizar las rutas en una mapa.</p>
-</li>
-<li>
-<p>Los usuarios podrán almacenar las rutas en sus propios pods.</p>
-</li>
-<li>
-<p>Se permitirá al usuario compartir fotos, vídeos o otro tipo de ficheros con amigos, y podrá crear grupos con estos.</p>
-</li>
-<li>
-<p>Un usuario podrá obtener notificaciones cuando otro usuario quiera compartir una ruta con él.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">No Funcionales</div>
-<ul>
-<li>
-<p>Seguridad de la información de los usuarios usando datos descentralizados.</p>
-</li>
-<li>
-<p>Sistema usable para todo tipo de usuarios.</p>
-</li>
-<li>
-<p>El sistema debe ser capaz de operar adecuadamente con varias sesiones simultáneas.</p>
-</li>
-<li>
-<p>El sistema debe ser compatible con otros sistemas de gestión de rutas.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_atributos_de_calidad">Atributos de calidad</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
+<h3 id="_nivel_1">Nivel 1</h3>
 <div class="paragraph">
-<div class="title">Contenido</div>
-<p>Los atributos de calidad en los que nos centraremos durante el desarrolo serán los siguintes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Disponibilidad, la intención de la aplicación es la de funcionar como una red social, por tanto, debemos tener la aplicación siempre disponible porque se espera tráfico constante de datos entre usuarios.</p>
-</li>
-<li>
-<p>Seguridad, una de las principales características de nuestra aplicacion es la de ofrecer a los usuarios un entorno seguro para compartir sus datos, así que la seguridad debe ser un punto importante a tener en cuenta.</p>
-</li>
-<li>
-<p>Modificabilidad, al empezar un proyecto desde cero durante los primeros meses de desarrollo es muy problable que la aplicacion sufra muchos cambios por lo que la falicidad a la hora de realizar esos cambios es importante.</p>
-</li>
-<li>
-<p>Usabilidad, como la aplicación que queremos desarrollar es relativamente novedosa, nos interesa que sea fácil de usar y no genere rechazo por parte de los usuarios.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Prioridad de los atributos</div>
-<p>A continuacción se muestra una tabla con los atributos de calidad ordenados por prioridad y hacia quien van dirigidos.</p>
+<p><span class="image"><img src="images/Esquema1.png" alt="General View"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Descripciones del nivel</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Prioridad</th>
-<th class="tableblock halign-left valign-top">Atributo</th>
-<th class="tableblock halign-left valign-top">Personas interesadas</th>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Responsabilidad</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Todos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizarán la aplicación para subir sus rutas y compartirlas con otros usuarios</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios finales</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Funcionarán como intermediarios entre las diferentes aplicaciones de los usuarios</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Modificabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de desarrolo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Disponibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios finales</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_stakeholders">Stakeholders</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>should know the architecture</p>
-</li>
-<li>
-<p>have to be convinced of the architecture</p>
-</li>
-<li>
-<p>have to work with the architecture or with code</p>
-</li>
-<li>
-<p>need the documentation of the architecture for their work</p>
-</li>
-<li>
-<p>have to come up with decisions about the system or its development</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Table with role names, person names, and their expectations with respect to the architecture and its documentation.</p>
-</div>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Role/Name</th>
-<th class="tableblock halign-left valign-top">Descripcion</th>
-<th class="tableblock halign-left valign-top">Expectativas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Equipo de Desarrollo</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Encargados de desarrollar el producto.</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Realizar un sistema que cumpla con los requisitos descritos en la documentación</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Usuarios Finales</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Personas que acabarán utilizando el producto</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deben poder utilizar almacenar y compartir sus rutas de una manera sencilla e intuititiva</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Equipo de Profesores</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Profesorado de la asignatura</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Supervisar un desarrollo constante del proyecto para cumplir con los requisitos del mismo</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Viade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación proporcionará toda la funcionalidad a los usuarios y se comunicará con los SOLID Pods.</p></td>
 </tr>
 </tbody>
 </table>
@@ -643,7 +491,7 @@ These stakeholders determine the extent and the level of detail of your work and
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-07 10:40:16 +0100
+Last updated 2020-02-13 20:49:11 +0100
 </div>
 </div>
 </body>

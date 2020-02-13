@@ -2,53 +2,29 @@
 == Runtime View
 
 
-[role="arc42help"]
+
 ****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
-
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
-
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
-
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
-
-.Form
-There are many notations for describing scenarios, e.g.
-
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
+A continuación, se mostrarán diagramas para poder ver la interacción que espera tener la aplicación en distintos escenarios.
 
 ****
 
-=== <Runtime Scenario 1>
-
-
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
+=== Login en Solid
 
 [plantuml,"Sequence diagram",png]
 ----
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Usuario -> SOLID: Peticion de autenticación
+SOLID -> BBDD: Validación de datos
+BBDD -> SOLID: Respuesta a la validación
+SOLID --> Usuario: Respuesta a la autenticación
 ----
-=== <Runtime Scenario 2>
 
-=== ...
+Cuando un usuario intente logearse en nuestro sistema deberá iniciar sesion con unas credenciales (por lo que necesitara
+un POD) que serán validados por SOLID, despues de esta validación SOLID aceptará o rechazará la petición de logeo.
 
-=== <Runtime Scenario n>
+=== Compartir una ruta
+
+  *TBD
+
+=== Ver una ruta de un amigo
+
+  *TBD
