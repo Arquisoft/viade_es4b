@@ -3,7 +3,7 @@
 === Contexto de negocio
 
 
-****
+
 La aplicación permite a los clientes compartir sus rutas, fotos de ellas y muchas más cosas, de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
 
 
@@ -17,18 +17,18 @@ Leyenda del diagrama
 | _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
 | _Aplicación_ | _Cuando un usuario quiera realizar una acción en dicha aplicación, esta accederá a su POD para realizar la operación deseada, como por ejemplo, subir una ruta._
 |===
-****
+
 
 === Contexto técnico
 
 
-****
+
 
 Nuestra aplicación es una aplicación web descentralizada, donde los datos se almacenarán en los Pods de los usuarios. Por lo tanto la aplicación deberá estar conectada a internet.
 
 Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros que quieran compartirla a través de una URL, a través de Internet, sin la necesidad de un lugar central para almacenar los datos.
 
-****
+
 
 
 image:images/TechnicalContext.png[]
