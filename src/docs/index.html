@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Sample React Application Tutorial</title>
+<title>VIADE ES4B</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1><span class="image"><img src="./images/LogoASW.png" alt="arc42"></span> Sample React Application Tutorial</h1>
+<h1><span class="image"><img src="./images/LogoASW.png" alt="arc42"></span> VIADE ES4B</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -480,7 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-concepts">8. Cross-cutting Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#_concept_1">8.1. <em>&lt;Concept 1&gt;</em></a></li>
+<li><a href="#_domain_concepts">8.1. <em>Domain concepts</em></a></li>
 <li><a href="#_concept_2">8.2. <em>&lt;Concept 2&gt;</em></a></li>
 <li><a href="#_concept_n">8.3. <em>&lt;Concept n&gt;</em></a></li>
 </ul>
@@ -674,26 +674,42 @@ These stakeholders determine the extent and the level of detail of your work and
 <div class="sect1">
 <h2 id="section-architecture-constraints">2. Architecture Constraints</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
-<div class="paragraph">
-<div class="title">Contents</div>
-<p>Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)</p>
-</div>
-</div>
-</div>
+
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usar el framework React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sera necesario aprender a usar React</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usar la arquitectura Solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sera necesario aprender como es la arquitectura Solid</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usar una base de datos descentralizada</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tendremos que aprender a crear y trabajar con bases de datos descentralizadas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usar GIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tendremos que acostumbrarnos a utilizar GIT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trabajar con una API de mapas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sera necesario utilizar una API de mapas para la aplicacion, teniendo que escoger la que creamos mas conveniente.</p></td>
+</tr>
+</tbody>
+</table>
+
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1211,9 +1227,13 @@ building block instances depicted in this diagram.&gt;</em></p>
 <div class="paragraph">
 <p>It is possible to use a sequence diagram:</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="298" height="214">
+<pre>Alice -&gt; Bob: Authentication Request
+Bob --&gt; Alice: Authentication Response
+
+Alice -&gt; Bob: Another authentication Request
+Alice &lt;-- Bob: another authentication Response</pre>
 </div>
 </div>
 </div>
@@ -1469,7 +1489,7 @@ on this list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concept_1">8.1. <em>&lt;Concept 1&gt;</em></h3>
+<h3 id="_domain_concepts">8.1. <em>Domain concepts</em></h3>
 <div class="paragraph">
 <p><em>&lt;explanation&gt;</em></p>
 </div>
@@ -1740,7 +1760,9 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-12 17:57:07 UTC
+
+Last updated 2020-02-07 09:32:30 +0100
+
 </div>
 </div>
 </body>
