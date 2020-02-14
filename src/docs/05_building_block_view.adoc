@@ -2,7 +2,7 @@
 
 == Building Block View
 
-== Whitebox Overall System
+=== Whitebox Overall System
 
 Viade es una aplicación de gestión de rutas descentralizada creada con SOLID. SOLID es un proyecto liderado por Tim Berners-Lee cuyo objetivo es cambiar la forma en que funcionan las aplicaciones web hoy en día. 
 Para hacer esto posible, como primera parte del proyecto, SOLID ha creado SOLID Pods, una especie de llaveros usb online.
