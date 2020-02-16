@@ -7,7 +7,7 @@
 La aplicación permite a los clientes compartir sus rutas, fotos de ellas y muchas más cosas, de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
 
 
-image:images/DiagramaContexto.PNG[]
+image:DiagramaContexto.PNG[]
 
 Leyenda del diagrama
 [cols="1,2" options="header"]
@@ -31,7 +31,7 @@ Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros que quier
 
 
 
-image:images/TechnicalContext.png[]
+image:TechnicalContext.png[]
 
 Leyenda del diagrama
 [cols="1,2" options="header"]
