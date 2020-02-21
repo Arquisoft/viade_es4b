@@ -6,7 +6,6 @@
 
 === Conceptos del Dominio
 
-=======
 
 [options="header"]
 |===
