@@ -3,7 +3,7 @@
 
 
 
-****
+
 .*Decisiones tecnológicas*
 Para desarrollar la aplicación se utilizará React, nos ayudaremos de distintas librerías aún por determinar y sobre el entorno con el que vamos a trabajar, no hemos decidido uno por defecto, así que unos miembros del equipo utilizan Eclipse y otros Visual Studio Code.
 
@@ -21,4 +21,4 @@ Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los
 A través de las reuniones en los laboratorios o mediante Skype, Whatsapp, etc, nos repartiremos las tareas que vayan surgiendo de forma equitativa.
 
 
-****
+

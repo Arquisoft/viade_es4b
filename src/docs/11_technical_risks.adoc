@@ -3,7 +3,7 @@
 
 
 
-****
+
 .*Riesgos*
 * React: Nunca hemos utilizado React, es decir, no sabemos como funciona ni que facilidades o desventajas nos puede dar.
 * Solid: Es una arquitectura nueva, y como es la que tenemos que implementar para el proyecto debemos saber como aplicarla.
@@ -12,4 +12,3 @@
 * En la página de React hay varios tutoriales que realizaremos todos los miembros del equipo para enterarnos mejor de como funciona.
 * Buscar documentación, investigar por Internet sobre lecturas que nos puedan ayudar... .
 
-****

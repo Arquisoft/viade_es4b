@@ -3,7 +3,7 @@
 
 
 
-****
+
 
 Las decisiones de diseño que hemos tomado han sido las siguientes:
 
