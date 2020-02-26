@@ -74,11 +74,7 @@ export const WelcomePageContent = props => {
           </ImageWrapper>
         </WelcomeProfile>
       </WelcomeCard>
-      <WelcomeCard className="card">
-        <WelcomeDetail data-testid="welcome-detail">
-         
-        </WelcomeDetail>
-      </WelcomeCard>
+      
     </WelcomeWrapper>
   );
 };
