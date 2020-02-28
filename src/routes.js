@@ -43,6 +43,12 @@ const privateRoutes = [
     component: TextEditor
   },
   {
+    id: 'map',
+    path: '/map',
+    component: TextEditor
+  },
+
+  {
     id: 'formmodelconverter',
     path: '/formmodel/converter',
     component: FormModelConverter

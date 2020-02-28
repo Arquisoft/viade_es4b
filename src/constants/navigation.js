@@ -26,6 +26,13 @@ export const NavigationItems = [
     label: 'navBar.text-editor',
     to: '/text-editor'
   }
+  ,
+  {
+    id: 'map',
+    icon: '/img/mapa.jpg',
+    label: 'navBar.map',
+    to: '/map'
+  }
 ];
 
 export const ProfileOptions = [
