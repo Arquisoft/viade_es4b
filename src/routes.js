@@ -13,8 +13,10 @@ import {
   GamePage,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor
+  TextEditor,
+  MapComponent
 } from './containers';
+
 
 const privateRoutes = [
   {
