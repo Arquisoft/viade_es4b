@@ -2,6 +2,11 @@
 == Cross-cutting Concepts
 
 
+
+
+=== Conceptos del Dominio
+
+
 [options="header"]
 |===
 | Entidad         | Descripción
@@ -11,30 +16,36 @@
 | POD         | Dónde el usuario puede almacenar las rutas
 |===
 
+image:images/DiagramaClases.png["Diagrama de clases inicial"]
+
+=== Arquitectura y diseño
+
+==== React
+Usamos el diseño de arquitectura en React. Se compone de módulos y componentes que siguen el MVC (Modelo Vista Controlador).
+
+==== Arc42
+Para realizar esta documentación usaremos arc42, que nos proporciona plantillas para la documentación y comunicación de software y arquitecturas de sistemas.
+
+=== Experiencia de Usuario
+
+==== Diseño de la interfaz de usuario
+La interfaz de usuario será desarrollada con React.
+
+==== Internacionalización
+La aplicación estará disponible en castellano_
+
+=== Under-the-hood
+
+En cuanto a persistencia, la aplicación usará el propio POD del usuario como base de datos del servidor SOLID donde esté alojada la cuenta. El usuario podrá almacenar en el POD todas las rutas que comparta. El sistema se basará en una arquitectura descentralizada en la que los datos estarán separados de la aplicación.
+
+==== Manejo de expcepciones y errores 
+Se completará más adelante.
 
 
-=== _Arquitectura y diseño_
+=== Seguridad
 
-_Usamos el diseño de arquitectura en React. Se compone de módulos y componentes que siguen el MVC (Modelo Vista Controlador)._
+Todas las rutas y demás archivos que el usuario comparta, así como sus datos, estarán almacenados en el POD por lo que dicho usuario es el único que tiene acceso. El sistema se basará en una arquitectura descentralizada, por tanto, al estar los datos separados de la aplicación, esta será más segura.
 
+=== Conceptos de desarrollo
 
-=== _Experiencia de Usuario_
-
-_Diseño de la interfaz de usuario. La interfaz de usuario será desarrollada con React._
-
-_Internacionalización. La aplicación estará disponible en castellano_
-
-=== _Under-the-hood_
-
-_En cuanto a persistencia, la aplicación usará el propio POD del usuario como base de datos del servidor SOLID donde esté alojada la cuenta. El usuario podrá almacenar en el POD todas las rutas que comparta. El sistema se basará en una arquitectura descentralizada en la que los datos estarán separados de la aplicación._
-
-_En cuanto a manejo de expcepciones y errores se decidirá más adelante._
-
-
-=== _Seguridad_
-
-_Todas las rutas y demás archivos que el usuario comparta, así como sus datos, estarán almacenados en el POD por lo que dicho usuario es el único que tiene acceso. El sistema se basará en una arquitectura descentralizada, por tanto, al estar los datos separados de la aplicación, esta será más segura._
-
-=== _Conceptos de desarrollo_
-
-_Se completará más adelante_
+Se completará más adelante.
