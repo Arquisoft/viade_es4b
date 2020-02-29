@@ -29,8 +29,8 @@
 }
 
 .leaflet-container {
-  width: 80vh;
-  height: 100vh;
+  width: 50%;
+  height: 50%;
 }
 
 @keyframes App-logo-spin {

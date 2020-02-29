@@ -23,7 +23,11 @@ class MapComponent extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <div>
+      <div style={{
+        margin: 50,
+        bottom: 30,
+        width: 800
+      }}>
         <h1>Mapa</h1>
         <Map center={position} zoom={this.state.zoom}>
           <TileLayer
