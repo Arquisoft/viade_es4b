@@ -8,6 +8,9 @@ import SolidAuth from 'solid-auth-client';
 import { successToaster, errorToaster } from '@utils';
 import ldflex from '@solid/query-ldflex';
 import { AccessControlList } from '@inrupt/solid-react-components';
+import { Map, TileLayer } from 'react-leaflet';
+import L from 'leaflet';
+import './leaflet.css';
 import {
   TextEditorWrapper,
   TextEditorContainer,
@@ -169,41 +172,13 @@ export const Editor = ({ webId }: Props) => {
           </b>
         </WebId>
       </FullGridSize>
-      <FullGridSize>
-        <Label>
-          {t('editor.url')}:
-          <Input type="text" size="200" value={url} onChange={handleUrlChange} />
-        </Label>
-        <div className="input-wrap">
-          <Button className="ids-link-filled ids-link-filled--primary button" onClick={handleLoad}>
-            {t('editor.load')}
-          </Button>
-          {editable ? (
-            <Button
-              className="ids-link-filled ids-link-filled--secondary button"
-              onClick={handleSave}
-            >
-              {t('editor.save')}
-            </Button>
-          ) : loaded ? (
-            t('notifications.notEditable')
-          ) : (
-            ''
-          )}
-        </div>
-      </FullGridSize>
+
       <FullGridSize>
         <TextArea value={text} onChange={handleTextChange} cols={40} rows={10} />
       </FullGridSize>
       {sharable && (
         <FullGridSize>
-          <Label>
-            {t('editor.friend')}:
-            <Input type="text" size="200" value={friend} onChange={handleFriendChange} />
-          </Label>
-          <Button className="ids-link-stroke ids-link-stroke--primary button" onClick={handleShare}>
-            {t('editor.grantAccess')}
-          </Button>
+
         </FullGridSize>
       )}
       {loaded && !sharable && t('notifications.notSharable')}
@@ -211,23 +186,32 @@ export const Editor = ({ webId }: Props) => {
   );
 };
 
-/**
- * A React component page that is displayed when there's no valid route. Users can click the button
- * to get back to the home/welcome page.
- */
-const MapComponent = ({ webId }: Props) => {
-  const { t } = useTranslation();
-  console.log(webId);
-  return (
-    <TextEditorWrapper>
-      <TextEditorContainer>
-        <Header>
-          <p>{t('editor.explanation')}</p>
-        </Header>
-        <Editor webId={webId} />
-      </TextEditorContainer>
-    </TextEditorWrapper>
-  );
+const styles = {
+  wrapper: { 
+    height: 400, 
+    width: '80%', 
+    margin: '0 auto', 
+    display: 'flex' 
+  },
+  map: {
+    flex: 1
+  } 
 };
 
-export default MapComponent;
+const Moves = props => {
+  return (
+    <div style={styles.wrapper}>
+      <Map style={styles.map} center={props.center} zoom={props.zoom}>
+        <TileLayer url={props.url} />
+      </Map>
+    </div>
+  );
+}
+
+Moves.defaultProps = {
+  center: [27.9361805667694, -15.589599609374998],
+  zoom: 10,
+  url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png'
+};
+
+export default Moves;
