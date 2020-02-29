@@ -207,9 +207,6 @@ export const Editor = ({ webId }: Props) => {
         </FullGridSize>
       )}
       {loaded && !sharable && t('notifications.notSharable')}
-      <h1>
-        MAPA
-      </h1>
     </Form>
   );
 };

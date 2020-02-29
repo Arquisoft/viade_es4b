@@ -47,7 +47,7 @@ const privateRoutes = [
   {
     id: 'map',
     path: '/map',
-    component: MapComponent
+    component: TextEditor
   },
 
   {

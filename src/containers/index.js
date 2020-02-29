@@ -4,7 +4,6 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
-import MapComponent from './Mapa';
 import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 
@@ -19,6 +18,5 @@ export {
   GameList,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor,
-  MapComponent
+  TextEditor
 };
