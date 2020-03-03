@@ -16,6 +16,7 @@ import {
   TextEditor,
   MapComponent
 } from './containers';
+import MisAmigosComponent from './containers/Amigos/MisAmigos';
 
 
 const privateRoutes = [
@@ -49,7 +50,11 @@ const privateRoutes = [
     path: '/map',
     component: MapComponent
   },
-
+  {
+    id: 'friends',
+    path: '/friends',
+    component: MisAmigosComponent
+  },
   {
     id: 'formmodelconverter',
     path: '/formmodel/converter',
