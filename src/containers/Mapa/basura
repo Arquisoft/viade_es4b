@@ -77,3 +77,16 @@ export class MapComponent extends Component {
 export default GoogleApiWrapper({
     apiKey: "AIzaSyDwZUjR7_j6100CdDHxmCvi_Hi7Z681wS8"
 })(MapComponent);
+<Polyline
+                        path={[ { lat: 39.072515, lng: -84.116524 }, { lat: 45.383321536272049, lng:-75.3372987731628 }]}
+                        options={{
+                            strokeColor: '#00ffff',
+                            strokeOpacity: 1,
+                            strokeWeight: 2,
+                            icons: [{
+                                icon: "hello",
+                                offset: '0',
+                                repeat: '10px'
+                            }],
+                        }}
+                    />
