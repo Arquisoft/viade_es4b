@@ -2,23 +2,28 @@
 == Solution Strategy
 
 
-[role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+.*Decisiones tecnológicas*
+Para desarrollar la aplicación se utilizará :
 
-.Form
-Keep the explanation of these key decisions short.
+* React: Biblioteca de JavaScript que nos ayudará a hacer una interfaz de usuario fácil de utilizar.
+* Solid: Para guardar los datos del usuario y sus rutas en la aplicación, el usuario decidirá que datos comparte y con quién lo hace.
+* Google Maps: Lo utilizaremos para mostrar a los usuarios el mapa de la ruta.
+* Visual Studio Code: Lo usamos por su simplicidad y familiaridad.
+* Solid-file-client: Librería para intercambiar archivos con el POD.
+* JSON: Para la administración de rutas en el POD utilizaremos este formato.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+
+.TO-DO
+.*¿Cómo vamos a cumplir los atributos de calidad?*
+Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los atributos.
+
+* Para la seguridad, es fundamental seguir una buena metodología, ya que esta nos permitirá evitar errores de programación que puedan ser aprovechables por otras personas para perjudicar la aplicación.
+* Para conseguir que sea usable, utilizaremos interfaces fáciles de utilizar y que no provoquen rechazo o presenten dificultad añadida a la aplicación.
+* En cuanto a la modificabilidad, es primordial seguir un patrón de diseño, gracias al cual, podremos modificar la aplicación mejorandola, sin tener que cambiar algo que ya funcionaba.
+
+
+
+.*Organización*
+A través de las reuniones en los laboratorios o mediante Skype, Whatsapp, etc, nos repartiremos las tareas que vayan surgiendo de forma equitativa.
