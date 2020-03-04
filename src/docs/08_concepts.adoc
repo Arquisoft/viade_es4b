@@ -2,66 +2,50 @@
 == Cross-cutting Concepts
 
 
-[role="arc42help"]
-****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
-
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
 
 
-=== _<Concept 1>_
-
-_<explanation>_
+=== Conceptos del Dominio
 
 
+[options="header"]
+|===
+| Entidad         | Descripción
+| Usuario     | Stakeholder que comparte rutas
+| Ruta        | Es compartida por el usuario con otros usuarios
+| Archivo     | Archivos como fotos o vídeos que puede compartir el usuario                    con otros usuarios
+| POD         | Dónde el usuario puede almacenar las rutas
+|===
 
-=== _<Concept 2>_
+image:images/DiagramaClases.png["Diagrama de clases inicial"]
 
-_<explanation>_
+=== Arquitectura y diseño
 
-...
+==== React
+Usamos el diseño de arquitectura en React. Se compone de módulos y componentes que siguen el MVC (Modelo Vista Controlador).
 
-=== _<Concept n>_
+==== Arc42
+Para realizar esta documentación usaremos arc42, que nos proporciona plantillas para la documentación y comunicación de software y arquitecturas de sistemas.
 
-_<explanation>_
+=== Experiencia de Usuario
+
+==== Diseño de la interfaz de usuario
+La interfaz de usuario será desarrollada con React.
+
+==== Internacionalización
+La aplicación estará disponible en castellano_
+
+=== Under-the-hood
+
+En cuanto a persistencia, la aplicación usará el propio POD del usuario como base de datos del servidor SOLID donde esté alojada la cuenta. El usuario podrá almacenar en el POD todas las rutas que comparta. El sistema se basará en una arquitectura descentralizada en la que los datos estarán separados de la aplicación.
+
+==== Manejo de expcepciones y errores 
+Se completará más adelante.
+
+
+=== Seguridad
+
+Todas las rutas y demás archivos que el usuario comparta, así como sus datos, estarán almacenados en el POD por lo que dicho usuario es el único que tiene acceso. El sistema se basará en una arquitectura descentralizada, por tanto, al estar los datos separados de la aplicación, esta será más segura.
+
+=== Conceptos de desarrollo
+
+Se completará más adelante.

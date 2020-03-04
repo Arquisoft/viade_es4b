@@ -2,7 +2,7 @@
 == Introduction and Goals
 
 
-****
+
 
 Vamos a crear Viade, un sistema de gestión de rutas descentralizado basado en las especificaciones Solid.
 
@@ -10,12 +10,12 @@ Vamos a crear Viade, un sistema de gestión de rutas descentralizado basado en l
 Los usuarios de la aplicación podrán crear rutas y decidir con quien comparten esas rutas.
 
 Para realizar el sistema se utilizará el framework React.
-****
+
 
 === Requirements Overview
 
 
-****
+
 .Funcionales
 * El sistema se basará en una arquitectura descentralizada para que los datos estén separados de la aplicación.
 * Los usuarios podrán visualizar las rutas en una mapa.
@@ -30,12 +30,10 @@ Para realizar el sistema se utilizará el framework React.
 * El sistema debe ser capaz de operar adecuadamente con varias sesiones simultáneas.
 * El sistema debe ser compatible con otros sistemas de gestión de rutas.
 
-****
+
 
 === Atributos de calidad
 
-[role="arc42help"]
-****
 .Contenido
 Los atributos de calidad en los que nos centraremos durante el desarrolo serán los siguintes:
 
@@ -43,7 +41,7 @@ Los atributos de calidad en los que nos centraremos durante el desarrolo serán 
 
 * Seguridad, una de las principales características de nuestra aplicacion es la de ofrecer a los usuarios un entorno seguro para compartir sus datos, así que la seguridad debe ser un punto importante a tener en cuenta.
 
-* Modificabilidad, al empezar un proyecto desde cero durante los primeros meses de desarrollo es muy problable que la aplicacion sufra muchos cambios por lo que la falicidad a la hora de realizar esos cambios es importante. 
+* Testabilidad, para poder desarrollar el proyecto de forma rápida debemos hacer la aplicación testeable para mantenerla organizada y no perder tiempo en el futuro con problemas iniciales.
 
 * Usabilidad, como la aplicación que queremos desarrollar es relativamente novedosa, nos interesa que sea fácil de usar y no genere rechazo por parte de los usuarios. 
 
@@ -54,33 +52,12 @@ A continuacción se muestra una tabla con los atributos de calidad ordenados por
 |Prioridad|Atributo|Personas interesadas
 | 1 | Seguridad | Todos
 | 2 | Usabilidad | Usuarios finales
-| 3 | Modificabilidad | Equipo de desarrolo
+| 3 | Testabilidad | Equipo de desarrolo
 | 4 | Disponibilidad | Usuarios finales
 |===
 
-****
 
 === Stakeholders
-
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
 
 [options="header",cols="1,2,2"]
 |===
