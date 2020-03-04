@@ -104,7 +104,7 @@ export const Editor = ({ webId }: Props) => {
 
   function handleLoad(event) {
     event.preventDefault();
-    const doc = SolidAuth.fetch(url);
+    const doc = SolidAuth.fetch('https://pabloglez1997.solid.community/share/rutaEjemplo.json');
     doc
       .then(async response => {
         const text = await response.text();

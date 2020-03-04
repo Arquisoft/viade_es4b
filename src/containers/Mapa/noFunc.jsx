@@ -4,19 +4,20 @@ import React from "react";
 import { compose, withProps, lifecycle } from "recompose";
 import {
     withScriptjs,
+    GoogleApiWrapper,
     withGoogleMap,
     GoogleMap,
     DirectionsRenderer
 } from "react-google-maps";
 
-class MyMapRuta extends React.Component {
+ class MyMapRuta extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
         const DirectionsComponent = compose(
             withProps({
-                googleMapURL: "https://maps.googleapis.com/maps/api/js?",
+                googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwZUjR7_j6100CdDHxmCvi_Hi7Z681wS8",
                 loadingElement: <div style={{ height: `400px` }} />,
                 containerElement: <div style={{ width: `100%` }} />,
                 mapElement: <div style={{ height: `600px`, width: `600px` }} />
@@ -58,4 +59,4 @@ class MyMapRuta extends React.Component {
         return <DirectionsComponent />;
     }
 }
-export default MyMapRuta;
+ 
