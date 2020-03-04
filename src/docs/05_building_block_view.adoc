@@ -34,5 +34,10 @@ image:images/Esquema1.png["General View"]
 
 === Pod
 
+En esta caja se resumen las operaciones de lectura y escritura que se realizan con los pods, que es donde se almacen las distintas rutas. En la interfaz ruta se guardan los datos de una ruta como su nombre, lugar de salida, 
+lugar de final, distancia, etc.
+
+image:images/Esquema2.png["General View"]
+
 
 
