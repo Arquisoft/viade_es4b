@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Lista from './Lista';
-
+import './MisAmigos.css';
 
 class MisAmigosComponent extends Component {
 
@@ -9,7 +9,6 @@ class MisAmigosComponent extends Component {
         this.state = {
           data : [
             {
-              imagen : "",
               nombreUsuario  : "Andrés Fernández González",
               usuario : "UO264699",
               
@@ -26,7 +25,7 @@ class MisAmigosComponent extends Component {
             <ul className="lista">
                 {this.state.data.map(
                     (item,index) =>
-                            <Lista data={item} key={index} onRemove={ () => this._remove(index)} />
+                            <Lista data={item} key={index}  />
                )
                 }
 </ul>
