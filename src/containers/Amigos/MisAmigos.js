@@ -22,6 +22,18 @@ class MisAmigosComponent extends Component {
 
     <div className="app">
         <h1>Mis Amigos</h1>
+        <button type ="button" class="btn btn-primary">Añadir amigo:</button>
+        <form>
+          <div class="add-friend">
+            <label class ="form-label" for="url">Url:</label>
+            <input type ="text" name="url" 
+                placeholder= "Ejemplo: https://ejemplo.solid.community/profile/card#me" required="true"/>
+            <label class ="form-label" for="name">Nombre:</label>
+            <input type ="text" name="name" 
+                placeholder="Ejemplo: Juan Rutas" required="true"/>
+            <button type ="submit"class="btn btn-primary">Añadir</button>
+          </div>  
+        </form>      
             <ul className="lista">
                 {this.state.data.map(
                     (item,index) =>
