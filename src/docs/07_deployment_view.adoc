@@ -10,7 +10,8 @@
 image::deploymentView.png[Deployment View]
 
 La aplicación necesita por parte del usuario: un dispositivo donde se ejecutará la aplicación y desde el que se accedera al POD, y el POD en sí mismo, que estará alojado en los propios servidores de SOLID.
-Un servidore de SOLID puede ser configurado por cualquiera, así el usuario podrá decidir donde quiere almacenar su POD.
 
-=== Requisitos y SO
+Un servidor de SOLID puede ser configurado por cualquiera, así el usuario podrá decidir donde quiere almacenar su POD.
+
+==== Requisitos y SO
 Para ejecutar la aplicación es necesario tener instalado en el dispositivo Node.js. En cuanto al Sistema Operativo, la aplicación está pensada para ser multiplataforma.
