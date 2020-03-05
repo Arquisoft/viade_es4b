@@ -1,9 +1,9 @@
 import React, { useState, Component } from "react";
 
 
-import { useTranslation } from 'react-i18next';
+
 import SolidAuth from 'solid-auth-client';
-import { successToaster, errorToaster } from '@utils';
+
 
 
 import {
@@ -13,7 +13,7 @@ import {
     Polyline
 
 } from "google-maps-react";
-//import * as parkData from "./marcadores.json";
+import * as parkData from "./marcadores.json";
 
 
 
@@ -25,33 +25,33 @@ export class MapComponent extends Component {
 
         this.state = {
 
-           
-            parkData:{
+
+            parkData: {
                 "type": "FeatureCollection",
                 "crs": {
-                  "type": "name",
-                  "properties": {
-                    "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-                  }
+                    "type": "name",
+                    "properties": {
+                        "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+                    }
                 },
                 "features": [
-                  {
-                    "type": "Feature",
-                    "geometry": {
-                      "type": "Point",
-                      "coordinates": [
-                        -75.3372987731628,
-                        45.383321536272049,
-                        -75.546518086577947,
-                        45.467134581917357
-                      ]
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [
+                                -75.3372987731628,
+                                45.383321536272049,
+                                -75.546518086577947,
+                                45.467134581917357
+                            ]
+                        }
                     }
-                  }
                 ]
-              },
+            },
             locations: [],
         };
-       
+
 
 
 
@@ -60,6 +60,7 @@ export class MapComponent extends Component {
     }
     //Recarga la pagina
     reload = () => {
+
 
         window.location.replace('');
     }
@@ -70,16 +71,20 @@ export class MapComponent extends Component {
 
     //Cargar el json
     handleLoad(event) {
-        
-       
-        const doc = SolidAuth.fetch('https://pabloglez1997.solid.community/share/rutaEjemplo.json');
-        
-        doc 
-        
-        .then(async response => {
-                const text = await response.text();
-                this.state.parkDate=text;
 
+
+        const doc = SolidAuth.fetch('https://pabloglez1997.solid.community/share/rutaEjemplo.json');
+
+        doc
+
+            .then(async response => {
+                const text = await response.text();
+                console.log(text)
+                console.log('hola1')
+                console.log(this.state.parkData)
+                console.log('hola2')
+                this.state.parkData = text;
+                console.log(this.state.parkData)
 
             })
 
@@ -100,20 +105,27 @@ export class MapComponent extends Component {
         const position = [this.state.lat, this.state.lng];
         return (
             <div className="map-container">
-                <h1>Map</h1>
-
+                <span>
+                    <p></p>
+                </span>
                 <button
                     onClick={() => this.handleLoad, this.reload}
-                   
+
                     className="btn btn-secondary"
                 >
                     Ver marcadores guardados
+                </button>
+                <button
+                    onClick={() => this.handleLoad, this.reload}
+
+                    className="btn btn-secondary"
+                >
+                    Marcar ruta
                 </button>
                 <span>
                     <p></p>
                 </span>
                 <Map
-                 
                     google={this.props.google}
                     className={"map"}
                     zoom={this.props.zoom}
@@ -121,7 +133,7 @@ export class MapComponent extends Component {
                     onReady={this.handleLoad}
                     onClick={this.handleMapClick}
                 >
-                    {this.state.parkData.features.map(park => (
+                    {parkData.features.map(park => (
                         <Polyline
                             path={[{ lat: park.geometry.coordinates[1], lng: park.geometry.coordinates[0] }, { lat: park.geometry.coordinates[3], lng: park.geometry.coordinates[2] }]}
                             options={{
@@ -137,7 +149,7 @@ export class MapComponent extends Component {
                         />
                     ))}
 
-                    {this.state.parkData.features.map(park => (
+                    {parkData.features.map(park => (
                         <Marker
 
                             position={{
@@ -150,7 +162,7 @@ export class MapComponent extends Component {
 
 
                     ))}
-                    {this.state.parkData.features.map(park => (
+                    {parkData.features.map(park => (
                         <Marker
 
                             position={{
