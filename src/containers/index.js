@@ -7,7 +7,7 @@ import TextEditor from './TextEditor';
 import MapComponent from './Mapa';
 import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
-import {Lista,MisAmigosComponent} from './Amigos'
+import MisAmigosComponent from './Amigos'
 
 
 export {
@@ -23,6 +23,6 @@ export {
   FormModelRenderer,
   TextEditor,
   MapComponent,
-  Lista,
+  
   MisAmigosComponent
 };

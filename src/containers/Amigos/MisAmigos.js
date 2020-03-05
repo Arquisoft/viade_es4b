@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Lista from './containers/Amigos/Lista';
+import Lista from './Lista';
 
 
 class MisAmigosComponent extends Component {

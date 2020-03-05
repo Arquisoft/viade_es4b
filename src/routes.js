@@ -14,9 +14,10 @@ import {
   FormModelConverter,
   FormModelRenderer,
   TextEditor,
-  MapComponent
+  MapComponent,
+  MisAmigosComponent
 } from './containers';
-import MisAmigosComponent from './containers/Amigos/MisAmigos';
+
 
 
 const privateRoutes = [
