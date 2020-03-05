@@ -5,7 +5,15 @@
 
 
 .*Decisiones tecnológicas*
-Para desarrollar la aplicación se utilizará React, nos ayudaremos de distintas librerías aún por determinar y sobre el entorno con el que vamos a trabajar, no hemos decidido uno por defecto, así que unos miembros del equipo utilizan Eclipse y otros Visual Studio Code.
+Para desarrollar la aplicación se utilizará :
+
+* React: Biblioteca de JavaScript que nos ayudará a hacer una interfaz de usuario fácil de utilizar.
+* Solid: Para guardar los datos del usuario y sus rutas en la aplicación, el usuario decidirá que datos comparte y con quién lo hace.
+* Google Maps: Lo utilizaremos para mostrar a los usuarios el mapa de la ruta.
+* Visual Studio Code: Lo usamos por su simplicidad y familiaridad.
+* Solid-file-client: Librería para intercambiar archivos con el POD.
+* JSON: Para la administración de rutas en el POD utilizaremos este formato.
+
 
 .TO-DO
 .*¿Cómo vamos a cumplir los atributos de calidad?*
@@ -19,6 +27,7 @@ Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los
 
 .*Organización*
 A través de las reuniones en los laboratorios o mediante Skype, Whatsapp, etc, nos repartiremos las tareas que vayan surgiendo de forma equitativa.
+
 
 
 

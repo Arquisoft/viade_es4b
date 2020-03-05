@@ -13,7 +13,15 @@ Las decisiones de diseño que hemos tomado han sido las siguientes:
 | _Arquitectura_ | Punto a punto
 |
 Es obligatorio en una aplicación sólida descentralizada | _Entorno de desarrollo_
-|Visual Studio Code| Porque es muy ligero, Buena integridad con GitHub, Desarrollado en el ecosistema JS, estabilidad
-| _Base de datos_ | Ninguna
-|_No es necesaria una base de datos ya que la información de cada usuario se almacena en PODS_|_Programa de desarrollo_ | React| Es un requisito que la aplicación sea hecha en React
+|Visual Studio Code| Porque es muy ligero, Buena integridad con GitHub, Desarrollado en el ecosistema JS, estabilidad.
+|_Programa de desarrollo_ | React| Es un requisito que la aplicación sea hecha en React.
+| _Lenguaje de Programación_ | JavaScript
+|Utilizaremos JavaScript con las librerias de ReactJs, con el framework Nodejs.
+| _Almacenamiento de datos_ | PODS
+|El almacenamiento de datos se realizará mediante los PODS
+| _Testing_ | Pruebas Unitarias
+|Utilizaremos pruebas unitarias para la lógica, y selenium para la usabilidad web.
+| _Representación de las rutas_ | Google Maps
+|Utilizaremos Google Maps para representar las rutas de los usuarios en un mapa.
+
 |===

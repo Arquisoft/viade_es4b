@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Building Block View</title>
+<title>Solution Strategy</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,77 +441,61 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="section-building-block-view">Building Block View</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_whitebox_overall_system">Whitebox Overall System</h2>
+<h2 id="section-solution-strategy">Solution Strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Viade es una aplicación de gestión de rutas descentralizada creada con SOLID. SOLID es un proyecto liderado por Tim Berners-Lee cuyo objetivo es cambiar la forma en que funcionan las aplicaciones web hoy en día.
-Para hacer esto posible, como primera parte del proyecto, SOLID ha creado SOLID Pods, una especie de llaveros usb online.</p>
+<div class="title"><strong>Decisiones tecnológicas</strong></div>
+<p>Para desarrollar la aplicación se utilizará :</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_bloques_de_construcción_contenidos">Bloques de construcción contenidos</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>En la siguiente imagen mostramos las relacciones entre los elementos de alto nivel.
-Podemos distinguir los PODS de los usuarios, almacenes descentralizados donde los usuarios almacenarán sus datos, rutas etc. Por otro lado tenemos la aplicación Viade, que utilizando solid se intercomunica con los Pods, y con
-la api de Google Maps.</p>
-</div>
-<div class="sect2">
-<h3 id="_nivel_1">Nivel 1</h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/Esquema1.png" alt="General View"></span></p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Descripciones del nivel</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Nombre</th>
-<th class="tableblock halign-left valign-top">Responsabilidad</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizarán la aplicación para subir sus rutas y compartirlas con otros usuarios</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Funcionarán como intermediarios entre las diferentes aplicaciones de los usuarios</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Viade App</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación proporcionará toda la funcionalidad a los usuarios y se comunicará con los Pods.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_pod">Pod</h3>
-<div class="paragraph">
-<p>·En esta caja se resumen las operaciones de lectura y escritura que se realizan con los pods, que es donde se almacen las distintas rutas. En la interfaz ruta se guardan los datos de una ruta como su nombre, lugar de salida,
-lugar de final, distancia, etc.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>React: Biblioteca de JavaScript que nos ayudará a hacer una interfaz de usuario fácil de utilizar.</p>
+</li>
+<li>
+<p>Solid: Para guardar los datos del usuario y sus rutas en la aplicación, el usuario decidirá que datos comparte y con quién lo hace.</p>
+</li>
+<li>
+<p>Google Maps: Lo utilizaremos para mostrar a los usuarios el mapa de la ruta.</p>
+</li>
+<li>
+<p>Visual Studio Code: Lo usamos por su simplicidad y familiaridad.</p>
+</li>
+<li>
+<p>Solid-file-client: Librería para intercambiar archivos con el POD.</p>
+</li>
+<li>
+<p>JSON: Para la administración de rutas en el POD utilizaremos este formato.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/Esquema2.png" alt="General View"></span></p>
+<div class="title"><strong>¿Cómo vamos a cumplir los atributos de calidad?</strong></div>
+<p>Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los atributos.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Para la seguridad, es fundamental seguir una buena metodología, ya que esta nos permitirá evitar errores de programación que puedan ser aprovechables por otras personas para perjudicar la aplicación.</p>
+</li>
+<li>
+<p>Para conseguir que sea usable, utilizaremos interfaces fáciles de utilizar y que no provoquen rechazo o presenten dificultad añadida a la aplicación.</p>
+</li>
+<li>
+<p>En cuanto a la modificabilidad, es primordial seguir un patrón de diseño, gracias al cual, podremos modificar la aplicación mejorandola, sin tener que cambiar algo que ya funcionaba.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title"><strong>Organización</strong></div>
+<p>A través de las reuniones en los laboratorios o mediante Skype, Whatsapp, etc, nos repartiremos las tareas que vayan surgiendo de forma equitativa.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 18:05:22 +0100
+Last updated 2020-03-04 21:23:59 +0100
 </div>
 </div>
 </body>
