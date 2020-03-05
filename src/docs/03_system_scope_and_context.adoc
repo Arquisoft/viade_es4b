@@ -38,9 +38,9 @@ Leyenda del diagrama
 [cols="1,2" options="header"]
 |===
 | **Objeto** | **Descripción**
-| _Aplicación_ | _Es la aplicación web._
+| _Web de rutas_ | _Es la aplicación web._
 | _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
-| _Cliente A y cliente B_ | _Son representaciones de los usuarios que esta usando la aplicación._
+| _Usuario 1 y Usuario 2_ | _Son representaciones de los usuarios que esta usando la aplicación._
 | _Solid_ | Es el servidor en el cual los pods de solid están almacenados
 |_Internet_| Representa la comunicación que se realizará mediante internet con el protocolo HTTPS
 |===
