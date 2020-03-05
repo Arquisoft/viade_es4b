@@ -7,6 +7,8 @@ import TextEditor from './TextEditor';
 import MapComponent from './Mapa';
 import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
+import MisAmigosComponent from './Amigos'
+
 
 export {
   Login,
@@ -20,5 +22,7 @@ export {
   FormModelConverter,
   FormModelRenderer,
   TextEditor,
-  MapComponent
+  MapComponent,
+  
+  MisAmigosComponent
 };

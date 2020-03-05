@@ -20,6 +20,13 @@ export const NavigationItems = [
     label: 'navBar.map',
     to: '/map'
   }
+  ,
+  {
+    id: 'friends',
+    icon: '/img/amigos.png',
+    label: 'navBar.friends',
+    to: '/friends'
+  }
 ];
 
 export const ProfileOptions = [

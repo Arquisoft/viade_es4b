@@ -54,6 +54,8 @@
     "text-editor": "Text Editor",
     "map": "Map",
     "changeLanguage": "Change Language",
+    "map":"Map",
+    "friends":"Friends",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"
