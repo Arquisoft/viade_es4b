@@ -15,16 +15,17 @@ export const NavigationItems = [
     to: '/profile'
   },
   {
-    id: 'text-editor',
-    icon: '/img/icon/files.svg',
-    label: 'navBar.text-editor',
-    to: '/text-editor'
-  },
-  {
     id: 'map',
     icon: '/img/mapa.jpg',
     label: 'navBar.map',
     to: '/map'
+  }
+  ,
+  {
+    id: 'friends',
+    icon: '/img/amigos.png',
+    label: 'navBar.friends',
+    to: '/friends'
   }
 ];
 

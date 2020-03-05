@@ -108,6 +108,7 @@ export const Editor = ({ webId }: Props) => {
     doc
       .then(async response => {
         const text = await response.text();
+        console.log(text);
         if (response.ok) {
           setText(text);
         } else if (response.status === 404) {

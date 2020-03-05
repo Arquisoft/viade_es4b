@@ -1,7 +1,9 @@
 [[section-quality-scenarios]]
 == Quality Requirements
 === Quality Tree
-image::images/arbolRequisitosCalidad.png
+
+image::arbolRequisitosCalidad.png[Arbol de requisitos]
+
 === Quality Scenarios
 Aquí tenemos una muestra más en profundidad de los requisitos de calidad  que aparecen en el arbol del apartado 10.1.
 
