@@ -58,15 +58,21 @@ export class MapComponent extends Component {
         this.handleMapClick = this.handleMapClick.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
     }
+
     //Recarga la pagina
     reload = () => {
 
 
         window.location.replace('');
     }
-    //Meter el parametro en el this.text
-    pasar(texto) {
-        this.state.text = texto;
+
+    async componentDidMount() {
+        const response =await SolidAuth.fetch('https://pabloglez1997.solid.community/share/rutaEjemplo.json')
+        const text = await response.text();
+        console.log(text)
+        this.setState({ parkData: text });
+        
+            
     }
 
     //Cargar el json
@@ -78,7 +84,7 @@ export class MapComponent extends Component {
         doc
 
             .then(async response => {
-                const text = await response.text();
+                const text = await response.json();
                 console.log(text)
                 console.log('hola1')
                 console.log(this.state.parkData)
@@ -90,6 +96,7 @@ export class MapComponent extends Component {
 
 
     }
+
 
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
@@ -109,7 +116,7 @@ export class MapComponent extends Component {
                     <p></p>
                 </span>
                 <button
-                    onClick={() => this.handleLoad, this.reload}
+                    onClick={() => this.componentDidMount, this.reload}
 
                     className="btn btn-secondary"
                 >
@@ -130,8 +137,8 @@ export class MapComponent extends Component {
                     className={"map"}
                     zoom={this.props.zoom}
                     initialCenter={this.props.center}
-                    onReady={this.handleLoad}
-                    onClick={this.handleMapClick}
+
+                    onClick={this.handleMapClick,this.componentDidMount}
                 >
                     {parkData.features.map(park => (
                         <Polyline
