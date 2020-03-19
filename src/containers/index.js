@@ -6,7 +6,6 @@ import Profile from './Profile';
 import TextEditor from './TextEditor';
 import MapComponent from './Mapa';
 import { GamePage, GameList } from './TicTacToe';
-import { FormModelConverter, FormModelRenderer } from './FormModel';
 import MisAmigosComponent from './Amigos'
 
 
@@ -19,8 +18,6 @@ export {
   Profile,
   GamePage,
   GameList,
-  FormModelConverter,
-  FormModelRenderer,
   TextEditor,
   MapComponent,
   
