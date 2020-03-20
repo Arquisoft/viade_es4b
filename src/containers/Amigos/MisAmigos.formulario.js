@@ -3,26 +3,24 @@ import { thisExpression } from "@babel/types";
 
 class FormAdd extends Component{
     constructor(props) {
-        this.state = { showForm: false };
-       }
-     //  this.setState(prevState => ({
-     //   check: !prevState.check
-      //}));
-    handleClick(){
-        this.setState({ showForm: true }); 
-    };
+        super();
+        this.state = { showForm: true };
+    }
+    onClick() {
+        this.setState({showForm: !this.state.showForm})
+    }
 
     render(){ 
         return ( 
             <div>
-                <button type ="button" class="btn btn-primary" onClick={this.handleClick}>Añadir amigo:</button>
-                {this.state.showForm? <Form/> : null}                
+                <button type ="button" class="btn btn-primary" onClick={this.onClick}>Añadir amigo:</button>
+                { this.state.showForm? <label class ="form-label" for="url">Ejemplo</label> : null }                
             </div>
         )
 
 
     }
-}
+};
 
 var Form = React.createElement({
     render: function () {
