@@ -3,7 +3,7 @@ import React, { useState, Component } from "react";
 
 
 import SolidAuth from 'solid-auth-client';
-
+import ldflex from '@solid/query-ldflex';
 
 
 import {
@@ -13,7 +13,7 @@ import {
     Polyline
 
 } from "google-maps-react";
-import * as parkData from "./marcadores.json";
+//import * as parkData from "./marcadores.json";
 
 
 
@@ -22,32 +22,15 @@ export class MapComponent extends Component {
     constructor(props) {
         super(props);
 
+        console.log(props.webId);
 
         this.state = {
 
+            url: false,
+            load: false,
 
             parkData: {
-                "type": "FeatureCollection",
-                "crs": {
-                    "type": "name",
-                    "properties": {
-                        "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-                    }
-                },
-                "features": [
-                    {
-                        "type": "Feature",
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [
-                                -75.3372987731628,
-                                45.383321536272049,
-                                -75.546518086577947,
-                                45.467134581917357
-                            ]
-                        }
-                    }
-                ]
+                features: []
             },
             locations: [],
         };
@@ -58,43 +41,65 @@ export class MapComponent extends Component {
         this.handleMapClick = this.handleMapClick.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
     }
+
     //Recarga la pagina
     reload = () => {
 
 
         window.location.replace('');
     }
-    //Meter el parametro en el this.text
-    pasar(texto) {
-        this.state.text = texto;
-    }
+
+    async setUrlFromStorage() {
+        if (this.props.webId && !this.state.url) {
+          const storageRoot = await ldflex[this.props.webId]['pim:storage'];
+          if (storageRoot) {
+            const exampleUrl = new URL('/share/rutaEjemplo.json', storageRoot.value);
+            this.setState(prevState => ({
+                ...prevState,
+                url : exampleUrl
+            }));
+          }
+        }
+      }
+   
 
     //Cargar el json
     handleLoad(event) {
 
+        this.setUrlFromStorage();
 
-        const doc = SolidAuth.fetch('https://pabloglez1997.solid.community/share/rutaEjemplo.json');
-
-        doc
-
-            .then(async response => {
-                const text = await response.text();
-                console.log(text)
-                console.log('hola1')
-                console.log(this.state.parkData)
-                console.log('hola2')
-                this.state.parkData = text;
-                console.log(this.state.parkData)
-
-            })
 
 
     }
+
+    componentDidUpdate(prevProps) {
+
+        if (this.state.url && !this.state.load) {
+            const doc = SolidAuth.fetch(this.state.url );
+
+            doc
+    
+                .then(async response => {
+                    const json = await response.json();
+                   
+                    this.setState(prevState => ({
+                        ...prevState,
+                        load: true,
+                        parkData: json}));
+                   
+    
+                })
+    
+        }
+
+    }
+
 
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
         const location = ev.latLng;
         this.setState(prevState => ({
+            ...prevState,
             locations: [...prevState.locations, location]
         }));
         map.panTo(location);
@@ -133,7 +138,7 @@ export class MapComponent extends Component {
                     onReady={this.handleLoad}
                     onClick={this.handleMapClick}
                 >
-                    {parkData.features.map(park => (
+                    {this.state.parkData.features.map(park => (
                         <Polyline
                             path={[{ lat: park.geometry.coordinates[1], lng: park.geometry.coordinates[0] }, { lat: park.geometry.coordinates[3], lng: park.geometry.coordinates[2] }]}
                             options={{
@@ -149,7 +154,7 @@ export class MapComponent extends Component {
                         />
                     ))}
 
-                    {parkData.features.map(park => (
+                    {this.state.parkData.features.map(park => (
                         <Marker
 
                             position={{
@@ -162,7 +167,7 @@ export class MapComponent extends Component {
 
 
                     ))}
-                    {parkData.features.map(park => (
+                    {this.state.parkData.features.map(park => (
                         <Marker
 
                             position={{
