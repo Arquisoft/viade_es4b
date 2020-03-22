@@ -22,8 +22,6 @@ export class MapComponent extends Component {
     constructor(props) {
         super(props);
 
-        console.log(props.webId);
-
         this.state = {
 
             url: false,
@@ -183,20 +181,15 @@ handleMapClick = (ref, map, ev) => {
 render() {
 
     const position = [this.state.lat, this.state.lng];
+    
     return (
         <div className="map-container">
             <span>
                 <p></p>
             </span>
+            
             <button
-                onClick={() => this.handleSave}
-
-                className="btn btn-secondary"
-            >
-                Ver marcadores guardados
-                </button>
-            <button
-                onClick={() => this.handleSave, this.reload}
+                onClick={ async () => {await this.handleSave;}, this.reload}
 
                 className="btn btn-secondary"
             >
@@ -212,7 +205,9 @@ render() {
                 initialCenter={this.props.center}
                 onReady={this.handleLoad}
                 onClick={this.handleMapClick}
+
             >
+                
                 {this.state.parkData.features.map(park => (
                     <Polyline
                         path={[{ lat: park.geometry.coordinates[1], lng: park.geometry.coordinates[0] }, { lat: park.geometry.coordinates[3], lng: park.geometry.coordinates[2] }]}
@@ -254,13 +249,20 @@ render() {
                     />
                 ))}
                 {this.state.locations.map((location, i) => {
+                   // console.log(location.lat());
                     return (
                         <Marker
                             key={i}
+                            name={'hola'}
                             position={{ lat: location.lat(), lng: location.lng() }}
                         />
+                        
                     );
+                   
                 })}
+                
+                
+               
             </Map>
         </div>
     );
