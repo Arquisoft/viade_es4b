@@ -132,3 +132,7 @@ form-group .select-role {
 .solid-provider-select .option {
   padding-left: 10px !important;
 }
+
+.map {
+  height: calc(100% - 120px) !important;
+}

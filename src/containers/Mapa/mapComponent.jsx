@@ -23,14 +23,9 @@ export class MapComponent extends Component {
         super(props);
 
         this.state = {
-
             url: false,
             load: false,
-
-            parkData: {
-                features: []
-            },
-            locations: [],
+            locations: [[]],
         };
 
 
@@ -39,6 +34,8 @@ export class MapComponent extends Component {
         this.handleMapClick = this.handleMapClick.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
         this.handleSave=this.handleSave.bind(this);
+        this.updateLocations=this.updateLocations.bind(this);
+        this.handleClear=this.handleClear.bind(this);
     }
 
     //Recarga la pagina
@@ -79,14 +76,29 @@ export class MapComponent extends Component {
             doc
 
                 .then(async response => {
-                    const json = await response.json();
+                    if (response.status == 200) {
+                        const json = await response.json();
 
-                    this.setState(prevState => ({
-                        ...prevState,
-                        load: true,
-                
-                        parkData: json
-                    }));
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true,
+                            locations: json
+                        }));    
+                    }
+                    else if (response.status == 404) {
+                        console.log('Documento no encontrado');
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true
+                        }))
+                    }
+                    else {
+                        console.log('Error indeterminado');
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true
+                        }))
+                    }
 
 
                 })
@@ -95,86 +107,47 @@ export class MapComponent extends Component {
 
     }
 
+    async updateLocations(locations) {
+        const result =  await SolidAuth.fetch(this.state.url, {
+            
+            method: 'PUT',
+            body: JSON.stringify(locations),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        console.log(result);
+        this.setState(prevState => ({
+            ...prevState,
+            locations: locations
+        }))
+    }
+
+    async handleClear(event) {
+        await this.updateLocations([[]]);
+    }
+
     async handleSave(event) {
     
 //Funciona si lo pongo en el onclik pero en un boton no
-   console.log('holaaaaaaa');
-    const result =  await SolidAuth.fetch(this.state.url, {
-        
-        method: 'PUT',
-        body: JSON.stringify({
-            "type": "FeatureCollection",
-            "crs": {
-              "type": "name",
-              "properties": {
-                "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-              }
-            },
-            "features": [
-              {
-                "type": "Feature",
-                "geometry": {
-                  "type": "Point",
-                  "coordinates": [
-                    -75.3372987731628,
-                    45.383321536272049,
-                    -75.546518086577947,
-                    45.467134581917357
-                  ]
-                }
-              },
-              {
-                "type": "Feature",
-                "geometry": {
-                  "type": "Point",
-                  "coordinates": [
-                    -75.3372987731628,
-                    45.383321536272049,
-                    -75.468561642270757,
-                    45.23032561834377
-                  ]
-                }
-              },
-              {
-                "type": "Feature",
-                "geometry": {
-                  "type": "Point",
-                  "coordinates": [
-                    -75.898610599532319,
-                    45.295014379864874,
-                    -75.468561642270757,
-                    45.23032561834377
-                  ]
-                }
-              },
-              {
-                "type": "Feature",
-                "geometry": {
-                  "type": "Point",
-                  "coordinates": [
-                    -75.926651366520872,
-                    45.260659774950561,
-                    -75.760933332842754,
-                    45.345566668964558
-                  ]
-                }
-              }
-            ]
-          }),
-        headers: {
-            'Accept': 'application/json'
-        }
-    });
-}
+        var locations = [...this.state.locations, []];
+        await this.updateLocations(locations);
+    }
+
+
 
 
 //Añadir los marcadores
 handleMapClick = (ref, map, ev) => {
     const location = ev.latLng;
-    this.setState(prevState => ({
-        ...prevState,
-        locations: [...prevState.locations, location]
-    }));
+    this.setState(prevState => {
+        var lastPath = prevState.locations[prevState.locations.length-1];
+        prevState.locations[prevState.locations.length-1] = [...lastPath, location];
+        console.log(prevState)
+        return {
+            ...prevState
+        }
+    });
     map.panTo(location);
 };
 
@@ -189,79 +162,58 @@ render() {
             </span>
             
             <button
-                onClick={ async () => {await this.handleSave;}, this.reload}
-
+                onClick={ this.handleSave}
                 className="btn btn-secondary"
             >
                 Marcar ruta
+                </button>
+            <button
+                onClick={ this.handleClear}
+                className="btn btn-secondary"
+            >
+                Borrar rutas
                 </button>
             <span>
                 <p></p>
             </span>
             <Map
+                styles={{height: 'calc(100%-120px)'}}
                 google={this.props.google}
                 className={"map"}
                 zoom={this.props.zoom}
                 initialCenter={this.props.center}
                 onReady={this.handleLoad}
                 onClick={this.handleMapClick}
-
             >
                 
-                {this.state.parkData.features.map(park => (
-                    <Polyline
-                        path={[{ lat: park.geometry.coordinates[1], lng: park.geometry.coordinates[0] }, { lat: park.geometry.coordinates[3], lng: park.geometry.coordinates[2] }]}
-                        options={{
-                            strokeColor: '#00ffff',
-                            strokeOpacity: 1,
-                            strokeWeight: 2,
-                            icons: [{
-                                icon: "hello",
-                                offset: '0',
-                                repeat: '10px'
-                            }],
-                        }}
-                    />
-                ))}
-
-                {this.state.parkData.features.map(park => (
-                    <Marker
-
-                        position={{
-                            lat: park.geometry.coordinates[1],
-                            lng: park.geometry.coordinates[0]
-                        }}
-
-
-                    />
-
-
-                ))}
-                {this.state.parkData.features.map(park => (
-                    <Marker
-
-                        position={{
-                            lat: park.geometry.coordinates[3],
-                            lng: park.geometry.coordinates[2]
-                        }}
-
-
-                    />
-                ))}
-                {this.state.locations.map((location, i) => {
-                   // console.log(location.lat());
-                    return (
-                        <Marker
-                            key={i}
-                            name={'hola'}
-                            position={{ lat: location.lat(), lng: location.lng() }}
+                {this.state.locations.map((path,i) => (
+                        <Polyline
+                            key={`polyline_${i}`}
+                            path={path}
+                            options={{
+                                strokeColor: '#00ffff',
+                                strokeOpacity: 1,
+                                strokeWeight: 2,
+                                icons: [{
+                                    icon: "hello",
+                                    offset: '0',
+                                    repeat: '10px'
+                                }],
+                            }}
                         />
-                        
-                    );
-                   
-                })}
-                
-                
+                ))}
+
+                {this.state.locations.map((path,i) => (
+                        path.map((location,i) => (
+                            <Marker
+                                key={`marker1_${i}`}
+                                position={location}
+
+
+                            />
+
+                        ))
+                ))}
                
             </Map>
         </div>
