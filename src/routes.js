@@ -11,8 +11,6 @@ import {
   Profile,
   GameList,
   GamePage,
-  FormModelConverter,
-  FormModelRenderer,
   TextEditor,
   MapComponent,
   MisAmigosComponent
@@ -55,16 +53,6 @@ const privateRoutes = [
     id: 'friends',
     path: '/friends',
     component: MisAmigosComponent
-  },
-  {
-    id: 'formmodelconverter',
-    path: '/formmodel/converter',
-    component: FormModelConverter
-  },
-  {
-    id: 'formmodelrenderer',
-    path: '/formmodel/renderer',
-    component: FormModelRenderer
   }
 ];
 
