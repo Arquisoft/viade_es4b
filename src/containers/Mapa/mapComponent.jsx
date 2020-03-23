@@ -22,17 +22,10 @@ export class MapComponent extends Component {
     constructor(props) {
         super(props);
 
-        console.log(props.webId);
-
         this.state = {
-
             url: false,
             load: false,
-
-            parkData: {
-                features: []
-            },
-            locations: [],
+            locations: [[]],
         };
 
 
@@ -40,6 +33,9 @@ export class MapComponent extends Component {
 
         this.handleMapClick = this.handleMapClick.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
+        this.handleSave=this.handleSave.bind(this);
+        this.updateLocations=this.updateLocations.bind(this);
+        this.handleClear=this.handleClear.bind(this);
     }
 
     //Recarga la pagina
@@ -51,17 +47,17 @@ export class MapComponent extends Component {
 
     async setUrlFromStorage() {
         if (this.props.webId && !this.state.url) {
-          const storageRoot = await ldflex[this.props.webId]['pim:storage'];
-          if (storageRoot) {
-            const exampleUrl = new URL('/share/rutaEjemplo.json', storageRoot.value);
-            this.setState(prevState => ({
-                ...prevState,
-                url : exampleUrl
-            }));
-          }
+            const storageRoot = await ldflex[this.props.webId]['pim:storage'];
+            if (storageRoot) {
+                const exampleUrl = new URL('/share/rutaEjemplo.json', storageRoot.value);
+                this.setState(prevState => ({
+                    ...prevState,
+                    url: exampleUrl
+                }));
+            }
         }
-      }
-   
+    }
+
 
     //Cargar el json
     handleLoad(event) {
@@ -75,72 +71,124 @@ export class MapComponent extends Component {
     componentDidUpdate(prevProps) {
 
         if (this.state.url && !this.state.load) {
-            const doc = SolidAuth.fetch(this.state.url );
+            const doc = SolidAuth.fetch(this.state.url);
 
             doc
-    
+
                 .then(async response => {
-                    const json = await response.json();
-                   
-                    this.setState(prevState => ({
-                        ...prevState,
-                        load: true,
-                        parkData: json}));
-                   
-    
+                    if (response.status == 200) {
+                        const json = await response.json();
+
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true,
+                            locations: json
+                        }));    
+                    }
+                    else if (response.status == 404) {
+                        console.log('Documento no encontrado');
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true
+                        }))
+                    }
+                    else {
+                        console.log('Error indeterminado');
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true
+                        }))
+                    }
+
+
                 })
-    
+
         }
 
     }
 
-
-    //Añadir los marcadores
-    handleMapClick = (ref, map, ev) => {
-        const location = ev.latLng;
+    async updateLocations(locations) {
+        const result =  await SolidAuth.fetch(this.state.url, {
+            
+            method: 'PUT',
+            body: JSON.stringify(locations),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        console.log(result);
         this.setState(prevState => ({
             ...prevState,
-            locations: [...prevState.locations, location]
-        }));
-        map.panTo(location);
-    };
+            locations: locations
+        }))
+    }
 
-    render() {
+    async handleClear(event) {
+        await this.updateLocations([[]]);
+    }
 
-        const position = [this.state.lat, this.state.lng];
-        return (
-            <div className="map-container">
-                <span>
-                    <p></p>
-                </span>
-                <button
-                    onClick={() => this.handleLoad, this.reload}
+    async handleSave(event) {
+    
+//Funciona si lo pongo en el onclik pero en un boton no
+        var locations = [...this.state.locations, []];
+        await this.updateLocations(locations);
+    }
 
-                    className="btn btn-secondary"
-                >
-                    Ver marcadores guardados
+
+
+
+//Añadir los marcadores
+handleMapClick = (ref, map, ev) => {
+    const location = ev.latLng;
+    this.setState(prevState => {
+        var lastPath = prevState.locations[prevState.locations.length-1];
+        prevState.locations[prevState.locations.length-1] = [...lastPath, location];
+        console.log(prevState)
+        return {
+            ...prevState
+        }
+    });
+    map.panTo(location);
+};
+
+render() {
+
+    const position = [this.state.lat, this.state.lng];
+    
+    return (
+        <div className="map-container">
+            <span>
+                <p></p>
+            </span>
+            
+            <button
+                onClick={ this.handleSave}
+                className="btn btn-secondary"
+            >
+                Marcar ruta
                 </button>
-                <button
-                    onClick={() => this.handleLoad, this.reload}
-
-                    className="btn btn-secondary"
-                >
-                    Marcar ruta
+            <button
+                onClick={ this.handleClear}
+                className="btn btn-secondary"
+            >
+                Borrar rutas
                 </button>
-                <span>
-                    <p></p>
-                </span>
-                <Map
-                    google={this.props.google}
-                    className={"map"}
-                    zoom={this.props.zoom}
-                    initialCenter={this.props.center}
-                    onReady={this.handleLoad}
-                    onClick={this.handleMapClick}
-                >
-                    {this.state.parkData.features.map(park => (
+            <span>
+                <p></p>
+            </span>
+            <Map
+                google={this.props.google}
+                className={"map"}
+                zoom={this.props.zoom}
+                initialCenter={this.props.center}
+                onReady={this.handleLoad}
+                onClick={this.handleMapClick}
+            >
+                
+                {this.state.locations.map((path,i) => (
                         <Polyline
-                            path={[{ lat: park.geometry.coordinates[1], lng: park.geometry.coordinates[0] }, { lat: park.geometry.coordinates[3], lng: park.geometry.coordinates[2] }]}
+                            key={`polyline_${i}`}
+                            path={path}
                             options={{
                                 strokeColor: '#00ffff',
                                 strokeOpacity: 1,
@@ -152,44 +200,24 @@ export class MapComponent extends Component {
                                 }],
                             }}
                         />
-                    ))}
+                ))}
 
-                    {this.state.parkData.features.map(park => (
-                        <Marker
-
-                            position={{
-                                lat: park.geometry.coordinates[1],
-                                lng: park.geometry.coordinates[0]
-                            }}
-
-
-                        />
-
-
-                    ))}
-                    {this.state.parkData.features.map(park => (
-                        <Marker
-
-                            position={{
-                                lat: park.geometry.coordinates[3],
-                                lng: park.geometry.coordinates[2]
-                            }}
-
-
-                        />
-                    ))}
-                    {this.state.locations.map((location, i) => {
-                        return (
+                {this.state.locations.map((path,i) => (
+                        path.map((location,i) => (
                             <Marker
-                                key={i}
-                                position={{ lat: location.lat(), lng: location.lng() }}
+                                key={`marker1_${i}`}
+                                position={location}
+
+
                             />
-                        );
-                    })}
-                </Map>
-            </div>
-        );
-    }
+
+                        ))
+                ))}
+               
+            </Map>
+        </div>
+    );
+}
 }
 
 export default GoogleApiWrapper({

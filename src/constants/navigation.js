@@ -35,14 +35,7 @@ export const ProfileOptions = [
     onClick: 'profileRedirect',
     icon: 'cog'
   },
-  {
-    label: 'navBar.formModelConvert',
-    onClick: 'formModelConvertRedirect'
-  },
-  {
-    label: 'navBar.formModelRender',
-    onClick: 'formModelRenderRedirect'
-  },
+  
   {
     label: 'navBar.logOut',
     onClick: 'logOut',
