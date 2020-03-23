@@ -177,7 +177,6 @@ render() {
                 <p></p>
             </span>
             <Map
-                styles={{height: 'calc(100%-120px)'}}
                 google={this.props.google}
                 className={"map"}
                 zoom={this.props.zoom}
