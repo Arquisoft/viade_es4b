@@ -1,10 +1,7 @@
 import React, { useState, Component } from "react";
 
-
-
 import SolidAuth from 'solid-auth-client';
 import ldflex from '@solid/query-ldflex';
-
 
 import {
     Map,
@@ -14,8 +11,6 @@ import {
 
 } from "google-maps-react";
 //import * as parkData from "./marcadores.json";
-
-
 
 
 export class MapComponent extends Component {
@@ -28,14 +23,11 @@ export class MapComponent extends Component {
             locations: [[]],
         };
 
-
-
-
         this.handleMapClick = this.handleMapClick.bind(this);
         this.handleLoad = this.handleLoad.bind(this);
-        this.handleSave=this.handleSave.bind(this);
-        this.updateLocations=this.updateLocations.bind(this);
-        this.handleClear=this.handleClear.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+        this.updateLocations = this.updateLocations.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
 
     //Recarga la pagina
@@ -83,7 +75,7 @@ export class MapComponent extends Component {
                             ...prevState,
                             load: true,
                             locations: json
-                        }));    
+                        }));
                     }
                     else if (response.status == 404) {
                         console.log('Documento no encontrado');
@@ -108,8 +100,8 @@ export class MapComponent extends Component {
     }
 
     async updateLocations(locations) {
-        const result =  await SolidAuth.fetch(this.state.url, {
-            
+        const result = await SolidAuth.fetch(this.state.url, {
+
             method: 'PUT',
             body: JSON.stringify(locations),
             headers: {
@@ -128,8 +120,8 @@ export class MapComponent extends Component {
     }
 
     async handleSave(event) {
-    
-//Funciona si lo pongo en el onclik pero en un boton no
+
+        //Funciona si lo pongo en el onclik pero en un boton no
         var locations = [...this.state.locations, []];
         await this.updateLocations(locations);
     }
@@ -137,55 +129,55 @@ export class MapComponent extends Component {
 
 
 
-//Añadir los marcadores
-handleMapClick = (ref, map, ev) => {
-    const location = ev.latLng;
-    this.setState(prevState => {
-        var lastPath = prevState.locations[prevState.locations.length-1];
-        prevState.locations[prevState.locations.length-1] = [...lastPath, location];
-        console.log(prevState)
-        return {
-            ...prevState
-        }
-    });
-    map.panTo(location);
-};
+    //Añadir los marcadores
+    handleMapClick = (ref, map, ev) => {
+        const location = ev.latLng;
+        this.setState(prevState => {
+            var lastPath = prevState.locations[prevState.locations.length - 1];
+            prevState.locations[prevState.locations.length - 1] = [...lastPath, location];
+            console.log(prevState)
+            return {
+                ...prevState
+            }
+        });
+        map.panTo(location);
+    };
 
-render() {
+    render() {
 
-    const position = [this.state.lat, this.state.lng];
-    
-    return (
-        <div className="map-container">
-            <span>
-                <p></p>
-            </span>
-            
-            <button
-                onClick={ this.handleSave}
-                className="btn btn-secondary"
-            >
-                Marcar ruta
+        const position = [this.state.lat, this.state.lng];
+
+        return (
+            <div className="map-container">
+                <span>
+                    <p></p>
+                </span>
+
+                <button
+                    onClick={this.handleSave}
+                    className="btn btn-secondary"
+                >
+                    Marcar ruta
                 </button>
-            <button
-                onClick={ this.handleClear}
-                className="btn btn-secondary"
-            >
-                Borrar rutas
+                <button
+                    onClick={this.handleClear}
+                    className="btn btn-secondary"
+                >
+                    Borrar rutas
                 </button>
-            <span>
-                <p></p>
-            </span>
-            <Map
-                google={this.props.google}
-                className={"map"}
-                zoom={this.props.zoom}
-                initialCenter={this.props.center}
-                onReady={this.handleLoad}
-                onClick={this.handleMapClick}
-            >
-                
-                {this.state.locations.map((path,i) => (
+                <span>
+                    <p></p>
+                </span>
+                <Map
+                    google={this.props.google}
+                    className={"map"}
+                    zoom={this.props.zoom}
+                    initialCenter={this.props.center}
+                    onReady={this.handleLoad}
+                    onClick={this.handleMapClick}
+                >
+
+                    {this.state.locations.map((path, i) => (
                         <Polyline
                             key={`polyline_${i}`}
                             path={path}
@@ -200,10 +192,10 @@ render() {
                                 }],
                             }}
                         />
-                ))}
+                    ))}
 
-                {this.state.locations.map((path,i) => (
-                        path.map((location,i) => (
+                    {this.state.locations.map((path, i) => (
+                        path.map((location, i) => (
                             <Marker
                                 key={`marker1_${i}`}
                                 position={location}
@@ -212,12 +204,12 @@ render() {
                             />
 
                         ))
-                ))}
-               
-            </Map>
-        </div>
-    );
-}
+                    ))}
+
+                </Map>
+            </div>
+        );
+    }
 }
 
 export default GoogleApiWrapper({
