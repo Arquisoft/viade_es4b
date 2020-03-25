@@ -12,6 +12,8 @@ import {
 } from "google-maps-react";
 //import * as parkData from "./marcadores.json";
 
+//import { loadMapInfo } from "../../services/TraductorJSON";
+
 
 export class MapComponent extends Component {
     constructor(props) {
@@ -32,8 +34,6 @@ export class MapComponent extends Component {
 
     //Recarga la pagina
     reload = () => {
-
-
         window.location.replace('');
     }
 
@@ -41,7 +41,7 @@ export class MapComponent extends Component {
         if (this.props.webId && !this.state.url) {
             const storageRoot = await ldflex[this.props.webId]['pim:storage'];
             if (storageRoot) {
-                const exampleUrl = new URL('/share/rutaEjemplo.json', storageRoot.value);
+                const exampleUrl = new URL('/share/rutaEjemplo.jsonld', storageRoot.value);
                 this.setState(prevState => ({
                     ...prevState,
                     url: exampleUrl
@@ -53,12 +53,14 @@ export class MapComponent extends Component {
 
     //Cargar el json
     handleLoad(event) {
-
         this.setUrlFromStorage();
-
-
-
     }
+
+    /*     componentDidMount() {
+            loadMapInfo(this.state.route).then(ruta => {
+                this.setState({ loading: false, route: ruta });
+            });
+        } */
 
     componentDidUpdate(prevProps) {
 
@@ -91,12 +93,8 @@ export class MapComponent extends Component {
                             load: true
                         }))
                     }
-
-
                 })
-
         }
-
     }
 
     async updateLocations(locations) {
@@ -120,13 +118,10 @@ export class MapComponent extends Component {
     }
 
     async handleSave(event) {
-
         //Funciona si lo pongo en el onclik pero en un boton no
         var locations = [...this.state.locations, []];
         await this.updateLocations(locations);
     }
-
-
 
 
     //Añadir los marcadores
