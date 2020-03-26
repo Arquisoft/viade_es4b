@@ -1,23 +1,30 @@
 import React, { Component } from "react";
-import Lista from './Lista';
 import './MisAmigos.css';
+
+import { Value, Image, List } from '@solid/react';
+import { Link } from "react-router-dom";
+
+
+
 
 class MisAmigosComponent extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-          data : [
-            {
-              nombreUsuario  : "Andrés Fernández González",
-              usuario : "UO264699",
-              
-            }
-          ]
-        }
-      }
+    state = {
+      profileInput: '',
+      activeProfile: ''
+    };
+
+    componentDidMount() {
+      const { webId} = this.props;
+      if ( webId )
+        this.setState({ profileInput: webId});
+    }
+    saveFriend = (uri) => {
+    };
+
 
     render() {
+      const { profileInput, activeProfile } = this.state;
         return (
 
     <div className="app">
@@ -33,15 +40,21 @@ class MisAmigosComponent extends Component {
                 placeholder="Ejemplo: Juan Rutas" required="true"/>
             <button type ="submit"class="btn btn-primary">Añadir</button>
           </div>  
-        </form>      
-            <ul className="lista">
-                {this.state.data.map(
-                    (item,index) =>
-                            <Lista data={item} key={index}  />
-               )
-                }
-</ul>
-</div>
+        </form> 
+        <Image src="user.image" defaultSrc="profile.svg" className="profile"/>
+          <p>Welcome back, <Value src="user.name"/>.</p>
+          <h2>Friends</h2>
+          <List src="user.friends">{friend =>   
+                 
+            <li key={friend}> + 
+            <Value src={friend.name} /> --
+            <Value src={friend.storage}/>  
+            </li>    
+                   
+          }
+          </List>
+            
+    </div>
         );
     }
 }
