@@ -1,18 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router} from "react-router-dom"
 import { render, cleanup } from 'react-testing-library'
-import Profile from '../src/containers/Profile/profile.container'
+import GoogleMap from '../../src/containers/Mapa/mapComponent'
 
-describe('Profile', () => {
+describe('Google Map', () => {
     afterAll(cleanup);
 
     const { container } = render(
         <Router>
-            <Profile/>
+            <GoogleMap/>
         </Router>
     )
 
-    test('El perfil se renderiza sin problema', () => {
+    test('El mapa se renderizar sin problema', () => {
         expect(container).toBeTruthy()
     })
 })
