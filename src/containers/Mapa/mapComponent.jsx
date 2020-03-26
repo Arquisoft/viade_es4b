@@ -12,9 +12,6 @@ import {
 } from "google-maps-react";
 //import * as parkData from "./marcadores.json";
 
-//import { loadMapInfo } from "../../services/TraductorJSON";
-
-
 export class MapComponent extends Component {
     constructor(props) {
         super(props);
@@ -108,6 +105,59 @@ export class MapComponent extends Component {
         }))
     }
 
+    routeJsonLD = {
+        "@context": {
+            "@version": 1.1, //Needed to be parsed as a 1.1, not 1.0
+
+            //Namespaces that are relevant
+            "viade": "http://arquisoft.github.io/viadeSpec/",
+            "schema": "http://schema.org/",
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+            // Context for the data
+
+            "name": {
+                "@id": "schema:name",
+                "@type": "xs:string"
+            },
+
+            "description": {
+                "@id": "schema:description",
+                "@type": "xs:string" //Type coercion
+            },
+
+            "comments": {
+                "@id": "viade:comments",
+                "@container": "@list" //Order is important, not provided by default
+            },
+
+            "media": {
+                "@id": "viade:media",
+                "@container": "@list"
+            },
+
+            "points": {
+                "@id": "viade:points",
+                "@container": "@list"
+            },
+            "latitude": {
+                "@id": "schema:latitude",
+                "@type": "xs:double"
+            },
+            "longitude": {
+                "@id": "schema:longitude",
+                "@type": "xs:double"
+            }
+        },
+        "name": "Prueba",
+        "description": "Comentario de prueba",
+        "points": this.location,
+        "comments": this.location,
+        "media": this.location
+    }
+
     async handleClear(event) {
         await this.updateLocations([[]]);
     }
@@ -156,12 +206,7 @@ export class MapComponent extends Component {
                     Borrar rutas
                 </button>
                 <span>
-                    <button
-                        onClick={this.pruebaJSON}
-                        className="btn btn-secondary"
-                    >
-                        Prueba JSON-LD
-                </button>
+
                     <p></p>
                 </span>
                 <Map
