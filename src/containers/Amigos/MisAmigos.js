@@ -49,7 +49,18 @@ class MisAmigosComponent extends Component {
             <li key={friend}> + 
             <Value src={friend.name} /> --
             <Value src={friend.storage}/>  
-            </li>    
+            <Link to={{
+              pathname: '/profile',
+              state: {
+                userId: friend
+              }
+              
+            }} >
+            Ver Perfil
+            </Link>
+            
+        {this.props.children}
+            </li>
                    
           }
           </List>
