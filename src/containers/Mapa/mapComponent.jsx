@@ -12,7 +12,7 @@ import {
 } from "google-maps-react";
 //import * as parkData from "./marcadores.json";
 
-import { loadAllRoutes } from "../../services/TraductorJSON";
+//import { loadMapInfo } from "../../services/TraductorJSON";
 
 
 export class MapComponent extends Component {
@@ -30,8 +30,6 @@ export class MapComponent extends Component {
         this.handleSave = this.handleSave.bind(this);
         this.updateLocations = this.updateLocations.bind(this);
         this.handleClear = this.handleClear.bind(this);
-
-        this.loadRoutes();
     }
 
     //Recarga la pagina
@@ -58,21 +56,6 @@ export class MapComponent extends Component {
         this.setUrlFromStorage();
     }
 
-    async loadRoutes() {
-        var result = await loadAllRoutes(this.props.webId);
-        var removed = result.map(route => route.replace("https://", ""));
-        this.setState({ routes: removed });
-    }
-
-    componentDidMount() {
-        const { webId } = this.props;
-        if (webId) this.getProfileData();
-    }
-
-    componentDidUpdate(prevProps) {
-        const { webId } = this.props;
-        if (webId && webId !== prevProps.webId) this.getProfileData();
-    }
 
     componentDidUpdate(prevProps) {
 
