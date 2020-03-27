@@ -9,9 +9,6 @@ import {
   Welcome,
   RegistrationSuccess,
   Profile,
-  GameList,
-  GamePage,
-  TextEditor,
   MapComponent,
   MisAmigosComponent
 } from './containers';
@@ -29,21 +26,6 @@ const privateRoutes = [
     id: 'profile',
     path: '/profile',
     component: Perfil
-  },
-  {
-    id: 'tictactoe',
-    path: '/tictactoe',
-    component: GameList
-  },
-  {
-    id: 'tictactoegame',
-    path: '/tictactoe/:gameId',
-    component: GamePage
-  },
-  {
-    id: 'text-editor',
-    path: '/text-editor',
-    component: TextEditor
   },
   {
     id: 'map',
