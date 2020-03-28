@@ -1,15 +1,12 @@
 import React, { useState, Component } from "react";
+import jsonTojsonLD from "./jsonTojsonLD.jsx";
+import jsonLDTojson from "./jsonLDTojson.jsx";
 
-import SolidAuth from 'solid-auth-client';
-import ldflex from '@solid/query-ldflex';
+import SolidAuth from "solid-auth-client";
+import ldflex from "@solid/query-ldflex";
 
-import {
-    Map,
-    GoogleApiWrapper,
-    Marker,
-    Polyline
+import { Map, GoogleApiWrapper, Marker, Polyline } from "google-maps-react";
 
-} from "google-maps-react";
 //import * as parkData from "./marcadores.json";
 
 export class MapComponent extends Component {
@@ -19,7 +16,7 @@ export class MapComponent extends Component {
         this.state = {
             url: false,
             load: false,
-            locations: [[]],
+            locations: [[]]
         };
 
         this.handleMapClick = this.handleMapClick.bind(this);
@@ -31,14 +28,17 @@ export class MapComponent extends Component {
 
     //Recarga la pagina
     reload = () => {
-        window.location.replace('');
-    }
+        window.location.replace("");
+    };
 
     async setUrlFromStorage() {
         if (this.props.webId && !this.state.url) {
-            const storageRoot = await ldflex[this.props.webId]['pim:storage'];
+            const storageRoot = await ldflex[this.props.webId]["pim:storage"];
             if (storageRoot) {
-                const exampleUrl = new URL('/share/rutaEjemplo.json', storageRoot.value);
+                const exampleUrl = new URL(
+                    "/share/rutaEjemplo.json",
+                    storageRoot.value
+                );
                 this.setState(prevState => ({
                     ...prevState,
                     url: exampleUrl
@@ -47,115 +47,65 @@ export class MapComponent extends Component {
         }
     }
 
-
     //Cargar el json
     handleLoad(event) {
         this.setUrlFromStorage();
     }
 
-
     componentDidUpdate(prevProps) {
-
         if (this.state.url && !this.state.load) {
             const doc = SolidAuth.fetch(this.state.url);
 
-            doc
+            doc.then(async response => {
+                if (response.status == 200) {
+                    const json = await response.json();
 
-                .then(async response => {
-                    if (response.status == 200) {
-                        const json = await response.json();
+                    const ContextParser = require("jsonld-context-parser").ContextParser;
+                    const myParser = new ContextParser();
+                    const myContext = await myParser.parse(json);
 
-                        this.setState(prevState => ({
-                            ...prevState,
-                            load: true,
-                            locations: json
-                        }));
-                    }
-                    else if (response.status == 404) {
-                        console.log('Documento no encontrado');
-                        this.setState(prevState => ({
-                            ...prevState,
-                            load: true
-                        }))
-                    }
-                    else {
-                        console.log('Error indeterminado');
-                        this.setState(prevState => ({
-                            ...prevState,
-                            load: true
-                        }))
-                    }
-                })
+                    const jsonld = ContextParser.expandTerm(
+                        "coordinates",
+                        myContext,
+                        true
+                    );
+
+                    this.setState(prevState => ({
+                        ...prevState,
+                        load: true,
+                        locations: jsonld
+                    }));
+                } else if (response.status == 404) {
+                    console.log("Documento no encontrado");
+                    this.setState(prevState => ({
+                        ...prevState,
+                        load: true
+                    }));
+                } else {
+                    console.log("Error indeterminado");
+                    this.setState(prevState => ({
+                        ...prevState,
+                        load: true
+                    }));
+                }
+            });
         }
+        console.log(this.state.locations);
     }
 
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
-
-            method: 'PUT',
-            body: JSON.stringify(locations),
+            method: "PUT",
+            body: jsonTojsonLD("Carlos de Benito", JSON.stringify(locations)),
             headers: {
-                'Accept': 'application/json'
+                Accept: "application/ld+json"
             }
         });
         console.log(result);
         this.setState(prevState => ({
             ...prevState,
             locations: locations
-        }))
-    }
-
-    routeJsonLD = {
-        "@context": {
-            "@version": 1.1, //Needed to be parsed as a 1.1, not 1.0
-
-            //Namespaces that are relevant
-            "viade": "http://arquisoft.github.io/viadeSpec/",
-            "schema": "http://schema.org/",
-            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-            "xsd": "http://www.w3.org/2001/XMLSchema#",
-
-            // Context for the data
-
-            "name": {
-                "@id": "schema:name",
-                "@type": "xs:string"
-            },
-
-            "description": {
-                "@id": "schema:description",
-                "@type": "xs:string" //Type coercion
-            },
-
-            "comments": {
-                "@id": "viade:comments",
-                "@container": "@list" //Order is important, not provided by default
-            },
-
-            "media": {
-                "@id": "viade:media",
-                "@container": "@list"
-            },
-
-            "points": {
-                "@id": "viade:points",
-                "@container": "@list"
-            },
-            "latitude": {
-                "@id": "schema:latitude",
-                "@type": "xs:double"
-            },
-            "longitude": {
-                "@id": "schema:longitude",
-                "@type": "xs:double"
-            }
-        },
-        "name": "Prueba",
-        "description": "Comentario de prueba",
-        "points": this.location,
-        "comments": this.location,
-        "media": this.location
+        }));
     }
 
     async handleClear(event) {
@@ -168,23 +118,24 @@ export class MapComponent extends Component {
         await this.updateLocations(locations);
     }
 
-
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
         const location = ev.latLng;
         this.setState(prevState => {
             var lastPath = prevState.locations[prevState.locations.length - 1];
-            prevState.locations[prevState.locations.length - 1] = [...lastPath, location];
-            console.log(prevState)
+            prevState.locations[prevState.locations.length - 1] = [
+                ...lastPath,
+                location
+            ];
+            console.log(prevState);
             return {
                 ...prevState
-            }
+            };
         });
         map.panTo(location);
     };
 
     render() {
-
         const position = [this.state.lat, this.state.lng];
 
         return (
@@ -193,20 +144,13 @@ export class MapComponent extends Component {
                     <p></p>
                 </span>
 
-                <button
-                    onClick={this.handleSave}
-                    className="btn btn-secondary"
-                >
+                <button onClick={this.handleSave} className="btn btn-secondary">
                     Marcar ruta
-                </button>
-                <button
-                    onClick={this.handleClear}
-                    className="btn btn-secondary"
-                >
+        </button>
+                <button onClick={this.handleClear} className="btn btn-secondary">
                     Borrar rutas
-                </button>
+        </button>
                 <span>
-
                     <p></p>
                 </span>
                 <Map
@@ -217,36 +161,30 @@ export class MapComponent extends Component {
                     onReady={this.handleLoad}
                     onClick={this.handleMapClick}
                 >
-
                     {this.state.locations.map((path, i) => (
                         <Polyline
                             key={`polyline_${i}`}
                             path={path}
                             options={{
-                                strokeColor: '#00ffff',
+                                strokeColor: "#00ffff",
                                 strokeOpacity: 1,
                                 strokeWeight: 2,
-                                icons: [{
-                                    icon: "hello",
-                                    offset: '0',
-                                    repeat: '10px'
-                                }],
+                                icons: [
+                                    {
+                                        icon: "hello",
+                                        offset: "0",
+                                        repeat: "10px"
+                                    }
+                                ]
                             }}
                         />
                     ))}
 
-                    {this.state.locations.map((path, i) => (
+                    {this.state.locations.map((path, i) =>
                         path.map((location, i) => (
-                            <Marker
-                                key={`marker1_${i}`}
-                                position={location}
-
-
-                            />
-
+                            <Marker key={`marker1_${i}`} position={location} />
                         ))
-                    ))}
-
+                    )}
                 </Map>
             </div>
         );
