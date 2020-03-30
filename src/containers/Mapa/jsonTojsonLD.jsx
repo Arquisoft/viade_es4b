@@ -1,13 +1,18 @@
 import React from "react";
-export default function jsonTojsonLD(name, coordinates) {
+
+export default function jsonTojsonLD(coordinates) {
     const data = `{
-      "@context": "http://schema.org/",
-      "@type": "Coordinates",
-      "author": {
-        "@type": "Person",
-        "name": "${name}"
-      },
-      "coordinates": "${coordinates}"
+        "@context": {
+            "@version": 1.1,
+            "schema": "http://schema.org/",
+
+            "coordinates": {
+                "@id": "schema:name",
+                "@type": "xs:string"
+            }
+
+        },
+        "coordinates": "${coordinates}"
     }`;
     return data;
 }

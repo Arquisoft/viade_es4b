@@ -57,15 +57,20 @@ export class MapComponent extends Component {
             const doc = SolidAuth.fetch(this.state.url);
 
             doc.then(async response => {
+                console.log("1");
                 if (response.status == 200) {
+                    console.log("1.1");
+
                     const json = await response.json();
+
+                    console.log("1.2");
 
                     const ContextParser = require("jsonld-context-parser").ContextParser;
                     const myParser = new ContextParser();
-                    const myContext = await myParser.parse(json);
+                    const myContext = await myParser.parse(json); //JSON_LD
 
                     const jsonld = ContextParser.expandTerm(
-                        "coordinates",
+                        'coordinates',
                         myContext,
                         true
                     );
@@ -75,6 +80,9 @@ export class MapComponent extends Component {
                         load: true,
                         locations: jsonld
                     }));
+
+                    console.log("1.5");
+
                 } else if (response.status == 404) {
                     console.log("Documento no encontrado");
                     this.setState(prevState => ({
@@ -88,15 +96,17 @@ export class MapComponent extends Component {
                         load: true
                     }));
                 }
+                console.log("2");
             });
         }
-        console.log(this.state.locations);
+        //console.log(jsonld);
+        console.log("3");
     }
 
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
-            body: jsonTojsonLD("Carlos de Benito", JSON.stringify(locations)),
+            body: jsonTojsonLD(JSON.stringify(locations)),
             headers: {
                 Accept: "application/ld+json"
             }
