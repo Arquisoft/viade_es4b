@@ -1,14 +1,23 @@
 import React from "react";
 
 export default function jsonTojsonLD(coordinates) {
-    //Intenta modificar las coordinates para que estén
-    // en el formato del JSONLD
-    const points = coordinates.map(
-        point =>
-            `["schema:latitude": point.split(",")[0].plit(":")[1],
-      "schema:longitude": point.split(",")[1].plit(":")[1]
-  ]`
-    );
+
+    // const points = coordinates.map(point => [
+    //     point.map(
+    //         eleinterno =>
+    //             JSON.stringify({
+    //                 "schema:latitude": eleinterno.lat,
+    //                 "schema:longitude": eleinterno.long
+    //             })
+    //     )
+    // ]);
+
+    const points = coordinates.map(point => [
+        JSON.stringify({
+            "schema:latitude": point.lat,
+            "schema:longitude": point.long
+        })
+    ]);
 
     const data = {
         "@context": {
@@ -24,7 +33,7 @@ export default function jsonTojsonLD(coordinates) {
                 "@container": "@list"
             }
         },
-        points: { points }
+        points: points
     };
 
     return data;

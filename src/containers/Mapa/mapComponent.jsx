@@ -7,8 +7,6 @@ import ldflex from "@solid/query-ldflex";
 
 import { Map, GoogleApiWrapper, Marker, Polyline } from "google-maps-react";
 
-//import * as parkData from "./marcadores.json";
-
 export class MapComponent extends Component {
     constructor(props) {
         super(props);
@@ -63,20 +61,15 @@ export class MapComponent extends Component {
 
                     const jsonParse = JSON.parse(json);
 
-                    //const lista = jsonParse.points.map(ele => [
-                    //  JSON.stringify({
-                    //    lat: ele["schema:latitude"],
-                    //    lng: ele["schema:longitude"]
-                    //  })
-                    //]);
-
-                    const lista = jsonParse.points.map(ele => [
-                        new Point(ele["schema:latitude"], ele["schema:longitude"])
-                    ]);
-
-                    //var nuevaLista = new Array(lista);
-                    //nuevaLista = lista;
-                    //var listaVacia = new Array();
+                    const lista = jsonParse.points.map(ele =>
+                        ele.map(
+                            eleinterno =>
+                                new Point(
+                                    eleinterno["schema:latitude"],
+                                    eleinterno["schema:longitude"]
+                                )
+                        )
+                    );
 
                     console.log("Contenido:" + lista);
 
@@ -107,7 +100,8 @@ export class MapComponent extends Component {
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
-            body: jsonTojsonLD(JSON.stringify(locations)),
+            //body: jsonTojsonLD(JSON.stringify(locations)),
+            body: JSON.stringify(jsonTojsonLD(locations)),
             headers: {
                 Accept: "application/ld+json"
             }
@@ -132,6 +126,7 @@ export class MapComponent extends Component {
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
         const location = ev.latLng;
+        console.log("Aqui esta la localizacion al tocar la pantalla" + location);
 
         this.setState(prevState => {
             var lastPath = prevState.locations[prevState.locations.length - 1];
@@ -139,7 +134,7 @@ export class MapComponent extends Component {
                 ...lastPath,
                 location
             ];
-            console.log(prevState);
+
             return {
                 ...prevState
             };
@@ -148,8 +143,6 @@ export class MapComponent extends Component {
     };
 
     render() {
-        const position = [this.state.lat, this.state.lng];
-
         return (
             <div className="map-container">
                 <span>
