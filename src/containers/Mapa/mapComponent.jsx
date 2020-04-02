@@ -1,6 +1,6 @@
 import React, { useState, Component } from "react";
 import jsonTojsonLD from "./jsonTojsonLD.jsx";
-//import jsonLDTojson from "./jsonLDTojson.jsx";
+import { Point } from "./Clases.js";
 
 import SolidAuth from "solid-auth-client";
 import ldflex from "@solid/query-ldflex";
@@ -58,43 +58,32 @@ export class MapComponent extends Component {
 
             doc.then(async response => {
                 if (response.status == 200) {
-
-                    //const json = await response.json();
-
                     const json = await response.text();
+                    console.log("JSON:" + json);
 
                     const jsonParse = JSON.parse(json);
 
-                    // Con esto lo lee bien
-                    // El problema es que no lo interpreta bien Locations
-                    // Debería devolver una lista de valores lat,long
-                    // const lista = jsonParse.points.map(ele => [
-                    //     JSON.stringify({
-                    //         lat: ele["schema:latitude"],
-                    //         lng: ele["schema:longitude"]
-                    //     })
-                    // ]);
+                    //const lista = jsonParse.points.map(ele => [
+                    //  JSON.stringify({
+                    //    lat: ele["schema:latitude"],
+                    //    lng: ele["schema:longitude"]
+                    //  })
+                    //]);
 
-                    // //Convierto el JSON a objeto
-                    //var objetoJson = JSON.parse(lista);
+                    const lista = jsonParse.points.map(ele => [
+                        new Point(ele["schema:latitude"], ele["schema:longitude"])
+                    ]);
 
-                    //const copia = json;
+                    //var nuevaLista = new Array(lista);
+                    //nuevaLista = lista;
+                    //var listaVacia = new Array();
 
-                    //console.log("Aqui esta el json antes de convertirlo: " + lista);
-
-                    //console.log("Aqui esta el json en modo objeto: " + objetoJson);
-
-                    //console.log(`Aqui esta el json: => `, copia);
-
-                    var prueba = JSON.stringify([{ lat: 37.82531985596287, lng: -122.42178214234265 }])
-                    const copia = prueba;
-
-                    console.log(`Aqui esta el json: => `, copia);
+                    console.log("Contenido:" + lista);
 
                     this.setState(prevState => ({
                         ...prevState,
                         load: true,
-                        locations: copia
+                        locations: lista
                     }));
                 } else if (response.status == 404) {
                     console.log("Documento no encontrado");
@@ -111,6 +100,7 @@ export class MapComponent extends Component {
                 }
             });
         }
+        console.log(this.state.locations);
     }
 
     // Guarda los puntos en el POD
