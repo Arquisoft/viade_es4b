@@ -1,6 +1,6 @@
 import React, { useState, Component } from "react";
 import jsonTojsonLD from "./jsonTojsonLD.jsx";
-import jsonLDTojson from "./jsonLDTojson.jsx";
+//import jsonLDTojson from "./jsonLDTojson.jsx";
 
 import SolidAuth from "solid-auth-client";
 import ldflex from "@solid/query-ldflex";
@@ -57,32 +57,45 @@ export class MapComponent extends Component {
             const doc = SolidAuth.fetch(this.state.url);
 
             doc.then(async response => {
-                console.log("1");
                 if (response.status == 200) {
-                    console.log("1.1");
 
-                    const json = await response.json();
+                    //const json = await response.json();
 
-                    console.log("1.2");
+                    const json = await response.text();
 
-                    const ContextParser = require("jsonld-context-parser").ContextParser;
-                    const myParser = new ContextParser();
-                    const myContext = await myParser.parse(json); //JSON_LD
+                    const jsonParse = JSON.parse(json);
 
-                    const jsonld = ContextParser.expandTerm(
-                        'coordinates',
-                        myContext,
-                        true
-                    );
+                    // Con esto lo lee bien
+                    // El problema es que no lo interpreta bien Locations
+                    // Debería devolver una lista de valores lat,long
+                    // const lista = jsonParse.points.map(ele => [
+                    //     JSON.stringify({
+                    //         lat: ele["schema:latitude"],
+                    //         lng: ele["schema:longitude"]
+                    //     })
+                    // ]);
+
+                    // //Convierto el JSON a objeto
+                    //var objetoJson = JSON.parse(lista);
+
+                    //const copia = json;
+
+                    //console.log("Aqui esta el json antes de convertirlo: " + lista);
+
+                    //console.log("Aqui esta el json en modo objeto: " + objetoJson);
+
+                    //console.log(`Aqui esta el json: => `, copia);
+
+                    var prueba = JSON.stringify([{ lat: 37.82531985596287, lng: -122.42178214234265 }])
+                    const copia = prueba;
+
+                    console.log(`Aqui esta el json: => `, copia);
 
                     this.setState(prevState => ({
                         ...prevState,
                         load: true,
-                        locations: jsonld
+                        locations: copia
                     }));
-
-                    console.log("1.5");
-
                 } else if (response.status == 404) {
                     console.log("Documento no encontrado");
                     this.setState(prevState => ({
@@ -96,13 +109,11 @@ export class MapComponent extends Component {
                         load: true
                     }));
                 }
-                console.log("2");
             });
         }
-        //console.log(jsonld);
-        console.log("3");
     }
 
+    // Guarda los puntos en el POD
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
@@ -131,6 +142,7 @@ export class MapComponent extends Component {
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
         const location = ev.latLng;
+
         this.setState(prevState => {
             var lastPath = prevState.locations[prevState.locations.length - 1];
             prevState.locations[prevState.locations.length - 1] = [
