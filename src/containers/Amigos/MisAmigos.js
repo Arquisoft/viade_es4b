@@ -28,23 +28,30 @@ class MisAmigosComponent extends Component {
         return (
 
     <div className="app">
-        <h1>Mis Amigos</h1>
-        <button type ="button" class="btn btn-primary">Añadir amigo:</button>
+        <h1 class="friends">Mis Amigos</h1>
+      
         <form>
           <div class="add-friend">
-            <label class ="form-label" for="url">Url:</label>
-            <input type ="text" name="url" 
-                placeholder= "Ejemplo: https://ejemplo.solid.community/profile/card#me" required="true"/>
-            <label class ="form-label" for="name">Nombre:</label>
-            <input type ="text" name="name" 
-                placeholder="Ejemplo: Juan Rutas" required="true"/>
-            <button type ="submit"class="btn btn-primary">Añadir</button>
+            <div class = "label">   
+            <label  for="url">Url:</label>
+            </div>
+
+            <div class = "campoTexto">
+            <input  type ="text" name="url" 
+                placeholder= "Ejemplo: https://ejemplo.solid.community/profile/card#me" />
+            </div>
+
+            
+            <button type ="button" class="añadiramigo">Añadir amigo</button>
+            
+
           </div>  
         </form> 
         <Image src="user.image" defaultSrc="profile.svg" className="profile"/>
-          <p>Welcome back, <Value src="user.name"/>.</p>
-          <h2>Friends</h2>
-          <List src="user.friends">{friend =>   
+          <p>Welcome Back, <div class="usuario"> <Value src="user.name"/> </div>.</p>
+          <div class="amigos">
+          <h2 class = "friends">Amigos</h2>
+          <List src="user.friends">{friend =>    
                  
             <li key={friend}> + 
             <Value src={friend.name} /> --
@@ -64,6 +71,7 @@ class MisAmigosComponent extends Component {
                    
           }
           </List>
+          </div>
             
     </div>
         );
