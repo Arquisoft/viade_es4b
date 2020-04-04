@@ -126,20 +126,25 @@ export class MapComponent extends Component {
     //Añadir los marcadores
     handleMapClick = (ref, map, ev) => {
         const location = ev.latLng;
-        console.log("Aqui esta la localizacion al tocar la pantalla" + location);
+
+        const location2 = location + "";
+        const listaDivida = location2.split(",");
+        const parte1 = listaDivida[0].slice(1, -1);
+        const parte2 = listaDivida[1].substring(0, listaDivida[1].length - 1);
+        const punto = new Point(parseFloat(parte1), parseFloat(parte2));
 
         this.setState(prevState => {
             var lastPath = prevState.locations[prevState.locations.length - 1];
             prevState.locations[prevState.locations.length - 1] = [
                 ...lastPath,
-                location
+                punto
             ];
 
             return {
                 ...prevState
             };
         });
-        map.panTo(location);
+        map.panTo(punto);
     };
 
     render() {
