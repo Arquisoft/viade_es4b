@@ -4,11 +4,3 @@ export class Point {
         this.lng = longitude;
     }
 }
-
-export class Route {
-    constructor(params) {
-        if (params.itinerary) {
-            this.itinerary = params.itinerary;
-        }
-    }
-}

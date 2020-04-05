@@ -1,24 +1,12 @@
 import React from "react";
 
 export default function jsonTojsonLD(coordinates) {
-
-    // const points = coordinates.map(point => [
-    //     point.map(
-    //         eleinterno =>
-    //             JSON.stringify({
-    //                 "schema:latitude": eleinterno.lat,
-    //                 "schema:longitude": eleinterno.long
-    //             })
-    //     )
-    // ]);
-
-    const points = coordinates.map(point => [
-        JSON.stringify({
-            "schema:latitude": point.lat,
-            "schema:longitude": point.long
-        })
-    ]);
-
+    const points = coordinates.map(point =>
+        point.map(eleinterno => ({
+            "schema:latitude": eleinterno.lat,
+            "schema:longitude": eleinterno.lng
+        }))
+    );
     const data = {
         "@context": {
             "@version": 1.1,

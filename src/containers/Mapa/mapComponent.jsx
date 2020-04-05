@@ -57,7 +57,6 @@ export class MapComponent extends Component {
             doc.then(async response => {
                 if (response.status == 200) {
                     const json = await response.text();
-                    console.log("JSON:" + json);
 
                     const jsonParse = JSON.parse(json);
 
@@ -70,8 +69,6 @@ export class MapComponent extends Component {
                                 )
                         )
                     );
-
-                    console.log("Contenido:" + lista);
 
                     this.setState(prevState => ({
                         ...prevState,
@@ -100,7 +97,6 @@ export class MapComponent extends Component {
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
-            //body: jsonTojsonLD(JSON.stringify(locations)),
             body: JSON.stringify(jsonTojsonLD(locations)),
             headers: {
                 Accept: "application/ld+json"
