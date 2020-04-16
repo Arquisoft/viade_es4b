@@ -12,6 +12,7 @@ import {
   MapComponent,
   MisAmigosComponent
 } from './containers';
+import Perfil from './containers/Perfil';
 
 
 
@@ -24,7 +25,7 @@ const privateRoutes = [
   {
     id: 'profile',
     path: '/profile',
-    component: Profile
+    component: Perfil
   },
   {
     id: 'map',
