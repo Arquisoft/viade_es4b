@@ -1,4 +1,5 @@
 import React from "react";
+//import WelcomeComponent from "../Welcome/welcome.container.js";
 
 export default function jsonTojsonLD(coordinates) {
     const points = coordinates.map(point =>
@@ -7,6 +8,9 @@ export default function jsonTojsonLD(coordinates) {
             "schema:longitude": eleinterno.lng
         }))
     );
+
+    //console.log(WelcomeComponent.name);
+
     const data = {
         "@context": {
             "@version": 1.1,
@@ -16,11 +20,22 @@ export default function jsonTojsonLD(coordinates) {
             rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             xsd: "http://www.w3.org/2001/XMLSchema#",
 
+            name: {
+                "@id": "schema:name",
+                "@type": "xs:string"
+            },
+
+            author: {
+                "@id": "schema:author",
+                "@type": "@id"
+            },
+
             points: {
                 "@id": "viade:points",
                 "@container": "@list"
             }
         },
+        name: "Nombre de prueba",
         points: points
     };
 
