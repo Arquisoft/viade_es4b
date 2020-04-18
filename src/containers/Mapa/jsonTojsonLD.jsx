@@ -1,15 +1,18 @@
 import React from "react";
-//import WelcomeComponent from "../Welcome/welcome.container.js";
+import data from '@solid/query-ldflex';
+//import { ProgressPlugin } from "webpack";
+//import { WelcomeComponent } from '../Welcome/welcome.container';
 
-export default function jsonTojsonLD(coordinates) {
+export default function jsonTojsonLD(coordinates, userName) {
     const points = coordinates.map(point =>
         point.map(eleinterno => ({
             "schema:latitude": eleinterno.lat,
             "schema:longitude": eleinterno.lng
         }))
     );
-
-    //console.log(WelcomeComponent.name);
+    const userName2 = userName + "";
+    const listaDivida = userName2.split("/");
+    const nuevaRuta = listaDivida[0] + "//" + listaDivida[2] + "/profile/carde#me";
 
     const data = {
         "@context": {
@@ -36,6 +39,7 @@ export default function jsonTojsonLD(coordinates) {
             }
         },
         name: "Nombre de prueba",
+        author: nuevaRuta,
         points: points
     };
 

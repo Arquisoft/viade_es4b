@@ -98,7 +98,8 @@ export class MapComponent extends Component {
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
-            body: JSON.stringify(jsonTojsonLD(locations)),
+            body: JSON.stringify(jsonTojsonLD(locations, this.state.url)),
+            //body: JSON.stringify(jsonTojsonLD(locations)),
             headers: {
                 Accept: "application/ld+json"
             }
