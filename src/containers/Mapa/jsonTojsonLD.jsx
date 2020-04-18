@@ -14,6 +14,8 @@ export default function jsonTojsonLD(coordinates, userName) {
     const listaDivida = userName2.split("/");
     const nuevaRuta = listaDivida[0] + "//" + listaDivida[2] + "/profile/carde#me";
 
+    const fecha = new Date();
+
     const data = {
         "@context": {
             "@version": 1.1,
@@ -36,10 +38,16 @@ export default function jsonTojsonLD(coordinates, userName) {
             points: {
                 "@id": "viade:points",
                 "@container": "@list"
+            },
+
+            date: {
+                "@id": "schema:DateTime",
+                "@type": "xsd:dateTime"
             }
         },
         name: "Nombre de prueba",
         author: nuevaRuta,
+        date: fecha.toISOString(),
         points: points
     };
 
