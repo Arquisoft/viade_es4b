@@ -14,7 +14,8 @@ export class MapComponent extends Component {
         this.state = {
             url: false,
             load: false,
-            locations: [[]]
+            locations: [[]],
+            rutas: []
         };
 
         this.handleMapClick = this.handleMapClick.bind(this);
@@ -97,7 +98,7 @@ export class MapComponent extends Component {
     async updateLocations(locations) {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
-            body: JSON.stringify(jsonTojsonLD(locations)),
+            body: JSON.stringify(jsonTojsonLD(locations, this.state.url)),
             headers: {
                 Accept: "application/ld+json"
             }
