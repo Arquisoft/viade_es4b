@@ -5,6 +5,7 @@ import Welcome from './Welcome';
 import Profile from './Profile';
 import MapComponent from './Mapa';
 import MisAmigosComponent from './Amigos';
+import AyudaComponent from './Ayuda';
 
 
 export {
@@ -16,4 +17,5 @@ export {
   Profile,
   MapComponent,
   MisAmigosComponent,
+  AyudaComponent,
 };

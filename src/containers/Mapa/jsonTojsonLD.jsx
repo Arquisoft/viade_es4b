@@ -1,7 +1,5 @@
 import React from "react";
 import data from '@solid/query-ldflex';
-//import { ProgressPlugin } from "webpack";
-//import { WelcomeComponent } from '../Welcome/welcome.container';
 
 export default function jsonTojsonLD(coordinates, userName) {
     const points = coordinates.map(point =>
@@ -30,6 +28,16 @@ export default function jsonTojsonLD(coordinates, userName) {
                 "@type": "xs:string"
             },
 
+            description: {
+                "@id": "schema:description",
+                "@type": "xsd:string"
+            },
+
+            comments: {
+                "@id": "viade:comments",
+                "@type": "@id"
+            },
+
             author: {
                 "@id": "schema:author",
                 "@type": "@id"
@@ -46,6 +54,8 @@ export default function jsonTojsonLD(coordinates, userName) {
             }
         },
         name: "Nombre de prueba",
+        description: "Descripción de prueba",
+        comments: "Comentario de prueba",
         author: nuevaRuta,
         date: fecha.toISOString(),
         points: points

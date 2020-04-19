@@ -26,6 +26,12 @@ export const NavigationItems = [
     icon: '/img/amigos.png',
     label: 'navBar.friends',
     to: '/friends'
+  },
+  {
+    id: 'ayuda',
+    icon: '/img/LogoAyuda.jpg',
+    label: 'navBar.ayuda',
+    to: '/ayuda'
   }
 ];
 
@@ -35,7 +41,7 @@ export const ProfileOptions = [
     onClick: 'profileRedirect',
     icon: 'cog'
   },
-  
+
   {
     label: 'navBar.logOut',
     onClick: 'logOut',

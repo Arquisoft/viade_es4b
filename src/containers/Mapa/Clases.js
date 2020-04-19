@@ -6,9 +6,12 @@ export class Point {
 }
 
 export class Route {
-    constructor(parametros) {
-        if (parametros.points) {
-            this.points = parametros.points;
-        }
+    constructor(puntos, autor, comentario, nombreRuta, fecha, descripcion) {
+        this.points = puntos;
+        this.autor = autor;
+        this.comentario = comentario;
+        this.nombreRuta = nombreRuta;
+        this.date = fecha;
+        this.descripcion = descripcion;
     }
 }

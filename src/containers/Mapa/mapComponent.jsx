@@ -4,7 +4,6 @@ import { Point } from "./Clases.js";
 
 import SolidAuth from "solid-auth-client";
 import ldflex from "@solid/query-ldflex";
-import TextField from '@material-ui/core/TextField';
 
 import { Map, GoogleApiWrapper, Marker, Polyline } from "google-maps-react";
 
@@ -15,7 +14,8 @@ export class MapComponent extends Component {
         this.state = {
             url: false,
             load: false,
-            locations: [[]]
+            locations: [[]],
+            rutas: []
         };
 
         this.handleMapClick = this.handleMapClick.bind(this);
@@ -99,7 +99,6 @@ export class MapComponent extends Component {
         const result = await SolidAuth.fetch(this.state.url, {
             method: "PUT",
             body: JSON.stringify(jsonTojsonLD(locations, this.state.url)),
-            //body: JSON.stringify(jsonTojsonLD(locations)),
             headers: {
                 Accept: "application/ld+json"
             }
