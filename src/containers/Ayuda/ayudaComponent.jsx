@@ -13,7 +13,7 @@ export default class AyudaComponent extends Component {
                 <p></p>
                 Aquí dejo un pequeño video que muestra como añadir varias rutas
                 <div align="left">
-                    <video src="./img/videoNuevaRuta_Trim.mp4" controls width="640" height="480"></video>
+                    <video src="./img/videoNuevaRuta_Trim.mp4" controls width="500" height="400"></video>
                 </div>
 
                 <h2>Como eliminar tus rutas guardadas</h2>
@@ -21,7 +21,7 @@ export default class AyudaComponent extends Component {
                 <p></p>
                 Aquí esta un pequeño video que muestra como eliminar las rutas
                 <div align="left">
-                    <video src="./img/videoEliminarRuta_Trim.mp4" controls width="640" height="480"></video>
+                    <video src="./img/videoEliminarRuta_Trim.mp4" controls width="500" height="400"></video>
                 </div>
             </div>
         );
