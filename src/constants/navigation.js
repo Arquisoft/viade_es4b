@@ -30,7 +30,7 @@ export const NavigationItems = [
   {
     id: 'ayuda',
     icon: '/img/LogoAyuda.jpg',
-    label: 'navBar.ayuda',
+    label: 'Ayuda',
     to: '/ayuda'
   }
 ];
