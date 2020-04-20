@@ -17,7 +17,7 @@ export class WelcomeComponent extends Component<Props> {
       name: '',
       image: defaultProfilePhoto,
       isLoading: false,
-      hasImage: false
+      hasImage: false,
     };
   }
 
@@ -89,6 +89,10 @@ export class WelcomeComponent extends Component<Props> {
       errorToaster(error.message, 'Error');
     }
   };
+
+  getUserName() {
+    return this.state.user;
+  }
 
   render() {
     const { name, image, isLoading } = this.state;

@@ -78,3 +78,49 @@ h4 {
 
   justify-content: space-between;
 }
+
+.add-friend,p{
+
+display:flex;
+flex-direction:row;
+
+
+}
+
+.label{
+
+padding-top: 5px;
+margin-right : 10px;
+
+}
+.campoTexto{
+
+  
+  margin-right : 20px;
+  width: 370px;
+  
+  }
+.añadiramigo{
+
+   background-color: #2A91D7;
+
+   color: #F3F3F3;
+}
+
+.amigos{
+
+  border-top: 4px dotted #2A91D7;
+  
+}
+
+.friends{
+  color:#2A91D7
+}
+.usuario{
+
+     color:#2A91D7;
+
+     margin-left: 5px;
+}
+
+

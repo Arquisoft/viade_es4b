@@ -10,7 +10,8 @@ import {
   RegistrationSuccess,
   Profile,
   MapComponent,
-  MisAmigosComponent
+  MisAmigosComponent,
+  AyudaComponent,
 } from './containers';
 //import Perfil from './containers/Perfil';
 
@@ -36,6 +37,11 @@ const privateRoutes = [
     id: 'friends',
     path: '/friends',
     component: MisAmigosComponent
+  },
+  {
+    id: 'ayuda',
+    path: '/ayuda',
+    component: AyudaComponent
   }
 ];
 
