@@ -7,7 +7,7 @@
 
 === Infrastructure Level 1
 
-image::deploymentView.png[Deployment View]
+image::images/deploymentView.png[Deployment View]
 
 La aplicación necesita por parte del usuario: un dispositivo donde se ejecutará la aplicación y desde el que se accedera al POD, y el POD en sí mismo, que estará alojado en los propios servidores de SOLID.
 

@@ -1,18 +1,27 @@
-import React from "react";
-import { render, cleanup } from "react-testing-library";
-import { HashRouter as Router } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { act } from 'react-dom/test-utils'
+import ReactDOM from 'react-dom'
 import AuthNavBar from "../../src/components/AuthNavBar/auth-nav-bar.component";
 
-describe.only("AuthNavBar", () => {
-  afterAll(cleanup);
+let container
 
-  const { container } = render(
-    <Router>
-      <AuthNavBar t={(key) => key} />
-    </Router>
-  );
+beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
 
-  test("renders without crashing", () => {
-    expect(container).toBeTruthy();
-  });
-});
+afterEach(() => {
+  document.body.removeChild(container)
+  container = null
+})
+
+it('AuthNavBar', () => {
+  act(() => {
+    ReactDOM.render(<Router>
+      <AuthNavBar />
+    </Router>, container)
+  })
+
+  expect(container).toBeTruthy()
+})
