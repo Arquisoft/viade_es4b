@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import './MisAmigos.css';
 
-import { Value, Image, List } from '@solid/react';
-import { Link } from "react-router-dom";
+import { Value, List } from '@solid/react';
 
 
 
@@ -33,10 +32,10 @@ class MisAmigosComponent extends Component {
           <div class="amigos">
           <List src="user.friends">{friend =>    
                  
-            <li key={friend}> + 
-            <Value src={friend} /> 
-            
-        {this.props.children}
+            <li  key={friend}> 
+            <a href={friend}> + 
+            <Value  src={friend} /> 
+            </a>
             </li>
                    
           }
