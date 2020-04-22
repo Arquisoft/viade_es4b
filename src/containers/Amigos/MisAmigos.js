@@ -28,43 +28,13 @@ class MisAmigosComponent extends Component {
         return (
 
     <div className="app">
-        <h1 class="friends">Mis Amigos</h1>
-      
-        <form>
-          <div class="add-friend">
-            <div class = "label">   
-            <label  for="url">Url:</label>
-            </div>
-
-            <div class = "campoTexto">
-            <input  type ="text" name="url" 
-                placeholder= "Ejemplo: https://ejemplo.solid.community/profile/card#me" />
-            </div>
-
-            
-            <button type ="button" class="añadiramigo">Añadir amigo</button>
-            
-
-          </div>  
-        </form> 
-        <Image src="user.image" defaultSrc="profile.svg" className="profile"/>
-          <p>Welcome Back, <div class="usuario"> <Value src="user.name"/> </div>.</p>
+        <h1 class="friends">Mis Amigos</h1>       
+          <p>Amigos de <div class="usuario"> <Value src="user.name"/> </div>.</p>
           <div class="amigos">
-          <h2 class = "friends">Amigos</h2>
           <List src="user.friends">{friend =>    
                  
             <li key={friend}> + 
-            <Value src={friend.name} /> --
-            <Value src={friend.storage}/>  
-            <Link to={{
-              pathname: '/profile',
-              state: {
-                userId: friend
-              }
-              
-            }} >
-            Ver Perfil
-            </Link>
+            <Value src={friend} /> 
             
         {this.props.children}
             </li>
