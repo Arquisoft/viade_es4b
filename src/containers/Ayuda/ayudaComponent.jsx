@@ -1,0 +1,32 @@
+import { rende, } from "react-testing-library";
+import React, { useState, Component } from "react";
+
+export default class AyudaComponent extends Component {
+    render() {
+        return (
+            <div className="ayuda-Component">
+                <h1 style={{ color: 'black', margin: 10 }}>Guía de la aplicación</h1>
+                <h2 style={{ color: 'black', margin: 10 }}>Como añadir un nueva ruta</h2>
+
+
+                <p style={{ color: 'white', margin: 30 }}>Para añadir un nueva ruta el usuario deberá ir a la pestaña mapa, una vez ahi deberá pinchar en el mapa para indicar el primer punto de la ruta, para seguir marcandos puntos de la ruta el usuario deberá pinchar nuevamente en el mapa creando puntos intermedios.</p>
+
+                <p style={{ color: 'white', margin: 30 }}>Cuando el cliente termine de marcar todos los puntos deberá pulsar el botón "Marcar ruta".</p>
+                <p style={{ color: 'white', margin: 30 }}>Aquí dejo un pequeño video que muestra como añadir varias rutas.</p>
+
+                <div align="left">
+                    <video src="./img/videoNuevaRuta_Trim.mp4" controls width="500" height="400"></video>
+                </div>
+
+                <h2 style={{ color: 'black', margin: 10 }}>Como eliminar tus rutas guardadas</h2>
+                <p style={{ color: 'white', margin: 30 }}>Para eliminar las rutas que el usuario tiene guardadas deberá ir a la pestaña mapa, una vez ahi debera dar al botón borrar rutas.</p>
+
+                <p style={{ color: 'white', margin: 30 }}> Aquí esta un pequeño video que muestra como eliminar las rutas.</p>
+
+                <div align="left">
+                    <video src="./img/videoEliminarRuta_Trim.mp4" controls width="500" height="400"></video>
+                </div>
+            </div >
+        );
+    }
+}

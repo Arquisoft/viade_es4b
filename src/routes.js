@@ -10,9 +10,10 @@ import {
   RegistrationSuccess,
   Profile,
   MapComponent,
-  MisAmigosComponent
+  MisAmigosComponent,
+  AyudaComponent,
 } from './containers';
-import Perfil from './containers/Perfil';
+//import Perfil from './containers/Perfil';
 
 
 
@@ -25,7 +26,7 @@ const privateRoutes = [
   {
     id: 'profile',
     path: '/profile',
-    component: Perfil
+    component: Profile
   },
   {
     id: 'map',
@@ -36,6 +37,11 @@ const privateRoutes = [
     id: 'friends',
     path: '/friends',
     component: MisAmigosComponent
+  },
+  {
+    id: 'ayuda',
+    path: '/ayuda',
+    component: AyudaComponent
   }
 ];
 

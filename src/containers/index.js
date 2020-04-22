@@ -4,7 +4,8 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import MapComponent from './Mapa';
-import MisAmigosComponent from './Amigos'
+import MisAmigosComponent from './Amigos';
+import AyudaComponent from './Ayuda';
 
 
 export {
@@ -15,6 +16,6 @@ export {
   Welcome,
   Profile,
   MapComponent,
-  
-  MisAmigosComponent
+  MisAmigosComponent,
+  AyudaComponent,
 };
