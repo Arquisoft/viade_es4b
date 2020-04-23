@@ -1,6 +1,3 @@
-import React from "react";
-import data from '@solid/query-ldflex';
-
 export default function jsonTojsonLD(coordinates, userName) {
     const points = coordinates.map(point =>
         point.map(eleinterno => ({
