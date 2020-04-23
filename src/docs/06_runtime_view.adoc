@@ -16,7 +16,7 @@ un POD) que serán validados por SOLID, despues de esta validación SOLID acepta
 ----
 Usuario -> SOLID: Peticion de autenticación
 SOLID -> BBDD(POD): Validación de datos
-(POD)BBDD -> SOLID: Respuesta a la validación
+POD_BBDD -> SOLID: Respuesta a la validación
 SOLID --> Usuario: Respuesta a la autenticación
 ----
 
@@ -24,16 +24,16 @@ SOLID --> Usuario: Respuesta a la autenticación
 
 === Ver rutas de un usuario
 
-  Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de conectarse al POD del usuario y devolvera una vista con las rutas listadas siguiendo un criterio determinado.
+Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de conectarse al POD del usuario y devolvera una vista con las rutas listadas siguiendo un criterio determinado.
   
-  [plantuml,"Sequence diagram",png]
-	----
-	Usuario(X) -> APP: Solicitar listado de rutas
-	APP -> BBDD(POD de X): Solicitar las rutas al POD 
-	(POD de X)BBDD -> APP: Devuelve las rutas en formato JSON (Ejemplo)
-	APP -> APP: Genera unas vista a partir del JSON recibido
-	APP -> Usuario: Envia la vista de la rutas generada
-	----
+[plantuml,"Sequence diagram2",png]
+----
+Usuario_X -> APP: Solicitar listado de rutas
+APP -> BBDD(POD de X): Solicitar las rutas al POD
+POD_de_X_BBDD -> APP: Devuelve las rutas en formato JSON (Ejemplo)
+APP -> APP: Genera unas vista a partir del JSON recibido
+APP -> Usuario: Envia la vista de la rutas generada
+----
 
 === Ver una ruta de un amigo
 
