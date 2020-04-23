@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './perfil.style'
-import { Value, Image, List } from '@solid/react';
+import { Value} from '@solid/react';
 
 class Perfil extends Component {
 

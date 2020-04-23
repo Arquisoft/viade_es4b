@@ -24,7 +24,6 @@ class MisAmigosComponent extends Component {
 
 
     render() {
-      const { profileInput, activeProfile } = this.state;
         return (
 
     <div className="app">

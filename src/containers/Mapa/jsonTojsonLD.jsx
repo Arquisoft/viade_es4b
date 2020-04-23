@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function jsonTojsonLD(coordinates) {
     const points = coordinates.map(point =>
         point.map(eleinterno => ({

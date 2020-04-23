@@ -8,7 +8,6 @@ import {
   PageNotFound,
   Welcome,
   RegistrationSuccess,
-  Profile,
   MapComponent,
   MisAmigosComponent
 } from './containers';

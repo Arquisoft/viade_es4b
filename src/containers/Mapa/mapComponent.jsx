@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import jsonTojsonLD from "./jsonTojsonLD.jsx";
 import { Point } from "./Clases.js";
 
@@ -24,10 +24,6 @@ export class MapComponent extends Component {
         this.handleClear = this.handleClear.bind(this);
     }
 
-    //Recarga la pagina
-    reload = () => {
-        window.location.replace("");
-    };
 
     async setUrlFromStorage() {
         if (this.props.webId && !this.state.url) {
@@ -46,7 +42,7 @@ export class MapComponent extends Component {
     }
 
     //Cargar el json
-    handleLoad(event) {
+    handleLoad() {
         this.setUrlFromStorage();
     }
 
@@ -109,11 +105,11 @@ export class MapComponent extends Component {
         }));
     }
 
-    async handleClear(event) {
+    async handleClear() {
         await this.updateLocations([[]]);
     }
 
-    async handleSave(event) {
+    async handleSave() {
         //Funciona si lo pongo en el onclik pero en un boton no
         var locations = [...this.state.locations, []];
         await this.updateLocations(locations);
