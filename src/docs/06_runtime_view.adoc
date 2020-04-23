@@ -35,6 +35,13 @@ APP -> APP: Genera unas vista a partir del JSON recibido
 APP -> Usuario: Envia la vista de la rutas generada
 ----
 
-=== Ver una ruta de un amigo
-
-  *TBD
+=== Ver lista de amigos
+Para ver la lista de amigos de un usuario, se introducirá en la aplicación el nombre del usuario del que queremos obtener la lista y la aplicación generará una interfaz con dicha lista.
+[plantuml,"Sequence diagram3",png]
+----
+Usuario -> APP: Solicita el listado de amigos
+Usuario -> APP: Proporciona usuario actual
+APP -> BBDD(POD) Solicita la lista de amigos del usuario pasado
+BBDD_POD_ -> APP: Devuelve la lista de amigos
+APP -> APP: Genera la vista a partir de la lista
+APP -> Usuario: Responde con la interfaz solicitad

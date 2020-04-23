@@ -10,9 +10,9 @@ describe('Google Map', () => {
         <Router>
             <GoogleMap/>
         </Router>
-    )
+    );
 
     test('El mapa se renderizar sin problema', () => {
         expect(container).toBeTruthy()
     })
-})
+});
