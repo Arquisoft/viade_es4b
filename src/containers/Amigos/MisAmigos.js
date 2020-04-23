@@ -17,13 +17,10 @@ class MisAmigosComponent extends Component {
       const { webId} = this.props;
       if ( webId )
         this.setState({ profileInput: webId});
-    }
-    saveFriend = (uri) => {
     };
 
 
     render() {
-      const { profileInput, activeProfile } = this.state;
         return (
 
     <div className="app">
