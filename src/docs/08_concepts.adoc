@@ -16,7 +16,7 @@
 | POD         | Dónde el usuario puede almacenar las rutas
 |===
 
-image:images/DiagramaClases.png["Diagrama de clases inicial"]
+image:DiagramaClases.png["Diagrama de clases inicial"]
 
 === Arquitectura y diseño
 
