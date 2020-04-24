@@ -78,10 +78,7 @@ const AuthNavBar = React.memo((props: Props) => {
       navigation={navigation}
       sticky
       toolbar={[
-        {
-          component: () => <LanguageDropdown {...{ t, i18n }} />,
-          id: 'language'
-        },
+       
         
         {
           component: props => <NavBarContainer {...{ t, i18n, webId, history, ...props }} />,
