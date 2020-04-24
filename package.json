@@ -1,8 +1,8 @@
 {
-  "name": "viade_0",
+  "name": "viade_es4b",
   "version": "0.1.0",
   "homepage": "https://arquisoft.github.io/viade_es4b/",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@babel/core": "7.1.6",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

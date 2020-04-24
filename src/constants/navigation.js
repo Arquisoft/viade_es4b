@@ -36,11 +36,7 @@ export const NavigationItems = [
 ];
 
 export const ProfileOptions = [
-  {
-    label: 'navBar.profile',
-    onClick: 'profileRedirect',
-    icon: 'cog'
-  },
+  
 
   {
     label: 'navBar.logOut',
