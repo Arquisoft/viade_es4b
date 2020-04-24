@@ -4,7 +4,7 @@ import Backend from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 const backend= new Backend(null, {
-  loadPath: "viade_es4b/locales/{{lng}}/{{ns}}.json"
+  loadPath: "locales/{{lng}}/{{ns}}.json"
 });  
 
 i18n
