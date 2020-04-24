@@ -54,7 +54,7 @@ const Routes = () => (
         <NotLoggedInLayout path="/viade_es4b/register/success" component={RegistrationSuccess} exact />
         <PublicLayout path="/viade_es4b/404" component={PageNotFound} exact />
         <Redirect from="/" to="/viade_es4b/welcome" exact />
-        <PrivateLayout path="/viade_es4b/" routes={privateRoutes} />
+        <PrivateLayout path="/viade_es4b/welcome" routes={privateRoutes} />
         <Redirect from="/login" to="/viade_es4b/login" exact />
       </Switch>
     </Fragment>
