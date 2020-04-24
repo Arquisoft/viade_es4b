@@ -45,3 +45,4 @@ APP -> BBDD(POD) Solicita la lista de amigos del usuario pasado
 BBDD_POD_ -> APP: Devuelve la lista de amigos
 APP -> APP: Genera la vista a partir de la lista
 APP -> Usuario: Responde con la interfaz solicitad
+----
