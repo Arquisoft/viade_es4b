@@ -57,6 +57,7 @@ const Routes = () => (
         <PrivateLayout path="/viade_es4b/" routes={privateRoutes} />
         <Redirect from="/login" to="/viade_es4b/login" exact />
         <Redirect from= "/viade_es4b/#" to="/viade_es4b/welcome" exact/>
+        <Redirect from= "/viade_es4b/404" to="/viade_es4b/welcome" exact/>
       </Switch>
     </Fragment>
   </Router>
