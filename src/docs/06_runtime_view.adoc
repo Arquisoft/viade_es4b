@@ -14,10 +14,18 @@ un POD) que serán validados por SOLID, despues de esta validación SOLID acepta
 
 
 ----
-Usuario -> SOLID: Peticion de autenticación
-SOLID -> BBDD(POD): Validación de datos
-POD_BBDD -> SOLID: Respuesta a la validación
-SOLID --> Usuario: Respuesta a la autenticación
+
+title Login en Solid
+
+actor USUARIO #green
+control VIADE #purple
+database POD #yellow
+
+USUARIO -> VIADE: Peticion de autenticación
+VIADE -> POD: Validación de datos
+POD -> VIADE: Respuesta a la validación
+VIADE -> USUARIO: Respuesta a la autenticación
+
 ----
 
 
@@ -28,21 +36,33 @@ Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de
   
 
 ----
-Usuario_X -> APP: Solicitar listado de rutas
-APP -> BBDD(POD de X): Solicitar las rutas al POD
-POD_de_X_BBDD -> APP: Devuelve las rutas en formato JSON (Ejemplo)
-APP -> APP: Genera unas vista a partir del JSON recibido
-APP -> Usuario: Envia la vista de la rutas generada
+title Ver rutas de un usuario
+
+actor USUARIO #green
+control VIADE #purple
+database POD #yellow
+
+USUARIO -> APP: Solicitar listado de rutas
+VIADE -> POD: Solicitar las rutas al POD
+POD -> VIADE: Devuelve las rutas en formato JSON (Ejemplo)
+VIADE -> VIADE: Genera unas vista a partir del JSON recibido
+VIADE -> USUARIO: Envia la vista de la rutas generada
 ----
 
 === Ver lista de amigos
 Para ver la lista de amigos de un usuario, se introducirá en la aplicación el nombre del usuario del que queremos obtener la lista y la aplicación generará una interfaz con dicha lista.
 
 ----
-Usuario -> APP: Solicita el listado de amigos
-Usuario -> APP: Proporciona usuario actual
-APP -> BBDD(POD) Solicita la lista de amigos del usuario pasado
-BBDD_POD_ -> APP: Devuelve la lista de amigos
-APP -> APP: Genera la vista a partir de la lista
-APP -> Usuario: Responde con la interfaz solicitad
+title Ver lista de amigos
+
+actor USUARIO #green
+control VIADE #purple
+database POD #yellow
+
+USUARIO -> VIADE: Solicita el listado de amigos
+USUARIO -> VIADE: Proporciona usuario actual
+VIADE -> POD Solicita la lista de amigos del usuario pasado
+POD -> VIADE: Devuelve la lista de amigos
+VIADE -> VIADE: Genera la vista a partir de la lista
+VIADE -> USUARIO: Responde con la interfaz solicitad
 ----
