@@ -19,6 +19,11 @@ import {
 
 const privateRoutes = [
   {
+    id: 'home',
+    path: '/viade_es4b/',
+    component: Welcome
+  },
+  {
     id: 'welcome',
     path: '/viade_es4b/welcome',
     component: Welcome
