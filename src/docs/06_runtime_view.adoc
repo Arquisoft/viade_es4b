@@ -12,7 +12,7 @@ A continuación, se mostrarán diagramas para poder ver la interacción que espe
 Cuando un usuario intente logearse en nuestro sistema deberá iniciar sesion con unas credenciales (por lo que necesitara
 un POD) que serán validados por SOLID, despues de esta validación SOLID aceptará o rechazará la petición de logeo.
 
-[plantuml,"Sequence diagram",png]
+
 ----
 Usuario -> SOLID: Peticion de autenticación
 SOLID -> BBDD(POD): Validación de datos
@@ -26,7 +26,7 @@ SOLID --> Usuario: Respuesta a la autenticación
 
 Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de conectarse al POD del usuario y devolvera una vista con las rutas listadas siguiendo un criterio determinado.
   
-[plantuml,"Sequence diagram2",png]
+
 ----
 Usuario_X -> APP: Solicitar listado de rutas
 APP -> BBDD(POD de X): Solicitar las rutas al POD
@@ -37,7 +37,7 @@ APP -> Usuario: Envia la vista de la rutas generada
 
 === Ver lista de amigos
 Para ver la lista de amigos de un usuario, se introducirá en la aplicación el nombre del usuario del que queremos obtener la lista y la aplicación generará una interfaz con dicha lista.
-[plantuml,"Sequence diagram3",png]
+
 ----
 Usuario -> APP: Solicita el listado de amigos
 Usuario -> APP: Proporciona usuario actual
