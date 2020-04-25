@@ -90,7 +90,7 @@ class NavBarProfile extends Component<Props> {
       // Remove localStorage
       localStorage.removeItem('solid-auth-client');
       // Redirect to login page
-      window.location = '/viade_es4b/login';
+      window.location = '/viade_es4b/';
     } catch (error) {
       errorToaster(error.message, 'Error');
     }
