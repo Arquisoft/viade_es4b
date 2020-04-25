@@ -4,32 +4,32 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: '/img/icon/apps.svg',
+    icon: '/viade_es4b/img/icon/apps.svg',
     label: 'navBar.welcome',
     to: '/viade_es4b/welcome'
   },
   {
     id: 'profile',
-    icon: '/img/people.svg',
+    icon: '/viade_es4b/img/people.svg',
     label: 'navBar.profile',
     to: '/viade_es4b/profile'
   },
   {
     id: 'map',
-    icon: '/img/mapa.jpg',
+    icon: '/viade_es4b/img/mapa.jpg',
     label: 'navBar.map',
     to: '/viade_es4b/map'
   }
   ,
   {
     id: 'friends',
-    icon: '/img/amigos.png',
+    icon: '/viade_es4b/img/amigos.png',
     label: 'navBar.friends',
     to: '/viade_es4b/friends'
   },
   {
     id: 'ayuda',
-    icon: '/img/LogoAyuda.jpg',
+    icon: '/viade_es4b/img/LogoAyuda.jpg',
     label: 'Ayuda',
     to: '/viade_es4b/ayuda'
   }

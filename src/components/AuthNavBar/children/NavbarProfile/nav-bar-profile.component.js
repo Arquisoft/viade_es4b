@@ -47,7 +47,7 @@ let beforeContext;
 class NavBarProfile extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = { image: '/img/icon/empty-profile.svg' };
+    this.state = { image: '/viade_es4b/img/icon/empty-profile.svg' };
   }
 
   state = {
@@ -74,7 +74,7 @@ class NavBarProfile extends Component<Props> {
   }
 
   // eslint-disable-next-line react/destructuring-assignment
-  profileRedirect = () => this.props.history.push('/profile');
+  profileRedirect = () => this.props.history.push('/viade_es4b/profile');
 
   // eslint-disable-next-line react/destructuring-assignment
   formModelRenderRedirect = () => this.props.history.push('/formModel/renderer');
