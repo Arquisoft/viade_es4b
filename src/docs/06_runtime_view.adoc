@@ -22,7 +22,9 @@ Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de
 
 image::Sequence diagram2.png[Diagrama de secuencia 2]
 
+
 === Ver lista de amigos
 Para ver la lista de amigos de un usuario, se introducirá en la aplicación el nombre del usuario del que queremos obtener la lista y la aplicación generará una interfaz con dicha lista.
 
 image::Sequence diagram3.png[Diagrama de secuencia 3]
+

@@ -11,7 +11,7 @@ describe.only('Navigation', () => {
   const navigation = [
     {
       id: 'welcome',
-      icon: 'img/icon/apps.svg',
+      icon: '/viade_es4b/img/icon/apps.svg',
       label: 'Welcome',
       to: '/welcome'
     }

@@ -4,9 +4,9 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: '/img/icon/apps.svg',
+    icon: '/viade_es4b/img/icon/apps.svg',
     label: 'navBar.welcome',
-    to: '/welcome'
+    to: '/viade_es4b/welcome'
   }
 ];
 

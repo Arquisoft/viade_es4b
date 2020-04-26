@@ -19,28 +19,33 @@ import {
 
 const privateRoutes = [
   {
+    id: 'home',
+    path: '/viade_es4b/',
+    component: Welcome
+  },
+  {
     id: 'welcome',
-    path: '/welcome',
+    path: '/viade_es4b/welcome',
     component: Welcome
   },
   {
     id: 'profile',
-    path: '/profile',
+    path: '/viade_es4b/profile',
     component: Profile
   },
   {
     id: 'map',
-    path: '/map',
+    path: '/viade_es4b/map',
     component: MapComponent
   },
   {
     id: 'friends',
-    path: '/friends',
+    path: '/viade_es4b/friends',
     component: MisAmigosComponent
   },
   {
     id: 'ayuda',
-    path: '/ayuda',
+    path: '/viade_es4b/ayuda',
     component: AyudaComponent
   }
 ];
@@ -49,13 +54,16 @@ const Routes = () => (
   <Router>
     <Fragment>
       <Switch>
-        <NotLoggedInLayout component={Login} path="/login" exact />
-        <NotLoggedInLayout component={Register} path="/register" exact />
-        <NotLoggedInLayout path="/register/success" component={RegistrationSuccess} exact />
-        <PublicLayout path="/404" component={PageNotFound} exact />
-        <Redirect from="/" to="/welcome" exact />
-        <PrivateLayout path="/" routes={privateRoutes} />
-        <Redirect to="/404" />
+        <NotLoggedInLayout component={Login} path="/viade_es4b/login" exact />
+        <NotLoggedInLayout component={Register} path="/viade_es4b/register" exact />
+        <NotLoggedInLayout path="/viade_es4b/register/success" component={RegistrationSuccess} exact />
+        <PublicLayout path="/viade_es4b/404" component={PageNotFound} exact />
+        <Redirect from="/" to="/viade_es4b/welcome" exact />
+        <PrivateLayout path="/viade_es4b/" routes={privateRoutes} />
+        <Redirect from="/login" to="/viade_es4b/login" exact />
+        <Redirect from= "/viade_es4b/#" to="/viade_es4b/welcome" exact/>
+       
+        
       </Switch>
     </Fragment>
   </Router>

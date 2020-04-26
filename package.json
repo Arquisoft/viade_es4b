@@ -1,7 +1,7 @@
 {
-  "name": "viade_0",
+  "name": "viade_es4b",
   "version": "0.1.0",
-  "homepage": "https://arquisoft.github.io/viade_0/",
+  "homepage": "https://arquisoft.github.io/viade_es4b/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.6",
@@ -70,7 +70,9 @@
     "test": "node scripts/test.js",
     "docs": "shx rm -rf build/docs && asciidoctor -D build/docs -a imagesdir=./images -r asciidoctor-diagram src/docs/index.adoc && shx cp -R src/docs/images build/docs",
     "eject": "react-scripts eject",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -132,6 +134,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
+    "gh-pages": "^2.2.0",
     "html-webpack-include-assets-plugin": "^1.0.6",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "husky": "^1.3.1",
