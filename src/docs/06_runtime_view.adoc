@@ -12,57 +12,19 @@ A continuación, se mostrarán diagramas para poder ver la interacción que espe
 Cuando un usuario intente logearse en nuestro sistema deberá iniciar sesion con unas credenciales (por lo que necesitara
 un POD) que serán validados por SOLID, despues de esta validación SOLID aceptará o rechazará la petición de logeo.
 
-
-----
-
-title Login en Solid
-
-actor USUARIO #green
-control VIADE #purple
-database POD #yellow
-
-USUARIO -> VIADE: Peticion de autenticación
-VIADE -> POD: Validación de datos
-POD -> VIADE: Respuesta a la validación
-VIADE -> USUARIO: Respuesta a la autenticación
-
-----
+image::Sequence diagram.png[Diagrama de secuencia 1]
 
 
 
 === Ver rutas de un usuario
 
 Cuando usuario(Autenticado) quiera ver sus rutas la aplicación se encargará de conectarse al POD del usuario y devolvera una vista con las rutas listadas siguiendo un criterio determinado.
-  
 
-----
-title Ver rutas de un usuario
+image::Sequence diagram2.png[Diagrama de secuencia 2]
 
-actor USUARIO #green
-control VIADE #purple
-database POD #yellow
-
-USUARIO -> APP: Solicitar listado de rutas
-VIADE -> POD: Solicitar las rutas al POD
-POD -> VIADE: Devuelve las rutas en formato JSON (Ejemplo)
-VIADE -> VIADE: Genera unas vista a partir del JSON recibido
-VIADE -> USUARIO: Envia la vista de la rutas generada
-----
 
 === Ver lista de amigos
 Para ver la lista de amigos de un usuario, se introducirá en la aplicación el nombre del usuario del que queremos obtener la lista y la aplicación generará una interfaz con dicha lista.
 
-----
-title Ver lista de amigos
+image::Sequence diagram3.png[Diagrama de secuencia 3]
 
-actor USUARIO #green
-control VIADE #purple
-database POD #yellow
-
-USUARIO -> VIADE: Solicita el listado de amigos
-USUARIO -> VIADE: Proporciona usuario actual
-VIADE -> POD Solicita la lista de amigos del usuario pasado
-POD -> VIADE: Devuelve la lista de amigos
-VIADE -> VIADE: Genera la vista a partir de la lista
-VIADE -> USUARIO: Responde con la interfaz solicitad
-----
