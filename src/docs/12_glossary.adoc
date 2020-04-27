@@ -9,4 +9,7 @@
 | Término         | Definición
 | POD     | Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos.
 | SOLID     | Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos.
+| React     | React es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
+| Travis     | Es un servicio de integración continua que se utiliza para construir y probar proyectos de software alojados en GitHub.
+| Jest     | Es un marco de prueba de JavaScript mantenido por Facebook, con un enfoque en la simplicidad.
 |===
