@@ -1,5 +1,5 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Contexto y alcance del sistema
 === Contexto de negocio
 
 

@@ -1,5 +1,5 @@
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de la solución
 
 
 
@@ -15,7 +15,7 @@ Para desarrollar la aplicación se utilizará :
 * JSON: Para la administración de rutas en el POD utilizaremos este formato.
 
 
-.TO-DO
+
 .*¿Cómo vamos a cumplir los atributos de calidad?*
 Por orden de prioridad, explicaré como conseguiremos cumplir con algunos de los atributos.
 

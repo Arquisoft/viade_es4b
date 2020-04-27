@@ -1,9 +1,9 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== Restricciones de la arquitectura
 
 [options="header",cols="2,2"]
 |===
-|Constraint|Explanation
+|Restricción|Explicación
 | Usar el framework React | Sera necesario aprender a usar React 
 | Usar la arquitectura Solid | Sera necesario aprender como es la arquitectura Solid
 | Usar una base de datos descentralizada | Tendremos que aprender a crear y trabajar con bases de datos descentralizadas 

@@ -1,5 +1,5 @@
 [[section-concepts]]
-== Cross-cutting Concepts
+== Conceptos
 
 
 
@@ -29,18 +29,14 @@ Para realizar esta documentación usaremos arc42, que nos proporciona plantillas
 === Experiencia de Usuario
 
 ==== Diseño de la interfaz de usuario
-La interfaz de usuario será desarrollada con React.
+La interfaz de usuario será desarrollada con React y será una interfaz fácil de utilizar donde cada funcionalidad sea entendible por cualquier usuario.
 
 ==== Internacionalización
-La aplicación estará disponible en castellano_
+La aplicación estará disponible en castellano.
 
 === Under-the-hood
 
 En cuanto a persistencia, la aplicación usará el propio POD del usuario como base de datos del servidor SOLID donde esté alojada la cuenta. El usuario podrá almacenar en el POD todas las rutas que comparta. El sistema se basará en una arquitectura descentralizada en la que los datos estarán separados de la aplicación.
-
-==== Manejo de expcepciones y errores 
-Se completará más adelante.
-
 
 === Seguridad
 
@@ -48,4 +44,4 @@ Todas las rutas y demás archivos que el usuario comparta, así como sus datos, 
 
 === Conceptos de desarrollo
 
-Se completará más adelante.
+La mecánica a seguir en cuanto al desarrollo de la aplicación consistirá en proponer una idea, que tendrá que ser aceptada por el equipo, repartirnos las tareas de esa idea para después implementarla y, por último, asegurarnos de que funciona mediante test.

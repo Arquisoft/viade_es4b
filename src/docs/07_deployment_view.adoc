@@ -1,11 +1,11 @@
 [[section-deployment-view]]
 
 
-== Deployment View
+== Vista del tiempo de despliegue
 
 
 
-=== Infrastructure Level 1
+=== Infraestructura primer nivel
 
 image::deploymentView.png[Deployment View]
 
@@ -16,5 +16,5 @@ Un servidor de SOLID puede ser configurado por cualquiera, así el usuario podr�
 ==== Requisitos y SO
 Para ejecutar la aplicación es necesario tener instalado en el dispositivo Node.js. En cuanto al Sistema Operativo, la aplicación está pensada para ser multiplataforma.
 
-=== Infrastructure Level 2
+=== Infraestructura segundo nivel
 * POD de Solid: espacio de almacenamiento público donde cada uno decide sobre su contenido qué es público y qué es privado.
