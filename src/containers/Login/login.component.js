@@ -48,7 +48,7 @@ const LoginComponent = () => {
                 inputLogin: '',
                 linkButton: ''
               }}
-              providers={Provider.getIdentityProviders()}
+              
             />
           </PanelBody>
         </LoginPanel>
