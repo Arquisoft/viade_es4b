@@ -145,13 +145,47 @@ export class MapComponent extends Component {
                 <span>
                     <p></p>
                 </span>
+        
 
-                <button onClick={this.handleSave} className="btn btn-secondary">
+                <button onClick={this.handleSave} class="btn-ruta" className="btn btn-secondary">
                     Marcar ruta
         </button>
-                <button onClick={this.handleClear} className="btn btn-secondary">
+                <button onClick={this.handleClear} class="btn-ruta" className="btn btn-secondary">
                     Borrar rutas
         </button>
+        
+
+        
+        <form>
+
+        <div class = "cont">
+
+            <div class = "dnombre">
+
+                <div class = "nruta">
+
+                     <label  for="nombreRuta">Nombre:</label>
+                    <input class="nombre" placeholder = "Ruta en Bici"></input>
+
+                 </div>
+
+                <div class = "nruta">
+
+                    <label for="imagenRuta" >Imagen:</label>
+                    <input  class="imagen" placeholder="Ejemplo.png"></input>
+
+                </div>
+
+            </div>
+
+            <label class = "labeldescripcion" for="descripcion" >Descripcion:</label>
+            <input  class="descripcion" placeholder="Descripción de la ruta"></input>
+
+        </div>
+         
+        </form>
+
+       
                 <span>
                     <p></p>
                 </span>

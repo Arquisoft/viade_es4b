@@ -136,3 +136,61 @@ form-group .select-role {
 .map {
   height: calc(100% - 120px) !important;
 }
+ 
+.formulario{
+
+  display: flex;
+  flex-direction: row;
+  margin-top : 10px;
+
+
+}
+
+.cont{
+
+  display: flex;
+  flex-direction: row;
+  margin-left: 310px;
+}
+
+.dnombre{
+
+  display:flex;
+  flex-direction: column;
+}
+
+.labeldescripcion{
+
+  
+  margin-left: 120px;
+}
+
+.nruta{
+
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+
+}
+
+.nombre{
+     
+  margin-left: 10px;
+  width: 250px;
+  
+}
+
+.imagen{
+  margin-left: 14px;
+  width: 250px;
+}
+
+.descripcion{
+  margin-left: 10px;
+  width: 400px;
+  
+}
+
+
+
+
