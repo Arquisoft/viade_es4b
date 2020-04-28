@@ -49,7 +49,7 @@ const Profile = ({ webId }: Props) => {
   };
 
   return (
-    <ProfileWrapper data-testid="profile-component">
+    <ProfileWrapper data-testid="profile-component" className="profile-wrapper">
       <ProfileContainer>
         {webId && (
           <Fragment>
@@ -62,21 +62,21 @@ const Profile = ({ webId }: Props) => {
               />
             </Header>
 
-            <AutoSaveNotification className="banner-wrap--warning banner">
+            <AutoSaveNotification className="banner-wrap--warning banner" data-testid="autosavenotification">
               <div className="banner-wrap__content">
                 <i className="icon fa fa-exclamation-circle" />
                 {t('profile.autosaveNotification')}
               </div>
             </AutoSaveNotification>
 
-            <FormRenderContainer>
+            <FormRenderContainer data-testid="form-render-container">
               <WebId>
                 <FontAwesomeIcon icon="id-card" />
                 <a href={webId} target="_blank" rel="noopener noreferrer">
                   {webId}
                 </a>
               </WebId>
-              <FormModel
+              <FormModel data-testid="form-model"
                 {...{
                   modelPath: 'https://solidsdk.inrupt.net/sdk/userprofile.ttl#formRoot',
                   podPath: webId,
