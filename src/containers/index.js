@@ -18,4 +18,5 @@ export {
   MapComponent,
   MisAmigosComponent,
   AyudaComponent,
+  
 };

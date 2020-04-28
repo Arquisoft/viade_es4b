@@ -1,5 +1,5 @@
-import { rende, } from "react-testing-library";
-import React, { useState, Component } from "react";
+
+import React, {  Component } from "react";
 
 export default class AyudaComponent extends Component {
     render() {
