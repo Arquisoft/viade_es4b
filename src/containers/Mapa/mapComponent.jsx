@@ -6,6 +6,7 @@ import SolidAuth from "solid-auth-client";
 import ldflex from "@solid/query-ldflex";
 
 import { Map, GoogleApiWrapper, Marker, Polyline } from "google-maps-react";
+import AppComponent from '../Imagen/imagen.component';
 
 export class MapComponent extends Component {
     constructor(props) {
@@ -110,7 +111,7 @@ export class MapComponent extends Component {
     }
 
     async handleSave() {
-        //Funciona si lo pongo en el onclik pero en un boton no
+       
         var locations = [...this.state.locations, []];
         await this.updateLocations(locations);
     }
@@ -153,8 +154,9 @@ export class MapComponent extends Component {
                     Borrar rutas
         </button>
                 <span>
-                    <p></p>
+        <p></p>
                 </span>
+                <AppComponent/>
                 <Map
                     google={this.props.google}
                     className={"map"}
@@ -187,6 +189,7 @@ export class MapComponent extends Component {
                             <Marker key={`marker1_${i}`} position={location} />
                         ))
                     )}
+                   
                 </Map>
             </div>
         );

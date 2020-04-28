@@ -11,9 +11,12 @@ import {
   Profile,
   MapComponent,
   MisAmigosComponent,
-  AyudaComponent,
+  AyudaComponent
+  
 } from './containers';
-//import Perfil from './containers/Perfil';
+
+
+
 
 
 

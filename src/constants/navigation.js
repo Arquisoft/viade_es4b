@@ -28,6 +28,12 @@ export const NavigationItems = [
     to: '/viade_es4b/friends'
   },
   {
+    id: 'photo',
+    icon: '/viade_es4b/img/photo.png',
+    label: 'navBar.photo',
+    to: '/viade_es4b/photo'
+  },
+  {
     id: 'ayuda',
     icon: '/viade_es4b/img/LogoAyuda.jpg',
     label: 'Ayuda',

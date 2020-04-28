@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { NavBar } from '@components';
 import { useTranslation } from 'react-i18next';
 import { NavBarContainer } from './children';
-import { LanguageDropdown } from '@util-components';
 import { ldflexHelper, errorToaster, storageHelper } from '@utils';
 import { NavigationItems } from '@constants';
 
