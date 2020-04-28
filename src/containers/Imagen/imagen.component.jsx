@@ -1,7 +1,7 @@
 import React from "react";
 
 import FileUploader from "./FileUploader";
-import './fileuploader.css';
+
  
 class AppComponent extends React.Component {
     constructor(props) {
