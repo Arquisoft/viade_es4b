@@ -2,7 +2,8 @@ export default function jsonTojsonLD(coordinates, userName) {
     const points = coordinates.map(point =>
         point.map(eleinterno => ({
             "schema:latitude": eleinterno.lat,
-            "schema:longitude": eleinterno.lng
+            "schema:longitude": eleinterno.lng,
+            "viade:images": eleinterno.images ? eleinterno.images : []
         }))
     );
     const userName2 = userName + "";

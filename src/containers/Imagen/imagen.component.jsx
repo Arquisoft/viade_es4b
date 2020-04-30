@@ -1,16 +1,39 @@
 import React from "react";
-
+import SolidAuth from "solid-auth-client";
 import FileUploader from "./FileUploader";
 
  
-class AppComponent extends React.Component {
+class ImageComponent extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
     }
      
-    onClick(e) {
+    async onClick(e) {
         e.preventDefault();
+
+        var file = this.refs.uploader.getFileObject();
+
+        var data = await file.arrayBuffer();
+        console.log(this.props.url);
+        var imageName = new Date().valueOf() + '.png';
+        var url = new URL(imageName, this.props.url);
+        console.log(url);
+        const result = await SolidAuth.fetch(url, {
+            method: "PUT",
+            body: data,
+            headers: {
+                Accept: "application/ld+json"
+            }
+        });
+        this.props.addImage(imageName);
+        console.log(result);
+        /*
+        this.setState(prevState => ({
+            ...prevState,
+            locations: locations
+        }));
+
          
         var url = 'http://nowhere.com',
             fileObject = this.refs.uploader.getFileObject(),
@@ -23,6 +46,7 @@ class AppComponent extends React.Component {
             method: 'POST',
             body: formData
         });
+        */
     }
      
     render() {
@@ -37,4 +61,4 @@ class AppComponent extends React.Component {
  
  
 
-export default AppComponent;
+export default ImageComponent;

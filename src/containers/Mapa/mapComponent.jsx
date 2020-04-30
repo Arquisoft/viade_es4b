@@ -5,8 +5,8 @@ import { Point } from "./Clases.js";
 import SolidAuth from "solid-auth-client";
 import ldflex from "@solid/query-ldflex";
 
-import { Map, GoogleApiWrapper, Marker, Polyline } from "google-maps-react";
-import AppComponent from '../Imagen/imagen.component';
+import { Map, GoogleApiWrapper, Marker, Polyline, InfoWindow } from "google-maps-react";
+import ImageComponent from '../Imagen/imagen.component';
 
 export class MapComponent extends Component {
     constructor(props) {
@@ -16,7 +16,8 @@ export class MapComponent extends Component {
             url: false,
             load: false,
             locations: [[]],
-            rutas: []
+            rutas: [],
+            selectedPoint: null
         };
 
         this.handleMapClick = this.handleMapClick.bind(this);
@@ -31,7 +32,7 @@ export class MapComponent extends Component {
             const storageRoot = await ldflex[this.props.webId]["pim:storage"];
             if (storageRoot) {
                 const exampleUrl = new URL(
-                    "/share/rutaEjemplo.json",
+                    "/share/",
                     storageRoot.value
                 );
                 this.setState(prevState => ({
@@ -49,7 +50,7 @@ export class MapComponent extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.state.url && !this.state.load) {
-            const doc = SolidAuth.fetch(this.state.url);
+            const doc = SolidAuth.fetch(new URL('rutaEjemplo.json', this.state.url));
 
             doc.then(async response => {
                 if (response.status == 200) {
@@ -59,11 +60,11 @@ export class MapComponent extends Component {
 
                     const lista = jsonParse.points.map(ele =>
                         ele.map(
-                            eleinterno =>
-                                new Point(
-                                    eleinterno["schema:latitude"],
-                                    eleinterno["schema:longitude"]
-                                )
+                            eleinterno => ({
+                                lat: eleinterno["schema:latitude"],
+                                lng: eleinterno["schema:longitude"],
+                                images: eleinterno["viade:images"]
+                            })
                         )
                     );
 
@@ -92,7 +93,7 @@ export class MapComponent extends Component {
 
     // Guarda los puntos en el POD
     async updateLocations(locations) {
-        const result = await SolidAuth.fetch(this.state.url, {
+        const result = await SolidAuth.fetch(new URL('rutaEjemplo.json', this.state.url), {
             method: "PUT",
             body: JSON.stringify(jsonTojsonLD(locations, this.state.url)),
             headers: {
@@ -140,23 +141,56 @@ export class MapComponent extends Component {
         map.panTo(punto);
     };
 
+    getLastPoint(state = undefined) {
+        var prevState = state ? state : this.state;
+        var lastPath = prevState.locations[prevState.locations.length - 1];
+        var lastPoint = lastPath[lastPath.length - 1];
+        return lastPoint;
+    }
+
+    addImageToLastPoint(image) {
+        this.setState(prevState => {
+            var lastPoint = this.getLastPoint();
+            if (lastPoint) {
+                lastPoint.images = lastPoint.images ? lastPoint.images : [];
+                lastPoint.images.push(image);
+                return {
+                    ...prevState
+                };         
+            }
+            else {
+                return prevState;
+            }
+        })
+    }
+
     render() {
         return (
             <div className="map-container">
                 <span>
                     <p></p>
                 </span>
-
-                <button onClick={this.handleSave} className="btn btn-secondary">
-                    Marcar ruta
-        </button>
-                <button onClick={this.handleClear} className="btn btn-secondary">
-                    Borrar rutas
-        </button>
-                <span>
-        <p></p>
-                </span>
-                <AppComponent/>
+                {
+                    this.state.url ?
+                        <>
+                            <button onClick={this.handleSave} className="btn btn-secondary">
+                                Marcar ruta
+                            </button>
+                            <button onClick={this.handleClear} className="btn btn-secondary">
+                                Borrar rutas
+                            </button>
+                            <span>
+                                <p></p>
+                            </span>
+                            {
+                                this.getLastPoint() && (
+                                    <ImageComponent url={this.state.url} addImage={this.addImageToLastPoint.bind(this)} />
+                                )
+                            }
+                        </>
+                        :
+                        <p>Cargando...</p>
+                }
                 <Map
                     google={this.props.google}
                     className={"map"}
@@ -186,10 +220,24 @@ export class MapComponent extends Component {
 
                     {this.state.locations.map((path, i) =>
                         path.map((location, i) => (
-                            <Marker key={`marker1_${i}`} position={location} />
+                            <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({...prevState, selectedPoint: location}))}/>
                         ))
                     )}
-                   
+
+                    {
+                        <InfoWindow visible={this.state.selectedPoint != null} position={this.state.selectedPoint}>
+                            <div>
+                                <h1>Imagenes</h1>
+                            {
+                                this.state.selectedPoint && this.state.selectedPoint.images && this.state.selectedPoint.images.map((image, j) => (
+                                    <img key={`img_${j}`} src={new URL(image, this.state.url)}/>
+                                ))
+                            }
+                            </div>
+                        </InfoWindow>
+                    }
+
+
                 </Map>
             </div>
         );
