@@ -112,7 +112,7 @@ export class MapComponent extends Component {
     }
 
     async handleSave() {
-       
+
         var locations = [...this.state.locations, []];
         await this.updateLocations(locations);
     }
@@ -156,7 +156,7 @@ export class MapComponent extends Component {
                 lastPoint.images.push(image);
                 return {
                     ...prevState
-                };         
+                };
             }
             else {
                 return prevState;
@@ -220,7 +220,7 @@ export class MapComponent extends Component {
 
                     {this.state.locations.map((path, i) =>
                         path.map((location, i) => (
-                            <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({...prevState, selectedPoint: location}))}/>
+                            <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({ ...prevState, selectedPoint: location }))} />
                         ))
                     )}
 
@@ -228,11 +228,11 @@ export class MapComponent extends Component {
                         <InfoWindow visible={this.state.selectedPoint != null} position={this.state.selectedPoint}>
                             <div>
                                 <h1>Imagenes</h1>
-                            {
-                                this.state.selectedPoint && this.state.selectedPoint.images && this.state.selectedPoint.images.map((image, j) => (
-                                    <img key={`img_${j}`} src={new URL(image, this.state.url)}/>
-                                ))
-                            }
+                                {
+                                    this.state.selectedPoint && this.state.selectedPoint.images && this.state.selectedPoint.images.map((image, j) => (
+                                        <img key={`img_${j}`} src={new URL(image, this.state.url)} />
+                                    ))
+                                }
                             </div>
                         </InfoWindow>
                     }
