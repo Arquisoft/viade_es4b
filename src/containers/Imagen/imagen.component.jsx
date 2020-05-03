@@ -28,25 +28,7 @@ class ImageComponent extends React.Component {
         });
         this.props.addImage(imageName);
         console.log(result);
-        /*
-        this.setState(prevState => ({
-            ...prevState,
-            locations: locations
-        }));
-
-         
-        var url = 'http://nowhere.com',
-            fileObject = this.refs.uploader.getFileObject(),
-            formData = new FormData(document.getElementById('form'));
-             
-        if (undefined === fileObject) return;
-         
-        formData.append('file', fileObject);
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        });
-        */
+        
     }
      
     render() {
