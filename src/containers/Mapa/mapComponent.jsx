@@ -174,10 +174,10 @@ export class MapComponent extends Component {
                     this.state.url ?
                         <>
                             <button onClick={this.handleSave} className="btn btn-secondary">
-                                Marcar ruta
+                                Guardar ruta
                             </button>
                             <button onClick={this.handleClear} className="btn btn-secondary">
-                                Borrar rutas
+                                Borrar rutas almacenadas
                             </button>
                             <span>
                                 <p></p>
@@ -227,7 +227,7 @@ export class MapComponent extends Component {
                     {
                         <InfoWindow visible={this.state.selectedPoint != null} position={this.state.selectedPoint}>
                             <div>
-                                <h1>Imagenes</h1>
+                                <h1>Imágenes</h1>
                                 {
                                     this.state.selectedPoint && this.state.selectedPoint.images && this.state.selectedPoint.images.map((image, j) => (
                                         <img key={`img_${j}`} src={new URL(image, this.state.url)} />

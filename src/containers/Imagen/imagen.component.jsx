@@ -35,7 +35,7 @@ class ImageComponent extends React.Component {
         return (
             <div id='app'>
                 <FileUploader ref="uploader" />
-                <button onClick={this.onClick}>Enviar</button>
+                <button onClick={this.onClick}>Subir foto</button>
             </div>
         );
     }
