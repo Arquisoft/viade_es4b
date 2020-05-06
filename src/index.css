@@ -136,3 +136,63 @@ form-group .select-role {
 .map {
   height: calc(100% - 120px) !important;
 }
+
+.rutas{
+
+  display:flex;
+  flex-wrap:wrap;
+  margin-left: 60px;
+}
+
+.datos{
+  border-color: aliceblue;
+  border: 3px;
+}
+
+dl{
+  
+  margin-top: 10px;
+  margin-left:300px;
+}
+.anombre:hover{
+
+     color: cyan;
+     font-size: x-large;
+
+}
+
+
+.cargando{
+
+  color:aliceblue;
+}
+
+.anombre{
+
+ font-size: 20px;
+
+}
+
+button{
+
+  margin-right: 90px;
+  margin-top: 10px;
+  
+}
+
+.nombre,.descripcion{
+
+  color:aliceblue;
+}
+
+.map-container{
+
+  margin-top: -15px;
+}
+
+.anombre,dd{
+  text-decoration: none;
+
+  margin-top: 5px;
+  color: aliceblue;
+}

@@ -198,39 +198,15 @@ export class MapComponent extends Component {
                 <span>
                     <p></p>
                 </span>
-
-                <dl>
-                    {
-                        this.state.rutas.map((route,i) => (
-                            <React.Fragment key={`route_${i}`}>
-                                <dt>
-                                    <a href="#" onClick={(e) => {
-                                        e.preventDefault();
-                                        this.setState((prevState) => ({
-                                            ...prevState,
-                                            selectedRoute: route
-                                        }))
-                                    }}>
-                                        {route.nombre}
-                                    </a>
-                                </dt>
-                                <dd>{route.descripcion}</dd>
-                            </React.Fragment>
-                        )).slice(0,-1)
-                        
-                    }
-                </dl>
+<div class = "rutas">
+                
+                <div>
                 {
                     this.state.url ?
                         <>
-                            <button onClick={this.handleSave} className="btn btn-secondary">
-                                Guardar ruta
-                            </button>
-                            <button onClick={this.handleClear} className="btn btn-secondary">
-                                Borrar rutas almacenadas
-                            </button>
+                            
                             <form>
-                                <label>
+                                <label class = "nombre">
                                      Nombre:
                                      <input type="text" value={this.getLastRoute().nombre} onChange={(e) => {
                                          var value = e.target.value;
@@ -248,7 +224,7 @@ export class MapComponent extends Component {
                                         })}}/>
 
                                     </label>
-                                <label>
+                                <label class = "descripcion">
                                      Descripción:
                                      <input type="text" value={this.getLastRoute().descripcion} onChange={(e) => {
                                          var value = e.target.value;
@@ -266,10 +242,16 @@ export class MapComponent extends Component {
                                         })}}/>
                                 </label>
                             </form>
-                            
+                            <button onClick={this.handleSave} className="btn btn-secondary">
+                                Guardar ruta
+                            </button>
+                            <button onClick={this.handleClear} className="btn btn-secondary">
+                                Borrar rutas almacenadas
+                            </button>
                             <span>
                                 <p></p>
                             </span>
+                          
                             {
                                 this.getLastPoint() && (
                                     <ImageComponent url={this.state.url} addImage={this.addImageToLastPoint.bind(this)} />
@@ -277,8 +259,42 @@ export class MapComponent extends Component {
                             }
                         </>
                         :
-                        <p>Cargando...</p>
+                        <p class = "cargando">Cargando...</p>
+
+                       
                 }
+                  </div>
+             
+
+                  
+                  <dl>
+                  
+                    {
+                       
+                        this.state.rutas.map((route,i) => (
+                            <React.Fragment key={`route_${i}`}>
+                               
+                                <dt>
+                                    <a class = "anombre" href="#" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.setState((prevState) => ({
+                                            ...prevState,
+                                            selectedRoute: route
+                                        }))
+                                    }}>
+                                        {route.nombre}
+                                    </a>
+                                </dt>
+                                <dd>{route.descripcion}</dd>
+                                
+                            </React.Fragment>
+                        )).slice(0,-1)
+                        
+                    }
+                   
+                </dl>
+                
+                 </div>
                 <Map
                     google={this.props.google}
                     className={"map"}
