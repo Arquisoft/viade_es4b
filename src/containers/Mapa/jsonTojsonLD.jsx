@@ -1,11 +1,12 @@
-export default function jsonTojsonLD(coordinates, userName) {
-    const points = coordinates.map(point =>
-        point.map(eleinterno => ({
+export default function jsonTojsonLD(rutasSC, userName) {
+    const rutas = rutasSC.map(ruta => ({
+        ...ruta,
+        locations: ruta.locations.map(eleinterno => ({
             "schema:latitude": eleinterno.lat,
             "schema:longitude": eleinterno.lng,
             "viade:images": eleinterno.images ? eleinterno.images : []
-        }))
-    );
+        })),
+    }));
     const userName2 = userName + "";
     const listaDivida = userName2.split("/");
     const nuevaRuta = listaDivida[0] + "//" + listaDivida[2] + "/profile/carde#me";
@@ -41,7 +42,7 @@ export default function jsonTojsonLD(coordinates, userName) {
                 "@type": "@id"
             },
 
-            points: {
+            rutas: {
                 "@id": "viade:points",
                 "@container": "@list"
             },
@@ -56,7 +57,7 @@ export default function jsonTojsonLD(coordinates, userName) {
         comments: "Comentario de prueba",
         author: nuevaRuta,
         date: fecha.toISOString(),
-        points: points
+        rutas: rutas
     };
 
     return data;

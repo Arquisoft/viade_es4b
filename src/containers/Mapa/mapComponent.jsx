@@ -8,6 +8,7 @@ import ldflex from "@solid/query-ldflex";
 import { Map, GoogleApiWrapper, Marker, Polyline, InfoWindow } from "google-maps-react";
 import ImageComponent from '../Imagen/imagen.component';
 
+
 export class MapComponent extends Component {
     constructor(props) {
         super(props);
@@ -15,9 +16,17 @@ export class MapComponent extends Component {
         this.state = {
             url: false,
             load: false,
-            locations: [[]],
-            rutas: [],
-            selectedPoint: null
+            rutas: [{
+                locations: [],
+                nombre: '',
+                descripcion: ''
+            }],
+            selectedPoint: null,
+            selectedRoute: {
+                locations: [],
+                nombre: '',
+                descripcion: ''
+            }
         };
 
         this.handleMapClick = this.handleMapClick.bind(this);
@@ -58,21 +67,26 @@ export class MapComponent extends Component {
 
                     const jsonParse = JSON.parse(json);
 
-                    const lista = jsonParse.points.map(ele =>
-                        ele.map(
-                            eleinterno => ({
-                                lat: eleinterno["schema:latitude"],
-                                lng: eleinterno["schema:longitude"],
-                                images: eleinterno["viade:images"]
-                            })
-                        )
-                    );
+                    if (jsonParse.rutas) {
+                        const lista = jsonParse.rutas.map(ruta => ({
+                            ...ruta,
+                            locations: ruta.locations.map(
+                                eleinterno => ({
+                                    lat: eleinterno["schema:latitude"],
+                                    lng: eleinterno["schema:longitude"],
+                                    images: eleinterno["viade:images"]
+                                })
+                            )
+                        }));
+    
+                        this.setState(prevState => ({
+                            ...prevState,
+                            load: true,
+                            rutas: lista
+                        }));
+    
+                    }
 
-                    this.setState(prevState => ({
-                        ...prevState,
-                        load: true,
-                        locations: lista
-                    }));
                 } else if (response.status == 404) {
                     console.log("Documento no encontrado");
                     this.setState(prevState => ({
@@ -92,10 +106,10 @@ export class MapComponent extends Component {
     }
 
     // Guarda los puntos en el POD
-    async updateLocations(locations) {
+    async updateLocations(rutas) {
         const result = await SolidAuth.fetch(new URL('rutaEjemplo.json', this.state.url), {
             method: "PUT",
-            body: JSON.stringify(jsonTojsonLD(locations, this.state.url)),
+            body: JSON.stringify(jsonTojsonLD(rutas, this.state.url)),
             headers: {
                 Accept: "application/ld+json"
             }
@@ -103,18 +117,26 @@ export class MapComponent extends Component {
         console.log(result);
         this.setState(prevState => ({
             ...prevState,
-            locations: locations
+            rutas: rutas
         }));
     }
 
     async handleClear() {
-        await this.updateLocations([[]]);
+        await this.updateLocations([{
+            locations: [],
+            nombre: '',
+            descripcion: ''
+        }]);
     }
 
     async handleSave() {
 
-        var locations = [...this.state.locations, []];
-        await this.updateLocations(locations);
+        var rutas = [...this.state.rutas, {
+            locations: [],
+            nombre: '',
+            descripcion: ''
+        }];
+        await this.updateLocations(rutas);
     }
 
     //Añadir los marcadores
@@ -128,11 +150,11 @@ export class MapComponent extends Component {
         const punto = new Point(parseFloat(parte1), parseFloat(parte2));
 
         this.setState(prevState => {
-            var lastPath = prevState.locations[prevState.locations.length - 1];
-            prevState.locations[prevState.locations.length - 1] = [
-                ...lastPath,
-                punto
-            ];
+            var lastRoute = this.getLastRoute(prevState);
+            prevState.rutas[prevState.rutas.length - 1] = {
+                ...lastRoute,
+                locations: [...lastRoute.locations, punto]
+            };
 
             return {
                 ...prevState
@@ -141,10 +163,14 @@ export class MapComponent extends Component {
         map.panTo(punto);
     };
 
-    getLastPoint(state = undefined) {
+    getLastRoute(state = undefined) {
         var prevState = state ? state : this.state;
-        var lastPath = prevState.locations[prevState.locations.length - 1];
-        var lastPoint = lastPath[lastPath.length - 1];
+        return prevState.rutas[prevState.rutas.length - 1];
+    }
+
+    getLastPoint(state = undefined) {
+        var lastRoute = this.getLastRoute(state);
+        var lastPoint = lastRoute.locations[lastRoute.locations.length - 1];
         return lastPoint;
     }
 
@@ -154,6 +180,7 @@ export class MapComponent extends Component {
             if (lastPoint) {
                 lastPoint.images = lastPoint.images ? lastPoint.images : [];
                 lastPoint.images.push(image);
+                console.log(lastPoint);
                 return {
                     ...prevState
                 };
@@ -165,11 +192,34 @@ export class MapComponent extends Component {
     }
 
     render() {
+        console.log(this.state.rutas);
         return (
             <div className="map-container">
                 <span>
                     <p></p>
                 </span>
+
+                <dl>
+                    {
+                        this.state.rutas.map((route,i) => (
+                            <React.Fragment key={`route_${i}`}>
+                                <dt>
+                                    <a href="#" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.setState((prevState) => ({
+                                            ...prevState,
+                                            selectedRoute: route
+                                        }))
+                                    }}>
+                                        {route.nombre}
+                                    </a>
+                                </dt>
+                                <dd>{route.descripcion}</dd>
+                            </React.Fragment>
+                        )).slice(0,-1)
+                        
+                    }
+                </dl>
                 {
                     this.state.url ?
                         <>
@@ -179,6 +229,44 @@ export class MapComponent extends Component {
                             <button onClick={this.handleClear} className="btn btn-secondary">
                                 Borrar rutas almacenadas
                             </button>
+                            <form>
+                                <label>
+                                     Nombre:
+                                     <input type="text" value={this.getLastRoute().nombre} onChange={(e) => {
+                                         var value = e.target.value;
+                                         this.setState(prevState => {
+                                            var lastRoute = this.getLastRoute(prevState);
+                                            console.log(e)
+                                            prevState.rutas[prevState.rutas.length - 1] = {
+                                                ...lastRoute,
+                                                nombre: value
+                                            };
+
+                                            return {
+                                                ...prevState
+                                            };                                                                                        
+                                        })}}/>
+
+                                    </label>
+                                <label>
+                                     Descripción:
+                                     <input type="text" value={this.getLastRoute().descripcion} onChange={(e) => {
+                                         var value = e.target.value;
+                                         this.setState(prevState => {
+                                            var lastRoute = this.getLastRoute(prevState);
+                                            console.log(e)
+                                            prevState.rutas[prevState.rutas.length - 1] = {
+                                                ...lastRoute,
+                                                descripcion: value
+                                            };
+
+                                            return {
+                                                ...prevState
+                                            };                                                                                        
+                                        })}}/>
+                                </label>
+                            </form>
+                            
                             <span>
                                 <p></p>
                             </span>
@@ -199,29 +287,45 @@ export class MapComponent extends Component {
                     onReady={this.handleLoad}
                     onClick={this.handleMapClick}
                 >
-                    {this.state.locations.map((path, i) => (
-                        <Polyline
-                            key={`polyline_${i}`}
-                            path={path}
-                            options={{
-                                strokeColor: "#00ffff",
-                                strokeOpacity: 1,
-                                strokeWeight: 2,
-                                icons: [
-                                    {
-                                        icon: "hello",
-                                        offset: "0",
-                                        repeat: "10px"
-                                    }
-                                ]
-                            }}
-                        />
-                    ))}
 
-                    {this.state.locations.map((path, i) =>
-                        path.map((location, i) => (
-                            <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({ ...prevState, selectedPoint: location }))} />
-                        ))
+                    <Polyline
+                        path={this.state.selectedRoute.locations}
+                        options={{
+                            strokeColor: "#00ffff",
+                            strokeOpacity: 1,
+                            strokeWeight: 2,
+                            icons: [
+                                {
+                                    icon: "hello",
+                                    offset: "0",
+                                    repeat: "10px"
+                                }
+                            ]
+                        }}
+                    />
+
+                    <Polyline
+                        path={this.getLastRoute().locations}
+                        options={{
+                            strokeColor: "#ff00ff",
+                            strokeOpacity: 1,
+                            strokeWeight: 2,
+                            icons: [
+                                {
+                                    icon: "hello",
+                                    offset: "0",
+                                    repeat: "10px"
+                                }
+                            ]
+                        }}
+                    />
+
+                    {this.state.selectedRoute.locations.map((location, i) =>
+                        <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({ ...prevState, selectedPoint: location }))} />
+                    )}
+
+                    {this.getLastRoute().locations.map((location, i) =>
+                        <Marker key={`marker1_${i}`} position={location} onClick={(props, marker) => this.setState(prevState => ({ ...prevState, selectedPoint: location }))} />
                     )}
 
                     {
