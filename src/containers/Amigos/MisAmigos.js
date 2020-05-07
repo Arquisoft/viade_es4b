@@ -121,8 +121,8 @@ class MisAmigosComponent extends Component {
                       this.state.rutas.map((route,i) => (
                           <React.Fragment key={`route_${i}`}>
                              
-                              <dt>
-                                  <a href="#" style={{fontWeight: this.state.selectedRoute == route ? 'bold': 'normal'}} onClick={(e) => {
+                              <dt class = "rutac">
+                                  <a class="aruta" href="#" style={{fontWeight: this.state.selectedRoute == route ? 'bold': 'normal'}} onClick={(e) => {
                                       e.preventDefault();
                                       this.setState((prevState) => ({
                                           ...prevState,
@@ -132,7 +132,7 @@ class MisAmigosComponent extends Component {
                                       {route.nombre}
                                   </a>
                               </dt>
-                              <dd style={{color: 'black'}} >{route.descripcion}</dd>
+                              <dd class = "rutad"  style={{color: 'black'}} >{route.descripcion}</dd>
                               
                           </React.Fragment>
                       )).slice(0,-1)
@@ -148,14 +148,14 @@ class MisAmigosComponent extends Component {
           <List src="user.friends">{friend =>    
                  
             <li  key={friend}> 
-            <a href={friend}> + 
+            <a class="afriend" href={friend}> + 
             <Value  src={friend} /> 
             </a>
             {
               this.state.selectedRoute && (
             <ul style={{listStyle: 'circle', paddingLeft: '40px'}}>
               <li>
-              <a href="#" onClick={(e) => {
+              <a class="acompartir" href="#" onClick={(e) => {
               e.preventDefault();
               this.compartir(friend.toString());
             }}> 

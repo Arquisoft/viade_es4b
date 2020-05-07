@@ -14,6 +14,41 @@ ul.lista li{
   justify-content: space-between;
 }
 
+.rutac{
+
+  margin-left:  -270px;
+}
+
+.rutad{
+
+  margin-left:  -250px;
+}
+
+.aruta{
+
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.afriend{
+  
+  font-weight: bold;
+  color: #5361fd;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.afriend:hover,.acompartir:hover,.aruta:hover{
+
+  color: rgb(86, 207, 201);
+  
+}
+
+.acompartir{
+
+  text-decoration: none;
+}
+
 
 
 ul.lista li .nombre{
@@ -100,7 +135,7 @@ margin-right : 10px;
   width: 370px;
   
   }
-.aÃ±adiramigo{
+.añadiramigo{
 
    background-color: #2A91D7;
 
@@ -122,5 +157,3 @@ margin-right : 10px;
 
      margin-left: 5px;
 }
-
-
