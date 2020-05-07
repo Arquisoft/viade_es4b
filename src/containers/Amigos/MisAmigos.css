@@ -14,54 +14,88 @@ ul.lista li{
   justify-content: space-between;
 }
 
+.rutac{
 
+  margin-left:-270px;
+}
+
+.rutad{
+
+  margin-left:-250px;
+}
+
+.aruta{
+
+  font-size:20px;
+  text-decoration:none;
+}
+
+.afriend{
+  
+  font-weight:bold;
+  color:#5361fd;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.acompartir{
+
+  text-decoration:none;
+  
+}
+
+.afriend:hover,.acompartir:hover,.aruta:hover{
+
+  color:rgb(86, 207, 201);
+  
+}
 
 ul.lista li .nombre{
   height: 60px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  width:100%;
 }
 
 ul.lista li .nombre.nombreUsuario span{
-  font-family: 'Montserrat', sans-serif;
-  color: #5A5A5A;
-  font-size: 14px;
-  font-weight: 400;
+  font-family:'Montserrat', sans-serif;
+  color:#5A5A5A;
+  font-size:14px;
+  font-weight:400;
 }
 
 ul.todo-list li .nombre span.nombre.nombreUsuario{
-  font-size: 11px;
-  color: #A6A6A6;
+  font-size:11px;
+  color:#A6A6A6;
 }
 
 
 ul.todo-list li .nombreUsuario{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  min-width: 90px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  height:60px;
+  min-width:90px;
 }
 ul.todo-list li .nombreUsuario h3{
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
+  font-family:'Montserrat', sans-serif;
+  font-weight:400;
   color: #9D3872;
-  font-size: 24px;
+  font-size:24px;
 }
 
 
 
-h4 {
+h4{
   background-color: #F3F3F3;
   color: #9D3872;
   font-size: 24px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  width: 86px;
+  width:86px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -88,29 +122,23 @@ flex-direction:row;
 }
 
 .label{
-
-padding-top: 5px;
-margin-right : 10px;
-
+padding-top:5px;
+margin-right: 10px;
 }
 .campoTexto{
 
-  
-  margin-right : 20px;
-  width: 370px;
-  
+     margin-right:20px;
+     width:370px;
+
   }
-.añadiramigo{
+.a�adiramigo{
 
-   background-color: #2A91D7;
-
-   color: #F3F3F3;
+   background-color:#2A91D7;
+   color:#F3F3F3;
 }
 
 .amigos{
-
-  border-top: 4px dotted #2A91D7;
-  
+  border-top:4px dotted #2A91D7;
 }
 
 .friends{
@@ -119,8 +147,5 @@ margin-right : 10px;
 .usuario{
 
      color:#2A91D7;
-
-     margin-left: 5px;
+     margin-left:5px;
 }
-
-
