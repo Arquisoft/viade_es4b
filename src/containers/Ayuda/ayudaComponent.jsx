@@ -25,6 +25,15 @@ export default class AyudaComponent extends Component {
                     <video src="./img/VisualizarRuta.mp4" controls width="500" height="400" className="video1"></video>
                 </div>
 
+                <h2 style={{ color: "black", margin: 10 }}>Como compartir tus rutas con tus amigos</h2>
+                <p style={{ color: "white", margin: 30 }}>Para compartir una ruta deberá ir a la pestaña rutas. Una vez ahi seleccionar la ruta la cual quiere compartir por ejemplo "Primera ruta". Una vez seleccionada le aparecerá compartir ruta, pulse y le aparecerá un cuadro de texto indicando que se ha compartido correctamente </p>
+
+                <p style={{ color: "white", margin: 30 }}>Aquí dejo un pequeño video que muestra como compartir una ruta.</p>
+
+                <div align="left" style={{ margin: 30 }}>
+                    <video src="./img/CompartirRuta.mp4" controls width="500" height="400" className="video1"></video>
+                </div>
+
                 <h2 style={{ color: "black", margin: 10 }}>Como eliminar tus rutas guardadas</h2>
                 <p style={{ color: "white", margin: 30 }}>Para eliminar las rutas que el usuario tiene guardadas deberá ir a la pestaña mapa, una vez ahi debera dar al botón borrar rutas.</p>
 
