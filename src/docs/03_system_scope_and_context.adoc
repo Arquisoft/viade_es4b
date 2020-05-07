@@ -4,7 +4,8 @@
 
 
 
-La aplicación permite a los clientes compartir sus rutas, fotos de ellas y muchas más cosas, de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
+La aplicación permite a los usuarios de la misma subir sus rutas, añadir fotos de las mismas, verlas de forma detallada e individual
+y ademas compartilas con otros usuarios de forma descentralizada gracias a los POD, que son almacenes de datos en línea y son personales para cada usuario.
 
 
 image:DiagramaContexto.PNG[Diagrama Contexto]
@@ -25,9 +26,9 @@ Leyenda del diagrama
 
 
 
-Nuestra aplicación es una aplicación web descentralizada, donde los datos se almacenarán en los Pods de los usuarios. Por lo tanto la aplicación deberá estar conectada a internet.
+Nuestra aplicación es una aplicación web descentralizada, donde los datos se almacenarán en los Pods de los usuarios,por lo que la aplicación deberá estar conectada a internet.
 
-Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros que quieran compartirla a través de una URL, a través de Internet, sin la necesidad de un lugar central para almacenar los datos.
+Los usuarios podrán acceder a sus rutas, fotos y a las rutas de otros usuarios que previamente les compartan una ruta determinada a través de Internet, sin la necesidad de un lugar central para almacenar los datos.
 
 
 
@@ -39,7 +40,7 @@ Leyenda del diagrama
 |===
 | **Objeto** | **Descripción**
 | _Web de rutas_ | _Es la aplicación web._
-| _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, los mensajes, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
+| _POD_ | _Son los almacenes donde se encuentran todos los datos del cliente que se necesitan para utilizar la aplicación, es decir, en estos almacenes es donde se guardan las rutas, las fotos, etc. La clave de utilizar los POD es que nos permite separar la aplicación de los datos._
 | _Usuario 1 y Usuario 2_ | _Son representaciones de los usuarios que esta usando la aplicación._
 | _Solid_ | Es el servidor en el cual los pods de solid están almacenados
 |_Internet_| Representa la comunicación que se realizará mediante internet con el protocolo HTTPS

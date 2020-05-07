@@ -11,8 +11,8 @@
 |===
 | Entidad         | Descripción
 | Usuario     | Stakeholder que comparte rutas
-| Ruta        | Es compartida por el usuario con otros usuarios
-| Archivo     | Archivos como fotos o vídeos que puede compartir el usuario                    con otros usuarios
+| Ruta        | Es almacenada en el POD del usuario y la puede compartir con otros usuarios
+| Archivo     | Archivos como fotos que puede compartir el usuario con otros usuarios
 | POD         | Dónde el usuario puede almacenar las rutas
 |===
 
