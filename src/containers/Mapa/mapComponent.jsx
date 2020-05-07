@@ -16,11 +16,13 @@ export class MapComponent extends Component {
         this.state = {
             url: false,
             load: false,
+            loadCompartidas: false,
             rutas: [{
                 locations: [],
                 nombre: '',
                 descripcion: ''
             }],
+            rutasCompartidas: [],
             selectedPoint: null,
             selectedRoute: {
                 locations: [],
@@ -57,8 +59,44 @@ export class MapComponent extends Component {
         this.setUrlFromStorage();
     }
 
+    async recuperarRutasCompartidas() {
+        if (this.state.url && !this.state.loadCompartidas) {
+            this.setState(prevState => ({
+                ...prevState,
+                loadCompartidas: true
+            }))
+            var url = this.state.url.toString().replace('/share','');
+            const response = await SolidAuth.fetch(new URL('inbox', url));
+            console.log('COMPARTIDAS');
+            if (response.ok) {
+                const text = await response.text();
+                console.log(text);
+                const notificaciones = text.match(/<.*>\n/g).map(n => n.replace(/[<>\n]/g,''));
+                console.log(notificaciones);
+                notificaciones.forEach(async n => {
+                    const response = await SolidAuth.fetch(new URL('inbox/'+n, url));
+                    const json = await response.json();
+                    this.setState(prevState => ({
+                        ...prevState,
+                        rutasCompartidas: [
+                            ...prevState.rutasCompartidas,
+                            json
+                        ]
+                    }))
+                    console.log('RUTA ' + n);
+                    console.log(json);
+                })
+            }
+            else {
+                console.log(response);
+            }
+        }
+    }
+
     componentDidUpdate(prevProps) {
+        this.recuperarRutasCompartidas();
         if (this.state.url && !this.state.load) {
+
             const doc = SolidAuth.fetch(new URL('rutaEjemplo.json', this.state.url));
 
             doc.then(async response => {
@@ -271,7 +309,7 @@ export class MapComponent extends Component {
                   
                     {
                        
-                        this.state.rutas.map((route,i) => (
+                        [...this.state.rutas.slice(0,-1), ...this.state.rutasCompartidas].map((route,i) => (
                             <React.Fragment key={`route_${i}`}>
                                
                                 <dt>
@@ -288,7 +326,7 @@ export class MapComponent extends Component {
                                 <dd>{route.descripcion}</dd>
                                 
                             </React.Fragment>
-                        )).slice(0,-1)
+                        ))
                         
                     }
                    
