@@ -38,18 +38,17 @@ ul.lista li{
   font-size: 20px;
 }
 
+.acompartir{
+
+  text-decoration:none
+  
+}
+
 .afriend:hover,.acompartir:hover,.aruta:hover{
 
   color: rgb(86, 207, 201);
   
 }
-
-.acompartir{
-
-  text-decoration: none;
-}
-
-
 
 ul.lista li .nombre{
   height: 60px;
@@ -90,7 +89,7 @@ ul.todo-list li .nombreUsuario h3{
 
 
 
-h4 {
+h4{
   background-color: #F3F3F3;
   color: #9D3872;
   font-size: 24px;
@@ -123,29 +122,23 @@ flex-direction:row;
 }
 
 .label{
-
-padding-top: 5px;
-margin-right : 10px;
-
+padding-top:5px;
+margin-right: 10px;
 }
 .campoTexto{
 
-  
-  margin-right : 20px;
-  width: 370px;
-  
+     margin-right :20px;
+     width:370px;
+
   }
-.añadiramigo{
+.aï¿½adiramigo{
 
-   background-color: #2A91D7;
-
-   color: #F3F3F3;
+   background-color:#2A91D7;
+   color:#F3F3F3;
 }
 
 .amigos{
-
-  border-top: 4px dotted #2A91D7;
-  
+  border-top:4px dotted #2A91D7;
 }
 
 .friends{
